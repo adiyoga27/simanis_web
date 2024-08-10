@@ -20,3 +20,13 @@ Route::get('success-verification', function () {
 Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])->name('verification.verify');
 
 Route::resource('educations', EducationController::class);
+Route::get('tutorial-check-gula-darah', function () {
+    return view('webview/gula-darah');   
+});
+Route::get('tutorial-cara-perawatan-hipoglekimia', function () {
+    return view('webview/gula-darah');   
+});
+
+Route::get('tutorial-cara-perawatan-hiperglikemia', function () {
+    return view('webview/gula-darah');   
+});

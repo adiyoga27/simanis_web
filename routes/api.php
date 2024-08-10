@@ -17,6 +17,5 @@ Route::post('education/{slug}', [EducationController::class, 'storeEducation']);
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
+Route::post('user', [AuthController::class, 'updateProfile'])->middleware('auth:sanctum');
 Route::get('user', [UserController::class, 'index'])->middleware('auth:sanctum');
-

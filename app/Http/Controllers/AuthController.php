@@ -105,6 +105,44 @@ class AuthController extends Controller
             ]);
         }
     }
+    public function updateProfile(Request $request){
+       
+        try {
+            $payload = array(
+                'name' => $request->name,
+                'email' => $request->email,
+                'role' => $request->role?? 'user',
+                'birthdate' => Carbon::createFromFormat('d-m-Y', $request->birthdate),
+                'phone' => $request->phone,
+                'jk' => $request->jk,
+                'is_smoke' => $request->is_smoke,
+                'medical_history' => $request->medical_history?? null,
+                'province' => $request->province,
+                'city' => $request->city,
+                'subdistrict' => $request->subdistrict,
+                'village' => $request->village,
+                'address' => $request->address,
+                'kode_pos' => $request->kode_pos?? null,
+            );
+            
+
+            if($request->has('avatar')){
+                $payload['avatar'] = Storage::put('images/avatars', $request->file('avatar'));
+            }
+            User::where('id', Auth::user()->id)->update($payload);
+
+            return response()->json([
+               'status' => true,
+               'message' => 'Berhasil merubah profile anda ...'
+            ], 201);
+        } catch (\Throwable $th) {
+            throw $th;
+            return response()->json([
+                'status' => false,
+                'message' => "Gagal Merubah Profile Anda !".$th->getMessage()  //error message
+            ]);
+        }
+    }
 
     function resendVerification(Request $request) {
             try {
