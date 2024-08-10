@@ -11,6 +11,7 @@ class UserController extends Controller
     public function index() {
         $user = Auth::user();
 
+        
         return response()->json([
             'status' => true,
             'message' => 'success',
