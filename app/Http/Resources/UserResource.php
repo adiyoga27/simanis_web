@@ -39,9 +39,5 @@ class UserResource extends JsonResource
         ];
     }
 
-    protected $casts = [
-        'birthdate' => 'date',
-        'email_verified_at' => 'datetime',
-        'is_smoke' => 'boolean'
-    ];
+   
 }
