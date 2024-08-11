@@ -64,6 +64,8 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_smoke' => 'integer',
+            'tall' => 'integer',
+            'weight' => 'integer',
         ];
     }
 }
