@@ -1,0 +1,13 @@
+<p>⦁<span style="white-space:pre"> </span>Periksa Kondisi Kaki Setiap Hari. Periksa kaki dan sela kaki, apakah ada luka, lecet, kemerahan, bengkak, atau perubahan lainnya pada kulit kaki.</p>
+<p>⦁<span style="white-space:pre"> </span>Bersihkan kaki setiap hari dengan air bersih dan sabun mandi</p>
+<p>⦁<span style="white-space:pre"> </span>Keringkan kaki dan sela kaki dengan handuk bersih</p>
+<p>⦁<span style="white-space:pre"> </span>Berikan pelembab/ lotion (body lotion) pada daerah kaki yang kering</p>
+<p>⦁<span style="white-space:pre"> </span>Gunting kuku kaki lurus mengikuti bentuk normal jari kaki (jangan terlalu pendek), kemudian kikir agar kuku tidak tajam.</p>
+<p>⦁<span style="white-space:pre"> </span>Pakai alas kaki sepatu atau sandal untuk melindungi kaki, jangan gunakan alas kaki terlalu sempit atau longgar&nbsp;</p>
+<p>⦁<span style="white-space:pre"> </span>Bila ada luka kecil, obati luka dan tutup dengan kain atau kassa bersih .</p>
+<div><br></div>
+
+<p>⦁<span style="white-space:pre">	</span>Periksa sepatu sebelum dipakai, apakah ada kerikil, benda-benda tajam seperti jarum dan duri</p><p>⦁<span style="white-space:pre">	</span>Gunakan sepatu atau sandal yang baik, sesuai dengan ukuran dan enak untuk dipakai, dengan ruang sepatu yang cukup untuk jari-jari</p><p>⦁<span style="white-space:pre">	</span>Pilihlah sepatu dengan ukuran yang pas serta memiliki sol tebal dan fleksibel.</p><p>⦁<span style="white-space:pre">	</span>Selain alas kaki, kaus kaki yang bersih dan lembut dapat melindungi kulit kaki dari gesekan yang berlebihan.&nbsp;</p><p>⦁<span style="white-space:pre">	</span>Pilihlah kaus kaki berbahan katun yang dapat menyerap keringat.</p><div><br></div>
+
+
+<p>1.<span style="white-space:pre">	</span>Jangan merendam kaki dengan air hangat untuk menghangatkan kaki</p><p>2.<span style="white-space:pre">	</span>Jangan menggunakan botol panas/peralatan listrik panas untuk perawatan kaki</p><p>3.<span style="white-space:pre">	</span>Jangan menggunakan batu/silet untuk mengurangi kapalan</p><p>4.<span style="white-space:pre">	</span>Jangan menggunakan sepatu, alas kaki dan kaos kaki yang sempit</p><p>5.<span style="white-space:pre">	</span>Jangan menggunakan obat-obatan lain tanpa petunjuk dokter untuk menghilangkan mata ikan</p><p>6.<span style="white-space:pre">	</span>Jika ada luka kecil atau goresan di kaki segera bawa ke layanan kesehatan terdekat.</p>

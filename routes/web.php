@@ -30,3 +30,6 @@ Route::get('tutorial-cara-perawatan-hipoglekimia', function () {
 Route::get('tutorial-cara-perawatan-hiperglikemia', function () {
     return view('webview/gula-darah');   
 });
+Route::get('recomendasi-foot', function () {
+    return view('webview/recomendasi-foot');   
+});
