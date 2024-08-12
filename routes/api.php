@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DietController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -19,3 +20,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 Route::post('user', [AuthController::class, 'updateProfile'])->middleware('auth:sanctum');
 Route::get('user', [UserController::class, 'index'])->middleware('auth:sanctum');
+Route::get('diets/{amount}', [DietController::class, 'show']);
