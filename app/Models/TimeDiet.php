@@ -13,6 +13,10 @@ class TimeDiet extends Model
         'title'
     ];
 
+    protected $casts = [
+        'diet_id' => 'integer'
+    ];
+
     function food() {
         return $this->hasMany(FoodDiet::class, 'time_id', 'id');
     }

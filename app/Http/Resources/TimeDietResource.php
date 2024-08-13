@@ -16,7 +16,7 @@ class TimeDietResource extends JsonResource
     {
         return [
             'time_id' => $this->id,
-            'diet_id' => $this->diet_id,
+            'diet_id' => (int) $this->diet_id,
             'title' => $this->title,
             'food' => FoodResource::collection($this->food)
         ];

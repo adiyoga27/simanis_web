@@ -14,4 +14,7 @@ class FoodDiet extends Model
         'unit',
         'menu'
     ];
+    protected $casts = [
+        'time_id' => 'integer'
+    ];
 }
