@@ -10,7 +10,13 @@ class DietController extends Controller
 {
     public function show(Request $request, $amount){
         $diets = Diet::where('amount', "<=",$amount)->first();
-
+        if(!$diets){
+            return response()->json([
+                'status' => false,
+                'message' => 'Tidak ada rekomendasi',
+                'data' => []
+            ], 200);
+        }
         return response()->json([
             'status' => true,
             'message' => 'Success',
