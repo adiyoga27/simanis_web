@@ -259,6 +259,7 @@ class AuthController extends Controller
     public function verifyOtpForget(Request $request){
        
             $user = User::where('email', $request->email)->where('otp', $request->otp)->first();
+            dd($user);
             if(!$user){
                 return response()->json([
                     'status' => false,
