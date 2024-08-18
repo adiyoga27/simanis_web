@@ -257,7 +257,7 @@ class AuthController extends Controller
     }
 
     public function verifyOtpForget(Request $request){
-        try {
+       
             $user = User::where('email', $request->email)->where('otp', $request->otp)->first();
             if(!$user){
                 return response()->json([
@@ -269,12 +269,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'OTP berhasil di verifikasi']);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => 'OTP anda masukkan salah !!!'
-            ]);
-        }
+      
     }
     public function logout(Request $request)
     {
