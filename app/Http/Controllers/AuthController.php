@@ -272,6 +272,34 @@ class AuthController extends Controller
                 'message' => 'OTP berhasil di verifikasi']);
       
     }
+
+    public function verifyNewPass(Request $request) {
+        try {
+            $request->validate([
+                'password' =>'required',
+                'confirm_password' =>'required|same:password',
+            ]);
+            $user = User::where('email', $request->email)->first();
+            if (!$user) {
+                return response()->json([
+                    'status' => false,
+                   'message' => 'Email tidak terdaftar !!!'
+                ]);
+            }
+            $user->update([
+                'password' => Hash::make($request->password)
+            ]);
+            return response()->json([
+                'status' => true,
+               'message' => 'Password berhasil diubah']);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'status' => false,
+               'message' => 'Gagal mengubah password, silahkan coba lagi'
+            ]);
+        }
+    }
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();

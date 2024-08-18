@@ -24,3 +24,4 @@ Route::get('diets/{amount}', [DietController::class, 'show']);
 Route::post('auth/reset', [AuthController::class, 'resetPassword'])->middleware('auth:sanctum');
 Route::post('auth/send-otp-forget', [AuthController::class, 'sendOtpForget']);
 Route::post('auth/verify-otp', [AuthController::class, 'verifyOtpForget']);
+Route::post('auth/verify-new-pass', [AuthController::class, 'verifyNewPass']);
