@@ -13,6 +13,7 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
@@ -229,25 +230,30 @@ class AuthController extends Controller
 
     public function sendOtpForget(Request $request)
     {
-        $email = $request->email;
-        $user = User::where('email', $email)->first();
-        if (!$user) {
+        try {
+            $email = $request->email;
+            $user = User::where('email', $email)->first();
+            if (!$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Email tidak terdaftar !!!'
+                ]);
+            }
+    
+            $otp = mt_rand(100000, 999999);
+            $user->update(['otp' => $otp]);
+            Mail::to($email)->send(new SendOtpForgetPassEmail($email, $otp));
             return response()->json([
-                'status' => false,
-                'message' => 'Email tidak terdaftar !!!'
+                'status' => true,
+                'message' => 'Kode OTP telah dikirim ke email anda, silahkan cek dan masukkan kode tersebut',
+                'data' => [
+                    'email' => $email,
+                ]
             ]);
+        } catch (\Throwable $th) {
+            throw $th;
         }
-
-        $otp = mt_rand(100000, 999999);
-        $user->update(['otp' => $otp]);
-        new SendOtpForgetPassEmail($email, $otp);
-        return response()->json([
-            'status' => true,
-            'message' => 'Kode OTP telah dikirim ke email anda, silahkan cek dan masukkan kode tersebut',
-            'data' => [
-                'email' => $email,
-            ]
-        ]);
+        
     }
     public function logout(Request $request)
     {
