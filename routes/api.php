@@ -22,3 +22,4 @@ Route::post('user', [AuthController::class, 'updateProfile'])->middleware('auth:
 Route::get('user', [UserController::class, 'index'])->middleware('auth:sanctum');
 Route::get('diets/{amount}', [DietController::class, 'show']);
 Route::post('auth/reset', [AuthController::class, 'resetPassword'])->middleware('auth:sanctum');
+Route::post('auth/send-otp-forget', [AuthController::class, 'sendOtpForget']);

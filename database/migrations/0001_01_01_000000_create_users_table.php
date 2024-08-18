@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('village', 100);
             $table->text('address');
             $table->integer('kode_pos');
+            $table->string('otp', 10)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
