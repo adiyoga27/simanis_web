@@ -16,10 +16,12 @@ class SendOtpForgetPassEmail extends Mailable
     /**
      * Create a new message instance.
      */
-
-    public function __construct(private $email, private $otp)
+    public $email;
+    public $otp;
+    public function __construct($email, $otp)
     {
-        
+        $this->email = $email;
+        $this->otp = $otp;
     }
 
     /**
@@ -32,24 +34,15 @@ class SendOtpForgetPassEmail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'mail.send-otp',
-            with: ['otp' => $this->otp, 'email' => $this->email, 'message' => 'Masukkan kode OTP anda untuk melakukan Reset Password. Jangan Berikan Kode OTP ini jika anda tidak melakukan Lupa Password !!!'],
-        );
-    }
+   
 
-    /**
-     * Get the attachments for the message.
+     /**
+     * Build the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return $this
      */
-    public function attachments(): array
+    public function build()
     {
-        return [];
+        return $this->view('mail.send-otp');
     }
 }
