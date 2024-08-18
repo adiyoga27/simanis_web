@@ -198,6 +198,30 @@ class AuthController extends Controller
             return redirect('success-verification')->with('verified', true);
         }
 
+        public function resetPassword(Request $request) {
+           $request->validate([
+                'password' => 'required',
+                'confirm_password' => 'required|same:password',
+            ]);
+            $user = Auth::user();
+            if (!Hash::check($request->old_password, $user->password)) {
+               
+                return response()->json([
+                    'status' => false,
+                    'message' => "The provided credentials are incorrect."
+                ]);
+            }
+            
+            $user->update([
+                'password' => Hash::make($request->password)
+            ]);
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'success'
+                ]);
+       
+        }
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();
