@@ -97,7 +97,8 @@ class AuthController extends Controller
             if ($request->has('avatar')) {
                 $payload['avatar'] = Storage::put('images/avatars', $request->file('avatar'));
             }
-            User::create($payload);
+           $user =  User::create($payload);
+            $user->sendEmailVerificationNotification();
 
             return response()->json([
                 'status' => true,
