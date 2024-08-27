@@ -25,3 +25,4 @@ Route::post('auth/reset', [AuthController::class, 'resetPassword'])->middleware(
 Route::post('auth/send-otp-forget', [AuthController::class, 'sendOtpForget']);
 Route::post('auth/verify-otp', [AuthController::class, 'verifyOtpForget']);
 Route::post('auth/verify-new-pass', [AuthController::class, 'verifyNewPass']);
+Route::get('home', [UserController::class, 'home'])->middleware('auth:sanctum');

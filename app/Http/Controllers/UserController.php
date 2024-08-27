@@ -19,4 +19,12 @@ class UserController extends Controller
             'data' => new UserResource(User::where('id', $user->id)->first())
         ]);
     }
+
+    public function home() {
+        
+        return response()->json([
+            'status' => true,
+            'message' => 'success']
+        );
+    }
 }
