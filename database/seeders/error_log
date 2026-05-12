@@ -1,0 +1,44 @@
+[22-Oct-2025 11:06:21 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[22-Oct-2025 14:48:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[23-Oct-2025 06:16:56 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[23-Oct-2025 06:26:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[23-Oct-2025 06:27:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[31-Oct-2025 16:28:15 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[31-Oct-2025 17:26:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[01-Nov-2025 12:31:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[01-Nov-2025 12:37:30 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[01-Nov-2025 13:51:35 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9
+[01-Nov-2025 13:55:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Seeder" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/seeders/DatabaseSeeder.php on line 9

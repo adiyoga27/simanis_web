@@ -1,0 +1,208 @@
+[23-Oct-2025 08:54:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[23-Oct-2025 08:54:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[23-Oct-2025 08:54:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[23-Oct-2025 08:54:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[23-Oct-2025 08:54:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[23-Oct-2025 08:54:42 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[23-Oct-2025 08:54:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[23-Oct-2025 08:54:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[23-Oct-2025 09:11:31 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[23-Oct-2025 09:12:16 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[23-Oct-2025 09:13:21 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[23-Oct-2025 09:15:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[23-Oct-2025 09:22:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[23-Oct-2025 09:24:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[23-Oct-2025 09:26:14 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[23-Oct-2025 09:27:31 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[23-Oct-2025 09:28:22 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[23-Oct-2025 09:29:20 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[23-Oct-2025 09:31:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[23-Oct-2025 09:32:40 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[23-Oct-2025 09:33:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[23-Oct-2025 09:34:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[23-Oct-2025 09:39:09 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[23-Oct-2025 09:39:42 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[23-Oct-2025 09:40:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[23-Oct-2025 09:45:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[23-Oct-2025 09:48:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[23-Oct-2025 09:49:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[23-Oct-2025 09:53:01 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[23-Oct-2025 09:53:51 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[01-Nov-2025 01:23:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[01-Nov-2025 02:02:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[01-Nov-2025 02:37:51 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[01-Nov-2025 03:05:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[01-Nov-2025 03:06:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[01-Nov-2025 03:33:52 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[01-Nov-2025 04:10:54 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[01-Nov-2025 04:14:18 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[01-Nov-2025 14:56:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[01-Nov-2025 14:57:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[01-Nov-2025 14:59:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[01-Nov-2025 15:03:20 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[01-Nov-2025 15:05:07 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[01-Nov-2025 15:07:08 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[01-Nov-2025 16:39:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[01-Nov-2025 16:40:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[01-Nov-2025 16:41:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8
+[01-Nov-2025 16:44:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[01-Nov-2025 16:59:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/FoodResource.php on line 8
+[01-Nov-2025 17:02:55 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/UserResource.php on line 8
+[01-Nov-2025 17:07:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/DietResource.php on line 8
+[01-Nov-2025 17:08:43 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/TimeDietResource.php on line 8

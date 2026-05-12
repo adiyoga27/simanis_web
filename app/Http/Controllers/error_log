@@ -1,0 +1,164 @@
+[23-Oct-2025 08:54:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[23-Oct-2025 08:54:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[23-Oct-2025 08:54:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[23-Oct-2025 08:54:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[23-Oct-2025 08:54:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[23-Oct-2025 08:54:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[23-Oct-2025 08:54:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[23-Oct-2025 08:54:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[01-Nov-2025 04:12:04 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[01-Nov-2025 05:13:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[01-Nov-2025 06:56:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[01-Nov-2025 07:46:14 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[01-Nov-2025 09:19:03 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[01-Nov-2025 10:44:13 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[01-Nov-2025 10:45:21 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[01-Nov-2025 11:50:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[03-Nov-2025 10:56:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[03-Nov-2025 10:56:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[03-Nov-2025 10:59:56 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[03-Nov-2025 11:02:06 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[03-Nov-2025 11:08:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[03-Nov-2025 11:09:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[03-Nov-2025 11:10:40 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[03-Nov-2025 11:13:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[03-Nov-2025 11:15:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[03-Nov-2025 11:16:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[03-Nov-2025 11:16:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[03-Nov-2025 11:17:09 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[03-Nov-2025 11:19:18 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[03-Nov-2025 11:25:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[03-Nov-2025 11:27:16 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[03-Nov-2025 11:28:18 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[03-Nov-2025 11:30:29 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[03-Nov-2025 11:34:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[03-Nov-2025 11:39:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[03-Nov-2025 11:46:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[03-Nov-2025 11:47:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/EducationController.php on line 12
+[03-Nov-2025 11:48:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/UserController.php on line 10
+[03-Nov-2025 11:49:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19
+[03-Nov-2025 11:50:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/DietController.php on line 9
+[03-Nov-2025 12:14:04 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/AuthController.php on line 19

@@ -1,0 +1,12 @@
+[23-Oct-2025 08:54:43 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/Web/EducationController.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/Web/EducationController.php on line 8
+[02-Nov-2025 00:01:10 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/Web/EducationController.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/Web/EducationController.php on line 8
+[02-Nov-2025 02:01:18 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "App\Http\Controllers\Controller" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/Web/EducationController.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Controllers/Web/EducationController.php on line 8

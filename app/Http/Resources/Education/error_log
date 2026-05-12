@@ -1,0 +1,60 @@
+[23-Oct-2025 02:28:20 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php on line 8
+[23-Oct-2025 02:36:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php on line 8
+[23-Oct-2025 08:54:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php on line 8
+[23-Oct-2025 08:54:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php on line 8
+[23-Oct-2025 08:54:42 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php on line 8
+[23-Oct-2025 11:41:29 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php on line 8
+[23-Oct-2025 11:49:52 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php on line 8
+[29-Oct-2025 21:53:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php on line 8
+[29-Oct-2025 21:54:18 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php on line 8
+[29-Oct-2025 21:58:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php on line 8
+[29-Oct-2025 21:59:14 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php on line 8
+[01-Nov-2025 08:21:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php on line 8
+[01-Nov-2025 09:22:03 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationCategoryResource.php on line 8
+[01-Nov-2025 17:10:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php on line 8
+[01-Nov-2025 19:15:00 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Education/EducationResource.php on line 8

@@ -1,0 +1,127 @@
+@extends('layouts.app')
+
+@section('title', 'Cek Gula Darah Puasa (GDP)')
+@section('page-title', 'Cek Gula Darah Puasa (GDP)')
+
+@section('content')
+<div class="max-w-2xl mx-auto space-y-6">
+
+    <!-- Input Card -->
+    <div class="card">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/30">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="font-semibold text-gray-800">Masukkan Kadar Gula Darah</h3>
+                <p class="text-xs text-gray-400">Hasil pemeriksaan setelah puasa 8 jam</p>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <label for="gdpValue" class="input-label">Kadar Gula Darah (mg/dL)</label>
+            <input type="number" id="gdpValue" class="input-field text-lg" placeholder="Masukkan nilai gula darah, contoh: 110" min="0" max="999">
+        </div>
+
+        <button onclick="checkGDP()" class="btn-primary w-full">
+            <svg class="w-5 h-5 inline-block mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Cek Hasil
+        </button>
+
+        <!-- Result Area -->
+        <div id="gdpResult" class="hidden mt-5 pt-5 border-t border-gray-100">
+            <div id="gdpStatusBadge" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3"></div>
+            <p id="gdpMessage" class="text-gray-700 font-medium"></p>
+            <p id="gdpRecommendation" class="text-sm text-gray-500 mt-2 hidden"></p>
+        </div>
+    </div>
+
+    <!-- Reference Card -->
+    <div class="card">
+        <h3 class="font-semibold text-gray-800 text-lg mb-4">Referensi Rentang Gula Darah Puasa</h3>
+        <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 bg-green-50 rounded-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                    <span class="text-sm font-medium text-green-800">Normal</span>
+                </div>
+                <span class="text-sm font-bold text-green-700">80 - 130 mg/dL</span>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                    <span class="text-sm font-medium text-yellow-800">Tinggi</span>
+                </div>
+                <span class="text-sm font-bold text-yellow-700">&gt; 130 mg/dL</span>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-red-50 rounded-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                    <span class="text-sm font-medium text-red-800">Sangat Tinggi</span>
+                </div>
+                <span class="text-sm font-bold text-red-700">&ge; 300 mg/dL</span>
+            </div>
+            <div class="flex items-center justify-between p-3 bg-red-50 rounded-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                    <span class="text-sm font-medium text-red-800">Rendah</span>
+                </div>
+                <span class="text-sm font-bold text-red-700">&lt; 80 mg/dL</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+@endsection
+
+@push('scripts')
+<script>
+function checkGDP() {
+    const value = parseInt(document.getElementById('gdpValue').value);
+    const resultDiv = document.getElementById('gdpResult');
+    const badge = document.getElementById('gdpStatusBadge');
+    const message = document.getElementById('gdpMessage');
+    const recommendation = document.getElementById('gdpRecommendation');
+
+    if (isNaN(value) || value <= 0) {
+        resultDiv.classList.remove('hidden');
+        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-gray-100 text-gray-600';
+        badge.innerHTML = '&#9888;&#65039; Input Tidak Valid';
+        message.textContent = 'Harap masukkan nilai gula darah yang valid.';
+        recommendation.classList.add('hidden');
+        return;
+    }
+
+    resultDiv.classList.remove('hidden');
+
+    if (value >= 300) {
+        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-red-100 text-red-700';
+        badge.innerHTML = '&#9888;&#65039; Sangat Tinggi';
+        message.textContent = 'Gula darah sangat tinggi, segera konsultasi ke dokter!';
+        recommendation.classList.remove('hidden');
+        recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL tergolong sangat tinggi (hiperglikemia berat). Segera hubungi dokter atau fasilitas kesehatan terdekat. Periksa kembali kadar gula darah Anda dan hindari makanan tinggi karbohidrat.';
+    } else if (value > 130) {
+        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-yellow-100 text-yellow-700';
+        badge.innerHTML = '&#9888;&#65039; Tinggi';
+        message.textContent = 'Gula darah tinggi';
+        recommendation.classList.remove('hidden');
+        recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL berada di atas batas normal. Disarankan untuk memantau pola makan, mengurangi asupan gula dan karbohidrat sederhana, serta berkonsultasi dengan dokter jika hasil tetap tinggi dalam pemeriksaan berikutnya.';
+    } else if (value >= 80) {
+        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-green-100 text-green-700';
+        badge.innerHTML = '&#10004;&#65039; Normal';
+        message.textContent = 'Gula darah normal';
+        recommendation.classList.add('hidden');
+    } else {
+        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-red-100 text-red-700';
+        badge.innerHTML = '&#9888;&#65039; Rendah';
+        message.textContent = 'Gula darah rendah';
+        recommendation.classList.remove('hidden');
+        recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL tergolong rendah (hipoglikemia). Segera konsumsi makanan atau minuman yang mengandung gula sederhana seperti jus buah, permen, atau glukosa tablet. Jika gejala berlanjut, segera cari bantuan medis.';
+    }
+}
+</script>
+@endpush

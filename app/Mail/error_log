@@ -1,0 +1,28 @@
+[22-Oct-2025 10:18:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Mail\Mailable" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php on line 12
+[22-Oct-2025 10:36:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Mail\Mailable" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php on line 12
+[23-Oct-2025 08:54:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Mail\Mailable" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php on line 12
+[23-Oct-2025 08:54:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Mail\Mailable" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php on line 12
+[23-Oct-2025 08:54:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Mail\Mailable" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php on line 12
+[31-Oct-2025 15:55:28 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Mail\Mailable" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php on line 12
+[31-Oct-2025 16:37:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Mail\Mailable" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Mail/SendOtpForgetPassEmail.php on line 12

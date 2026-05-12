@@ -1,56 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Verification Success</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            padding: 20px;
-        }
-        .email-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .email-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .email-content {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        .email-footer {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .btn-custom {
-            background-color: #28a745;
-            color: #ffffff;
-        }
-    </style>
-</head>
-<body>
-    <div class="email-container">
-        <div class="email-header">
-            <h2>Email Verification Successful</h2>
-            <hr>
-        </div>
-        <div class="email-content">
-            <center><p>Dear {{ $user->name }},</p></center>
-            <p>Thank you for verifying your email address. Your account has been successfully verified.</p>
-            <p>We are excited to have you on board. You can now fully access all the features of our platform.</p>
-            <p>If you have any questions or need assistance, feel free to contact our support team.</p>
-        </div>
-        <div class="email-footer">
-            <p>Thank you,<br>The Team SIMANIS</p>
+@extends('layouts.guest')
+
+@section('title', 'Verifikasi Email Berhasil')
+
+@section('content')
+<div class="min-h-screen flex items-center justify-center px-4">
+    <div class="w-full max-w-md">
+        <div class="card text-center">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Verifikasi Email Berhasil!</h2>
+            <p class="text-gray-600 mb-4">
+                Halo <span class="font-semibold text-primary-600">{{ $user->name }}</span>, 
+                akun Anda telah berhasil diverifikasi.
+            </p>
+            <p class="text-gray-500 text-sm mb-6">
+                Anda sekarang dapat mengakses semua fitur SIMANIS. 
+                Selamat menggunakan aplikasi manajemen diabetes kami.
+            </p>
+
+            <a href="{{ route('login') }}" class="btn-primary inline-block">
+                Masuk ke Aplikasi
+            </a>
+
+            <p class="text-xs text-gray-400 mt-6">
+                &copy; {{ date('Y') }} SIMANIS. #sehatkayabahagia
+            </p>
         </div>
     </div>
-</body>
-</html>
+</div>
+@endsection

@@ -1,0 +1,36 @@
+[23-Oct-2025 08:54:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7
+[23-Oct-2025 23:54:31 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7
+[24-Oct-2025 00:04:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7
+[27-Oct-2025 01:29:22 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7
+[27-Oct-2025 01:47:54 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7
+[28-Oct-2025 00:18:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7
+[28-Oct-2025 00:28:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7
+[02-Nov-2025 05:29:05 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7
+[02-Nov-2025 07:58:22 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Http\FormRequest" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Requests/Auth/RegistrationRequest.php on line 7

@@ -1,0 +1,136 @@
+[22-Oct-2025 16:20:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php on line 9
+[22-Oct-2025 16:52:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php on line 9
+[22-Oct-2025 19:10:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php on line 8
+[22-Oct-2025 19:11:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php on line 13
+[23-Oct-2025 00:18:06 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php on line 8
+[23-Oct-2025 00:37:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php on line 8
+[23-Oct-2025 08:54:31 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php on line 13
+[23-Oct-2025 08:54:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php on line 8
+[23-Oct-2025 08:54:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php on line 8
+[23-Oct-2025 08:54:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php on line 9
+[23-Oct-2025 08:54:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php on line 13
+[23-Oct-2025 08:54:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php on line 8
+[23-Oct-2025 08:54:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php on line 8
+[23-Oct-2025 08:54:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php on line 8
+[23-Oct-2025 08:54:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php on line 8
+[23-Oct-2025 08:54:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php on line 9
+[23-Oct-2025 08:54:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php on line 13
+[23-Oct-2025 08:54:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php on line 9
+[23-Oct-2025 08:54:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php on line 8
+[23-Oct-2025 08:54:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php on line 8
+[23-Oct-2025 08:54:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php on line 8
+[23-Oct-2025 08:54:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php on line 8
+[31-Oct-2025 22:20:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php on line 9
+[31-Oct-2025 23:03:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/EducationCategory.php on line 9
+[01-Nov-2025 00:55:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php on line 13
+[01-Nov-2025 01:00:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php on line 8
+[01-Nov-2025 01:44:40 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Diet.php on line 8
+[01-Nov-2025 01:48:43 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Auth\User" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/User.php on line 13
+[01-Nov-2025 02:25:08 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php on line 8
+[01-Nov-2025 03:21:40 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/FoodDiet.php on line 8
+[01-Nov-2025 04:26:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php on line 8
+[01-Nov-2025 05:17:54 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/TimeDiet.php on line 8
+[01-Nov-2025 06:11:03 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php on line 8
+[01-Nov-2025 06:56:03 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Eloquent\Model" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Models/Education.php on line 8

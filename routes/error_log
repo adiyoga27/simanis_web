@@ -1,0 +1,84 @@
+[22-Oct-2025 08:45:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php on line 12
+[22-Oct-2025 08:47:40 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php on line 8
+[22-Oct-2025 08:47:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php on line 12
+[22-Oct-2025 08:48:21 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php on line 6
+[22-Oct-2025 08:52:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php on line 6
+[22-Oct-2025 08:55:10 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php on line 8
+[23-Oct-2025 08:54:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php on line 8
+[23-Oct-2025 08:54:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php on line 12
+[23-Oct-2025 08:54:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php on line 6
+[23-Oct-2025 08:54:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php on line 6
+[23-Oct-2025 08:54:35 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php on line 8
+[23-Oct-2025 08:54:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php on line 6
+[28-Oct-2025 05:57:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php on line 6
+[28-Oct-2025 05:58:05 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php on line 8
+[30-Oct-2025 14:27:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php on line 8
+[30-Oct-2025 14:27:55 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php on line 6
+[31-Oct-2025 14:38:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php on line 8
+[31-Oct-2025 14:38:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php on line 12
+[31-Oct-2025 14:42:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/web.php on line 8
+[31-Oct-2025 14:47:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/console.php on line 6
+[31-Oct-2025 14:50:30 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/routes/api.php on line 12

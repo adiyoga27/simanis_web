@@ -1,0 +1,72 @@
+[22-Oct-2025 08:45:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[22-Oct-2025 08:51:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[22-Oct-2025 09:32:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[22-Oct-2025 09:35:54 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[22-Oct-2025 09:42:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[22-Oct-2025 09:44:18 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[22-Oct-2025 09:51:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[22-Oct-2025 09:55:16 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[23-Oct-2025 08:54:30 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[23-Oct-2025 08:54:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[23-Oct-2025 08:54:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[28-Oct-2025 05:58:01 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[31-Oct-2025 14:41:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[31-Oct-2025 14:44:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[31-Oct-2025 15:34:13 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[31-Oct-2025 15:35:29 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[31-Oct-2025 15:44:35 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7
+[31-Oct-2025 15:53:14 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/bootstrap/app.php on line 7

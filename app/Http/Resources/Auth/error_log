@@ -1,0 +1,24 @@
+[23-Oct-2025 19:05:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php on line 10
+[23-Oct-2025 19:14:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php on line 10
+[29-Oct-2025 13:11:01 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php on line 10
+[29-Oct-2025 13:18:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php on line 10
+[02-Nov-2025 00:52:00 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php on line 10
+[02-Nov-2025 02:51:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Http\Resources\Json\JsonResource" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Http/Resources/Auth/AuthResource.php on line 10

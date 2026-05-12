@@ -1,0 +1,20 @@
+[23-Oct-2025 02:21:15 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php on line 8
+[23-Oct-2025 02:31:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php on line 8
+[23-Oct-2025 08:54:43 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php on line 8
+[01-Nov-2025 08:11:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php on line 8
+[01-Nov-2025 09:12:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/Feature/ExampleTest.php on line 8

@@ -1,0 +1,560 @@
+[22-Oct-2025 09:26:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[22-Oct-2025 09:27:14 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[22-Oct-2025 09:27:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[22-Oct-2025 09:27:49 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[22-Oct-2025 09:29:55 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[22-Oct-2025 09:30:49 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[22-Oct-2025 09:31:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[22-Oct-2025 09:31:59 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[22-Oct-2025 09:32:58 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[22-Oct-2025 09:34:40 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[22-Oct-2025 09:35:23 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[22-Oct-2025 09:36:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[22-Oct-2025 09:36:52 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[22-Oct-2025 09:37:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[22-Oct-2025 09:38:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[22-Oct-2025 09:39:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[22-Oct-2025 09:40:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[22-Oct-2025 09:41:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[22-Oct-2025 09:43:52 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[22-Oct-2025 09:49:17 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[23-Oct-2025 09:37:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[23-Oct-2025 09:38:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[23-Oct-2025 09:39:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[23-Oct-2025 09:41:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[23-Oct-2025 09:42:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[23-Oct-2025 09:43:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[23-Oct-2025 09:44:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[23-Oct-2025 09:45:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[23-Oct-2025 09:46:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[23-Oct-2025 09:47:11 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[23-Oct-2025 09:47:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[23-Oct-2025 09:48:04 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[23-Oct-2025 09:49:06 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[23-Oct-2025 09:50:10 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[23-Oct-2025 09:51:11 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[23-Oct-2025 09:52:12 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[23-Oct-2025 09:53:16 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[23-Oct-2025 09:54:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[23-Oct-2025 09:55:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[23-Oct-2025 09:56:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[23-Oct-2025 09:59:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[23-Oct-2025 10:00:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[23-Oct-2025 10:01:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[23-Oct-2025 10:02:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[23-Oct-2025 10:03:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[23-Oct-2025 10:04:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[23-Oct-2025 10:04:49 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[23-Oct-2025 10:05:11 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[23-Oct-2025 10:06:11 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[23-Oct-2025 10:06:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[23-Oct-2025 10:07:18 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[23-Oct-2025 10:07:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[23-Oct-2025 10:08:18 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[23-Oct-2025 10:08:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[23-Oct-2025 10:09:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[23-Oct-2025 10:09:52 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[23-Oct-2025 10:10:20 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[23-Oct-2025 10:11:21 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[23-Oct-2025 10:12:21 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[23-Oct-2025 10:13:28 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[23-Oct-2025 10:23:22 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[23-Oct-2025 10:25:15 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[23-Oct-2025 10:27:17 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[23-Oct-2025 10:28:16 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[23-Oct-2025 10:29:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[23-Oct-2025 10:30:22 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[23-Oct-2025 10:32:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[23-Oct-2025 10:33:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[23-Oct-2025 10:35:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[23-Oct-2025 10:38:43 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[31-Oct-2025 15:08:20 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[31-Oct-2025 15:08:22 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[31-Oct-2025 15:08:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[31-Oct-2025 15:08:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[31-Oct-2025 15:09:09 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[31-Oct-2025 15:10:12 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[31-Oct-2025 15:11:15 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[31-Oct-2025 15:13:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[31-Oct-2025 15:17:52 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[31-Oct-2025 15:18:08 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[31-Oct-2025 15:18:08 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[31-Oct-2025 15:18:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[31-Oct-2025 15:19:03 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[31-Oct-2025 15:20:07 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[31-Oct-2025 15:22:12 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[31-Oct-2025 15:24:13 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[31-Oct-2025 15:24:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[31-Oct-2025 15:25:11 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[31-Oct-2025 15:27:13 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[31-Oct-2025 15:31:01 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[01-Nov-2025 15:23:29 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[01-Nov-2025 15:24:26 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[01-Nov-2025 15:25:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[01-Nov-2025 15:26:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[01-Nov-2025 15:27:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[01-Nov-2025 15:28:40 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[01-Nov-2025 15:29:42 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[01-Nov-2025 15:30:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[01-Nov-2025 15:31:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[01-Nov-2025 15:32:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[01-Nov-2025 15:41:06 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[01-Nov-2025 15:42:05 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[01-Nov-2025 15:43:12 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[01-Nov-2025 15:44:12 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[01-Nov-2025 15:45:13 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[01-Nov-2025 15:46:20 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[01-Nov-2025 15:48:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[01-Nov-2025 15:49:28 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[01-Nov-2025 15:50:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[01-Nov-2025 15:51:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[01-Nov-2025 16:50:10 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[01-Nov-2025 16:52:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[01-Nov-2025 16:53:37 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[01-Nov-2025 16:54:41 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[01-Nov-2025 16:56:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[01-Nov-2025 16:57:45 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[01-Nov-2025 16:58:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[01-Nov-2025 17:00:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[01-Nov-2025 17:01:55 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[01-Nov-2025 17:06:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[01-Nov-2025 17:11:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[01-Nov-2025 17:12:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[01-Nov-2025 17:16:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[01-Nov-2025 17:17:27 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[01-Nov-2025 17:20:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7
+[01-Nov-2025 17:21:33 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[01-Nov-2025 17:23:43 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[01-Nov-2025 17:24:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[01-Nov-2025 17:25:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[01-Nov-2025 17:26:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[01-Nov-2025 17:28:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105614_create_time_diets_table.php on line 7
+[01-Nov-2025 17:29:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000000_create_users_table.php on line 7
+[01-Nov-2025 17:34:35 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000002_create_jobs_table.php on line 7
+[01-Nov-2025 17:35:16 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_10_235150_add_field_tinggi_users.php on line 7
+[01-Nov-2025 17:37:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/0001_01_01_000001_create_cache_table.php on line 7
+[01-Nov-2025 17:38:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105559_create_diets_table.php on line 7
+[01-Nov-2025 17:40:25 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_12_105629_create_food_diets_table.php on line 7
+[01-Nov-2025 17:41:24 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_07_26_092715_create_personal_access_tokens_table.php on line 7
+[01-Nov-2025 17:44:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001904_create_educations_table.php on line 7
+[01-Nov-2025 17:48:49 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/database/migrations/2024_08_03_001739_create_education_categories_table.php on line 7

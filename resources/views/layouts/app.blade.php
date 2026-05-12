@@ -1,921 +1,138 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SIMANIS - Aplikasi Manajemen Diabetes Melitus. Pantau gula darah, screening kaki, edukasi, terapi nutrisi, dan manajemen pengobatan.">
+    <meta name="keywords" content="simanis, diabetes, gula darah, screening kaki, edukasi diabetes, nutrisi diabetes">
+    <meta name="author" content="SIMANIS">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+    <title>@yield('title', 'Dashboard') - SIMANIS</title>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('-translate-x-full');
+            document.getElementById('overlay').classList.toggle('hidden');
+        }
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.add('-translate-x-full');
+            document.getElementById('overlay').classList.add('hidden');
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-white to-red-50 min-h-screen">
+    <div id="overlay" class="hidden fixed inset-0 bg-black/50 z-40 lg:hidden" onclick="closeSidebar()"></div>
 
-    <head>
-        
-        <meta charset="utf-8" />
-        <title>Form Editors | Skote - Admin & Dashboard Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{url('assets')}}/images/favicon.ico">
-
-        <!-- Bootstrap Css -->
-        <link href="{{url('assets')}}/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <link href="{{url('assets')}}/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="{{url('assets')}}/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-        @yield('css')
-    </head>
-
-    <body data-sidebar="dark">
-
-    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
-
-        <!-- Begin page -->
-        <div id="layout-wrapper">
-
-            
-            <header id="page-topbar">
-                <div class="navbar-header">
-                    <div class="d-flex">
-                        <!-- LOGO -->
-                        <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="{{url('assets')}}/images/logo.svg" alt="" height="22">
-                                </span>
-                                <span class="logo-lg">
-                                    <img src="{{url('assets')}}/images/logo-dark.png" alt="" height="17">
-                                </span>
-                            </a>
-
-                            <a href="index.html" class="logo logo-light">
-                                <span class="logo-sm">
-                                    <img src="{{url('assets')}}/images/logo-light.svg" alt="" height="22">
-                                </span>
-                                <span class="logo-lg">
-                                    <img src="{{url('assets')}}/images/logo-light.png" alt="" height="19">
-                                </span>
-                            </a>
-                        </div>
-
-                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
-                            <i class="fa fa-fw fa-bars"></i>
-                        </button>
-
-                        <!-- App Search-->
-                        <form class="app-search d-none d-lg-block">
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="bx bx-search-alt"></span>
-                            </div>
-                        </form>
-
-                        <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
-                            <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                                <span key="t-megamenu">Mega Menu</span>
-                                <i class="mdi mdi-chevron-down"></i> 
-                            </button>
-                            <div class="dropdown-menu dropdown-megamenu">
-                                <div class="row">
-                                    <div class="col-sm-8">
-    
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <h5 class="font-size-14" key="t-ui-components">UI Components</h5>
-                                                <ul class="list-unstyled megamenu-list">
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-lightbox">Lightbox</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-range-slider">Range Slider</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-sweet-alert">Sweet Alert</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-rating">Rating</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-forms">Forms</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-tables">Tables</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-charts">Charts</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <h5 class="font-size-14" key="t-applications">Applications</h5>
-                                                <ul class="list-unstyled megamenu-list">
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-ecommerce">Ecommerce</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-calendar">Calendar</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-email">Email</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-projects">Projects</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-tasks">Tasks</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-contacts">Contacts</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <h5 class="font-size-14" key="t-extra-pages">Extra Pages</h5>
-                                                <ul class="list-unstyled megamenu-list">
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-light-sidebar">Light Sidebar</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-compact-sidebar">Compact Sidebar</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-horizontal">Horizontal layout</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-maintenance">Maintenance</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-coming-soon">Coming Soon</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-timeline">Timeline</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-faqs">FAQs</a>
-                                                    </li>
-                            
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <h5 class="font-size-14" key="t-ui-components">UI Components</h5>
-                                                <ul class="list-unstyled megamenu-list">
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-lightbox">Lightbox</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-range-slider">Range Slider</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-sweet-alert">Sweet Alert</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-rating">Rating</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-forms">Forms</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-tables">Tables</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);" key="t-charts">Charts</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="col-sm-5">
-                                                <div>
-                                                    <img src="{{url('assets')}}/images/megamenu-img.png" alt="" class="img-fluid mx-auto d-block">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex">
-
-                        <div class="dropdown d-inline-block d-lg-none ms-2">
-                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="mdi mdi-magnify"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                                aria-labelledby="page-header-search-dropdown">
-        
-                                <form class="p-3">
-                                    <div class="form-group m-0">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item waves-effect"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img id="header-lang-img" src="{{url('assets')}}/images/flags/us.jpg" alt="Header Language" height="16">
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
-                                    <img src="{{url('assets')}}/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
-                                </a>
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
-                                    <img src="{{url('assets')}}/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
-                                    <img src="{{url('assets')}}/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
-                                    <img src="{{url('assets')}}/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
-                                    <img src="{{url('assets')}}/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown d-none d-lg-inline-block ms-1">
-                            <button type="button" class="btn header-item noti-icon waves-effect"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bx bx-customize"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                                <div class="px-lg-2">
-                                    <div class="row g-0">
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="{{url('assets')}}/images/brands/github.png" alt="Github">
-                                                <span>GitHub</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="{{url('assets')}}/images/brands/bitbucket.png" alt="bitbucket">
-                                                <span>Bitbucket</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="{{url('assets')}}/images/brands/dribbble.png" alt="dribbble">
-                                                <span>Dribbble</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="row g-0">
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="{{url('assets')}}/images/brands/dropbox.png" alt="dropbox">
-                                                <span>Dropbox</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="{{url('assets')}}/images/brands/mail_chimp.png" alt="mail_chimp">
-                                                <span>Mail Chimp</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="{{url('assets')}}/images/brands/slack.png" alt="slack">
-                                                <span>Slack</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="dropdown d-none d-lg-inline-block ms-1">
-                            <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
-                                <i class="bx bx-fullscreen"></i>
-                            </button>
-                        </div>
-
-                        <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bx bx-bell bx-tada"></i>
-                                <span class="badge bg-danger rounded-pill">3</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                                aria-labelledby="page-header-notifications-dropdown">
-                                <div class="p-3">
-                                    <div class="row align-items-center">
-                                        <div class="col">
-                                            <h6 class="m-0" key="t-notifications"> Notifications </h6>
-                                        </div>
-                                        <div class="col-auto">
-                                            <a href="#!" class="small" key="t-view-all"> View All</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div data-simplebar style="max-height: 230px;">
-                                    <a href="javascript: void(0);" class="text-reset notification-item">
-                                        <div class="d-flex">
-                                            <div class="avatar-xs me-3">
-                                                <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                                    <i class="bx bx-cart"></i>
-                                                </span>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="mb-1" key="t-your-order">Your order is placed</h6>
-                                                <div class="font-size-12 text-muted">
-                                                    <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
-                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 min ago</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="javascript: void(0);" class="text-reset notification-item">
-                                        <div class="d-flex">
-                                            <img src="{{url('assets')}}/images/users/avatar-3.jpg"
-                                                class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                            <div class="flex-grow-1">
-                                                <h6 class="mb-1">James Lemire</h6>
-                                                <div class="font-size-12 text-muted">
-                                                    <p class="mb-1" key="t-simplified">It will seem like simplified English.</p>
-                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">1 hours ago</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="javascript: void(0);" class="text-reset notification-item">
-                                        <div class="d-flex">
-                                            <div class="avatar-xs me-3">
-                                                <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                    <i class="bx bx-badge-check"></i>
-                                                </span>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="mb-1" key="t-shipped">Your item is shipped</h6>
-                                                <div class="font-size-12 text-muted">
-                                                    <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
-                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 min ago</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <a href="javascript: void(0);" class="text-reset notification-item">
-                                        <div class="d-flex">
-                                            <img src="{{url('assets')}}/images/users/avatar-4.jpg"
-                                                class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                            <div class="flex-grow-1">
-                                                <h6 class="mb-1">Salena Layfield</h6>
-                                                <div class="font-size-12 text-muted">
-                                                    <p class="mb-1" key="t-occidental">As a skeptical Cambridge friend of mine occidental.</p>
-                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">1 hours ago</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="p-2 border-top d-grid">
-                                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                                        <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View More..</span> 
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="{{url('assets')}}/images/users/avatar-1.jpg"
-                                    alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ms-1" key="t-henry">Henry</span>
-                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                                <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
-                                <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
-                                <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
-                                <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                                <i class="bx bx-cog bx-spin"></i>
-                            </button>
-                        </div>
-
-                    </div>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white border-r border-gray-100 shadow-xl z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 border-b border-gray-100">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.698 50.698 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>
                 </div>
-            </header>
-
-            <!-- ========== Left Sidebar Start ========== -->
-            <div class="vertical-menu">
-
-                <div data-simplebar class="h-100">
-
-                    <!--- Sidemenu -->
-                    <div id="sidebar-menu">
-                        <!-- Left Menu Start -->
-                        <ul class="metismenu list-unstyled" id="side-menu">
-                            <li class="menu-title" key="t-menu">Menu</li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="waves-effect">
-                                    <i class="bx bx-home-circle"></i><span class="badge rounded-pill bg-info float-end">04</span>
-                                    <span key="t-dashboards">Dashboards</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="index.html" key="t-default">Default</a></li>
-                                    <li><a href="dashboard-saas.html" key="t-saas">Saas</a></li>
-                                    <li><a href="dashboard-crypto.html" key="t-crypto">Crypto</a></li>
-                                    <li><a href="dashboard-blog.html" key="t-blog">Blog</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-layout"></i>
-                                    <span key="t-layouts">Layouts</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="true">
-                                    <li>
-                                        <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Vertical</a>
-                                        <ul class="sub-menu" aria-expanded="true">
-                                            <li><a href="layouts-light-sidebar.html" key="t-light-sidebar">Light Sidebar</a></li>
-                                            <li><a href="layouts-compact-sidebar.html" key="t-compact-sidebar">Compact Sidebar</a></li>
-                                            <li><a href="layouts-icon-sidebar.html" key="t-icon-sidebar">Icon Sidebar</a></li>
-                                            <li><a href="layouts-boxed.html" key="t-boxed-width">Boxed Width</a></li>
-                                            <li><a href="layouts-preloader.html" key="t-preloader">Preloader</a></li>
-                                            <li><a href="layouts-colored-sidebar.html" key="t-colored-sidebar">Colored Sidebar</a></li>
-                                            <li><a href="layouts-scrollable.html" key="t-scrollable">Scrollable</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Horizontal</a>
-                                        <ul class="sub-menu" aria-expanded="true">
-                                            <li><a href="layouts-horizontal.html" key="t-horizontal">Horizontal</a></li>
-                                            <li><a href="layouts-hori-topbar-light.html" key="t-topbar-light">Topbar light</a></li>
-                                            <li><a href="layouts-hori-boxed-width.html" key="t-boxed-width">Boxed width</a></li>
-                                            <li><a href="layouts-hori-preloader.html" key="t-preloader">Preloader</a></li>
-                                            <li><a href="layouts-hori-colored-header.html" key="t-colored-topbar">Colored Header</a></li>
-                                            <li><a href="layouts-hori-scrollable.html" key="t-scrollable">Scrollable</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="menu-title" key="t-apps">Apps</li>
-
-                
-
-                            <li>
-                                <a href="javascript: void(0);" class="waves-effect">
-                                    <i class="bx bx-calendar"></i><span class="badge rounded-pill bg-success float-end">New</span>
-                                    <span key="t-dashboards">Calendars</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="calendar.html" key="t-tui-calendar">TUI Calendar</a></li>
-                                    <li><a href="calendar-full.html" key="t-full-calendar">Full Calendar</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="chat.html" class="waves-effect">
-                                    <i class="bx bx-chat"></i>
-                                    <span key="t-chat">Chat</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="apps-filemanager.html" class="waves-effect">
-                                    <i class="bx bx-file"></i>
-                                    <span class="badge rounded-pill bg-success float-end" key="t-new">New</span>
-                                    <span key="t-file-manager">File Manager</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-store"></i>
-                                    <span key="t-ecommerce">Ecommerce</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="ecommerce-products.html" key="t-products">Products</a></li>
-                                    <li><a href="ecommerce-product-detail.html" key="t-product-detail">Product Detail</a></li>
-                                    <li><a href="ecommerce-orders.html" key="t-orders">Orders</a></li>
-                                    <li><a href="ecommerce-customers.html" key="t-customers">Customers</a></li>
-                                    <li><a href="ecommerce-cart.html" key="t-cart">Cart</a></li>
-                                    <li><a href="ecommerce-checkout.html" key="t-checkout">Checkout</a></li>
-                                    <li><a href="ecommerce-shops.html" key="t-shops">Shops</a></li>
-                                    <li><a href="ecommerce-add-product.html" key="t-add-product">Add Product</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-bitcoin"></i>
-                                    <span key="t-crypto">Crypto</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="crypto-wallet.html" key="t-wallet">Wallet</a></li>
-                                    <li><a href="crypto-buy-sell.html" key="t-buy">Buy/Sell</a></li>
-                                    <li><a href="crypto-exchange.html" key="t-exchange">Exchange</a></li>
-                                    <li><a href="crypto-lending.html" key="t-lending">Lending</a></li>
-                                    <li><a href="crypto-orders.html" key="t-orders">Orders</a></li>
-                                    <li><a href="crypto-kyc-application.html" key="t-kyc">KYC Application</a></li>
-                                    <li><a href="crypto-ico-landing.html" key="t-ico">ICO Landing</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-envelope"></i>
-                                    <span key="t-email">Email</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="email-inbox.html" key="t-inbox">Inbox</a></li>
-                                    <li><a href="email-read.html" key="t-read-email">Read Email</a></li>
-                                    <li>
-                                        <a href="javascript: void(0);">
-                                            <span class="badge rounded-pill badge-soft-success float-end" key="t-new">New</span>
-                                            <span key="t-email-templates">Templates</span>
-                                        </a>
-                                        <ul class="sub-menu" aria-expanded="true">
-                                            <li><a href="email-template-basic.html" key="t-basic-action">Basic Action</a></li>
-                                            <li><a href="email-template-alert.html" key="t-alert-email">Alert Email</a></li>
-                                            <li><a href="email-template-billing.html" key="t-bill-email">Billing Email</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-receipt"></i>
-                                    <span key="t-invoices">Invoices</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="invoices-list.html" key="t-invoice-list">Invoice List</a></li>
-                                    <li><a href="invoices-detail.html" key="t-invoice-detail">Invoice Detail</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-briefcase-alt-2"></i>
-                                    <span key="t-projects">Projects</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="projects-grid.html" key="t-p-grid">Projects Grid</a></li>
-                                    <li><a href="projects-list.html" key="t-p-list">Projects List</a></li>
-                                    <li><a href="projects-overview.html" key="t-p-overview">Project Overview</a></li>
-                                    <li><a href="projects-create.html" key="t-create-new">Create New</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-task"></i>
-                                    <span key="t-tasks">Tasks</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="tasks-list.html" key="t-task-list">Task List</a></li>
-                                    <li><a href="tasks-kanban.html" key="t-kanban-board">Kanban Board</a></li>
-                                    <li><a href="tasks-create.html" key="t-create-task">Create Task</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bxs-user-detail"></i>
-                                    <span key="t-contacts">Contacts</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="contacts-grid.html" key="t-user-grid">Users Grid</a></li>
-                                    <li><a href="contacts-list.html" key="t-user-list">Users List</a></li>
-                                    <li><a href="contacts-profile.html" key="t-profile">Profile</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="waves-effect">
-                                    <span class="badge rounded-pill bg-success float-end" key="t-new">New</span>
-                                    <i class="bx bx-detail"></i>
-                                    <span key="t-blog">Blog</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="blog-list.html" key="t-blog-list">Blog List</a></li>
-                                    <li><a href="blog-grid.html" key="t-blog-grid">Blog Grid</a></li>
-                                    <li><a href="blog-details.html" key="t-blog-details">Blog Details</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="menu-title" key="t-pages">Pages</li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="waves-effect">
-                                    <span class="badge rounded-pill bg-success float-end" key="t-new">New</span>
-                                    <i class="bx bx-user-circle"></i>
-                                    <span key="t-authentication">Authentication</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="auth-login.html" key="t-login">Login</a></li>
-                                    <li><a href="auth-login-2.html" key="t-login-2">Login 2</a></li>
-                                    <li><a href="auth-register.html" key="t-register">Register</a></li>
-                                    <li><a href="auth-register-2.html" key="t-register-2">Register 2</a></li>
-                                    <li><a href="auth-recoverpw.html" key="t-recover-password">Recover Password</a></li>
-                                    <li><a href="auth-recoverpw-2.html" key="t-recover-password-2">Recover Password 2</a></li>
-                                    <li><a href="auth-lock-screen.html" key="t-lock-screen">Lock Screen</a></li>
-                                    <li><a href="auth-lock-screen-2.html" key="t-lock-screen-2">Lock Screen 2</a></li>
-                                    <li><a href="auth-confirm-mail.html" key="t-confirm-mail">Confirm Email</a></li>
-                                    <li><a href="auth-confirm-mail-2.html" key="t-confirm-mail-2">Confirm Email 2</a></li>
-                                    <li><a href="auth-email-verification.html" key="t-email-verification">Email verification</a></li>
-                                    <li><a href="auth-email-verification-2.html" key="t-email-verification-2">Email Verification 2</a></li>
-                                    <li><a href="auth-two-step-verification.html" key="t-two-step-verification">Two Step Verification</a></li>
-                                    <li><a href="auth-two-step-verification-2.html" key="t-two-step-verification-2">Two Step Verification 2</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-file"></i>
-                                    <span key="t-utility">Utility</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="pages-starter.html" key="t-starter-page">Starter Page</a></li>
-                                    <li><a href="pages-maintenance.html" key="t-maintenance">Maintenance</a></li>
-                                    <li><a href="pages-comingsoon.html" key="t-coming-soon">Coming Soon</a></li>
-                                    <li><a href="pages-timeline.html" key="t-timeline">Timeline</a></li>
-                                    <li><a href="pages-faqs.html" key="t-faqs">FAQs</a></li>
-                                    <li><a href="pages-pricing.html" key="t-pricing">Pricing</a></li>
-                                    <li><a href="pages-404.html" key="t-error-404">Error 404</a></li>
-                                    <li><a href="pages-500.html" key="t-error-500">Error 500</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="menu-title" key="t-components">Components</li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-tone"></i>
-                                    <span key="t-ui-elements">UI Elements</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="ui-alerts.html" key="t-alerts">Alerts</a></li>
-                                    <li><a href="ui-buttons.html" key="t-buttons">Buttons</a></li>
-                                    <li><a href="ui-cards.html" key="t-cards">Cards</a></li>
-                                    <li><a href="ui-carousel.html" key="t-carousel">Carousel</a></li>
-                                    <li><a href="ui-dropdowns.html" key="t-dropdowns">Dropdowns</a></li>
-                                    <li><a href="ui-grid.html" key="t-grid">Grid</a></li>
-                                    <li><a href="ui-images.html" key="t-images">Images</a></li>
-                                    <li><a href="ui-lightbox.html" key="t-lightbox">Lightbox</a></li>
-                                    <li><a href="ui-modals.html" key="t-modals">Modals</a></li>
-                                    <li><a href="ui-offcanvas.html" key="t-offcanvas">Offcanvas</a></li>
-                                    <li><a href="ui-rangeslider.html" key="t-range-slider">Range Slider</a></li>
-                                    <li><a href="ui-session-timeout.html" key="t-session-timeout">Session Timeout</a></li>
-                                    <li><a href="ui-progressbars.html" key="t-progress-bars">Progress Bars</a></li>
-                                    <li><a href="ui-placeholders.html" key="t-placeholders">Placeholders</a></li>
-                                    <li><a href="ui-sweet-alert.html" key="t-sweet-alert">Sweet-Alert</a></li>
-                                    <li><a href="ui-tabs-accordions.html" key="t-tabs-accordions">Tabs & Accordions</a></li>
-                                    <li><a href="ui-typography.html" key="t-typography">Typography</a></li>
-                                    <li><a href="ui-toasts.html" key="t-toasts">Toasts</a></li>
-                                    <li><a href="ui-video.html" key="t-video">Video</a></li>
-                                    <li><a href="ui-general.html" key="t-general">General</a></li>
-                                    <li><a href="ui-colors.html" key="t-colors">Colors</a></li>
-                                    <li><a href="ui-rating.html" key="t-rating">Rating</a></li>
-                                    <li><a href="ui-notifications.html" key="t-notifications">Notifications</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="waves-effect">
-                                    <i class="bx bxs-eraser"></i>
-                                    <span class="badge rounded-pill bg-danger float-end">10</span>
-                                    <span key="t-forms">Forms</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="form-elements.html" key="t-form-elements">Form Elements</a></li>
-                                    <li><a href="form-layouts.html" key="t-form-layouts">Form Layouts</a></li>
-                                    <li><a href="form-validation.html" key="t-form-validation">Form Validation</a></li>
-                                    <li><a href="form-advanced.html" key="t-form-advanced">Form Advanced</a></li>
-                                    <li><a href="form-editors.html" key="t-form-editors">Form Editors</a></li>
-                                    <li><a href="form-uploads.html" key="t-form-upload">Form File Upload</a></li>
-                                    <li><a href="form-xeditable.html" key="t-form-xeditable">Form Xeditable</a></li>
-                                    <li><a href="form-repeater.html" key="t-form-repeater">Form Repeater</a></li>
-                                    <li><a href="form-wizard.html" key="t-form-wizard">Form Wizard</a></li>
-                                    <li><a href="form-mask.html" key="t-form-mask">Form Mask</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-list-ul"></i>
-                                    <span key="t-tables">Tables</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="tables-basic.html" key="t-basic-tables">Basic Tables</a></li>
-                                    <li><a href="tables-datatable.html" key="t-data-tables">Data Tables</a></li>
-                                    <li><a href="tables-responsive.html" key="t-responsive-table">Responsive Table</a></li>
-                                    <li><a href="tables-editable.html" key="t-editable-table">Editable Table</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bxs-bar-chart-alt-2"></i>
-                                    <span key="t-charts">Charts</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="charts-apex.html" key="t-apex-charts">Apex Charts</a></li>
-                                    <li><a href="charts-echart.html" key="t-e-charts">E Charts</a></li>
-                                    <li><a href="charts-chartjs.html" key="t-chartjs-charts">Chartjs Charts</a></li>
-                                    <li><a href="charts-flot.html" key="t-flot-charts">Flot Charts</a></li>
-                                    <li><a href="charts-tui.html" key="t-ui-charts">Toast UI Charts</a></li>
-                                    <li><a href="charts-knob.html" key="t-knob-charts">Jquery Knob Charts</a></li>
-                                    <li><a href="charts-sparkline.html" key="t-sparkline-charts">Sparkline Charts</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-aperture"></i>
-                                    <span key="t-icons">Icons</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="icons-boxicons.html" key="t-boxicons">Boxicons</a></li>
-                                    <li><a href="icons-materialdesign.html" key="t-material-design">Material Design</a></li>
-                                    <li><a href="icons-dripicons.html" key="t-dripicons">Dripicons</a></li>
-                                    <li><a href="icons-fontawesome.html" key="t-font-awesome">Font Awesome</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-map"></i>
-                                    <span key="t-maps">Maps</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="maps-google.html" key="t-g-maps">Google Maps</a></li>
-                                    <li><a href="maps-vector.html" key="t-v-maps">Vector Maps</a></li>
-                                    <li><a href="maps-leaflet.html" key="t-l-maps">Leaflet Maps</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-share-alt"></i>
-                                    <span key="t-multi-level">Multi Level</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="true">
-                                    <li><a href="javascript: void(0);" key="t-level-1-1">Level 1.1</a></li>
-                                    <li>
-                                        <a href="javascript: void(0);" class="has-arrow" key="t-level-1-2">Level 1.2</a>
-                                        <ul class="sub-menu" aria-expanded="true">
-                                            <li><a href="javascript: void(0);" key="t-level-2-1">Level 2.1</a></li>
-                                            <li><a href="javascript: void(0);" key="t-level-2-2">Level 2.2</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <!-- Sidebar -->
+                <div>
+                    <h2 class="text-lg font-bold text-gray-800">SIMANIS</h2>
+                    <p class="text-xs text-gray-400">#sehatkayabahagia</p>
                 </div>
             </div>
-            <!-- Left Sidebar End -->
-
-            
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
-            <div class="main-content">
-
-                <div class="page-content">
-                    <div class="container-fluid">
-                        @yield('content')
-
-                    </div> <!-- container-fluid -->
-                </div>
-                <!-- End Page-content -->
-
-                
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © Skote.
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="text-sm-end d-none d-sm-block">
-                                    Design & Develop by Themesbrand
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-            <!-- end main content-->
-
         </div>
-        <!-- END layout-wrapper -->
 
-        <!-- Right Sidebar -->
-        <div class="right-bar">
-            <div data-simplebar class="h-100">
-                <div class="rightbar-title d-flex align-items-center px-3 py-4">
-            
-                    <h5 class="m-0 me-2">Settings</h5>
+        <div class="p-4 border-b border-gray-100">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-400 to-pink-400 flex items-center justify-center text-white font-bold text-sm">
+                    {{ strtoupper(substr(Auth::user()?->name ?? 'U', 0, 1)) }}
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-semibold text-gray-800 truncate">{{ Auth::user()?->name ?? 'User' }}</p>
+                    <p class="text-xs text-gray-400 truncate">@ {{ Auth::user()?->username ?? 'user' }}</p>
+                </div>
+            </div>
+        </div>
 
-                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
-                        <i class="mdi mdi-close noti-icon"></i>
+        <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+            <a href="{{ route('home') }}" class="sidebar-link {{ request()->routeIs('home') ? 'active' : '' }}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                Beranda
+            </a>
+            <a href="{{ route('foot-screening') }}" class="sidebar-link {{ request()->routeIs('foot-screening*') ? 'active' : '' }}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" /></svg>
+                Screening Kaki
+            </a>
+            <a href="{{ route('education') }}" class="sidebar-link {{ request()->routeIs('education*') && !request()->routeIs('education.show') ? 'active' : '' }}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                Pilar Tata Laksana
+            </a>
+            <a href="{{ route('blood-sugar') }}" class="sidebar-link {{ request()->routeIs('blood-sugar*') ? 'active' : '' }}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                Gula Darah
+            </a>
+            <a href="{{ route('tnt') }}" class="sidebar-link {{ request()->routeIs('tnt*') ? 'active' : '' }}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
+                Terapi Nutrisi
+            </a>
+            <a href="{{ route('pharmacology') }}" class="sidebar-link {{ request()->routeIs('pharmacology') ? 'active' : '' }}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Farmakologi
+            </a>
+            <a href="{{ route('profile') }}" class="sidebar-link {{ request()->routeIs('profile*') ? 'active' : '' }}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                Profil Saya
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-gray-100">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 transition-all duration-200 font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                    Keluar
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="lg:pl-72 flex flex-col min-h-screen">
+        <!-- Top Navbar -->
+        <header class="sticky top-0 z-30 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+            <div class="flex items-center justify-between px-4 lg:px-8 h-16">
+                <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+                <div class="flex items-center gap-3 lg:hidden">
+                    <div class="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347" /></svg>
+                    </div>
+                    <span class="font-bold text-gray-800">SIMANIS</span>
+                </div>
+                <div class="hidden lg:block">
+                    <h1 class="text-lg font-bold text-gray-800">@yield('page-title', 'Dashboard')</h1>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a href="{{ route('about') }}" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-sm text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        Tentang
                     </a>
                 </div>
+            </div>
+        </header>
 
-                <!-- Settings -->
-                <hr class="mt-0" />
-                <h6 class="text-center mb-0">Choose Layouts</h6>
+        <!-- Page Content -->
+        <main class="flex-1 p-4 lg:p-8">
+            @yield('content')
+        </main>
 
-                <div class="p-4">
-                    <div class="mb-2">
-                        <img src="{{url('assets')}}/images/layouts/layout-1.jpg" class="img-thumbnail" alt="layout images">
-                    </div>
+        <!-- Footer -->
+        <footer class="border-t border-gray-100 bg-white/50 backdrop-blur-sm py-4 px-4 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-400">
+                <p>&copy; {{ date('Y') }} SIMANIS. All rights reserved.</p>
+                <p>#sehatkayabahagia</p>
+            </div>
+        </footer>
+    </div>
 
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
-                        <label class="form-check-label" for="light-mode-switch">Light Mode</label>
-                    </div>
-    
-                    <div class="mb-2">
-                        <img src="{{url('assets')}}/images/layouts/layout-2.jpg" class="img-thumbnail" alt="layout images">
-                    </div>
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch">
-                        <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
-                    </div>
-    
-                    <div class="mb-2">
-                        <img src="{{url('assets')}}/images/layouts/layout-3.jpg" class="img-thumbnail" alt="layout images">
-                    </div>
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch">
-                        <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
-                    </div>
-
-                    <div class="mb-2">
-                        <img src="{{url('assets')}}/images/layouts/layout-4.jpg" class="img-thumbnail" alt="layout images">
-                    </div>
-                    <div class="form-check form-switch mb-5">
-                        <input class="form-check-input theme-choice" type="checkbox" id="dark-rtl-mode-switch">
-                        <label class="form-check-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
-                    </div>
-
-            
-                </div>
-
-            </div> <!-- end slimscroll-menu-->
-        </div>
-        <!-- /Right-bar -->
-
-        <!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
-
-        <!-- JAVASCRIPT -->
-        <script src="{{url('assets')}}/libs/jquery/jquery.min.js"></script>
-        <script src="{{url('assets')}}/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="{{url('assets')}}/libs/metismenu/metisMenu.min.js"></script>
-        <script src="{{url('assets')}}/libs/simplebar/simplebar.min.js"></script>
-        <script src="{{url('assets')}}/libs/node-waves/waves.min.js"></script>
-
-        <!--tinymce js-->
-        <script src="{{url('assets')}}/libs/tinymce/tinymce.min.js"></script>
-
-        <!-- init js -->
-        <script src="{{url('assets')}}/js/pages/form-editor.init.js"></script>
-
-        <script src="{{url('assets')}}/js/app.js"></script>
-
-        @yield('js')
-
-    </body>
+    @stack('scripts')
+</body>
 </html>

@@ -1,0 +1,32 @@
+[22-Oct-2025 15:40:29 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php on line 7
+[22-Oct-2025 15:48:05 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php on line 7
+[23-Oct-2025 08:54:29 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php on line 7
+[23-Oct-2025 08:54:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php on line 7
+[23-Oct-2025 08:54:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php on line 7
+[30-Oct-2025 14:27:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php on line 7
+[31-Oct-2025 21:03:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php on line 7
+[31-Oct-2025 22:01:19 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/tests/TestCase.php on line 7

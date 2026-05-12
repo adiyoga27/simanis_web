@@ -1,0 +1,24 @@
+[22-Oct-2025 17:56:52 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php on line 7
+[22-Oct-2025 18:23:13 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php on line 7
+[23-Oct-2025 08:54:39 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php on line 7
+[23-Oct-2025 08:54:47 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php on line 7
+[31-Oct-2025 23:43:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php on line 7
+[01-Nov-2025 00:25:36 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/kktk6246/projects/codingaja.com/simanis.codingaja.com/app/Providers/AppServiceProvider.php on line 7
