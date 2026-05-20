@@ -17,8 +17,8 @@ class EducationCategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-           'slug' => $this->slug,
-           'educations' => EducationResource::collection($this->educations),
+            'slug' => $this->slug,
+            'educations' => EducationResource::collection($this->educations),
         ];
     }
 }

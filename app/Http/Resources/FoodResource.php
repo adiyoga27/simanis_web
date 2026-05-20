@@ -19,7 +19,7 @@ class FoodResource extends JsonResource
             'time_id' => (int) $this->time_id,
             'material' => $this->material,
             'unit' => $this->unit,
-            'menu' => $this->menu
+            'menu' => $this->menu,
 
         ];
     }

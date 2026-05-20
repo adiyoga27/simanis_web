@@ -160,13 +160,45 @@
                 Kembali
             </span>
         </a>
-        <a href="{{ route('tnt') }}" class="btn-primary w-full sm:w-auto text-center">
+        <a href="{{ route('tnt') }}" class="btn-white w-full sm:w-auto text-center">
             <span class="flex items-center justify-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
                 Hitung Ulang
             </span>
+        </a>
+    </div>
+
+    @if (isset($tnt))
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        <form action="{{ route('tnt.save') }}" method="POST" class="w-full sm:w-auto">
+            @csrf
+            <button type="submit" class="btn-primary w-full sm:w-auto text-center text-base px-8 py-3 flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                </svg>
+                Simpan ke Riwayat
+            </button>
+        </form>
+        <a href="{{ route('tnt.detail', $tnt->id) }}" class="btn-white w-full sm:w-auto text-center">
+            <span class="flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                Lihat Detail
+            </span>
+        </a>
+    </div>
+    @endif
+
+    <div class="text-center pt-4">
+        <a href="{{ route('tnt.history') }}" class="text-sm text-primary-600 hover:text-primary-700 font-medium inline-flex items-center gap-1.5 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Lihat Riwayat Perhitungan
         </a>
     </div>
 </div>

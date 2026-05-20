@@ -121,30 +121,93 @@
     {{-- Stats Section --}}
     <div>
         <h3 class="text-lg font-bold text-gray-800 mb-4">Ringkasan</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
             <div class="stat-card">
-                <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mx-auto mb-3">
-                    <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                <div class="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                 </div>
-                <div class="stat-value">12</div>
+                <div class="stat-value">{{ $educationCount }}</div>
                 <div class="stat-label">Total Edukasi</div>
             </div>
             <div class="stat-card">
-                <div class="w-12 h-12 rounded-xl bg-pink-50 flex items-center justify-center mx-auto mb-3">
-                    <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5"/></svg>
+                <div class="w-10 h-10 rounded-xl bg-pink-50 flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5"/></svg>
                 </div>
-                <div class="stat-value">3</div>
+                <div class="stat-value text-pink-500">{{ $footScreeningCount }}</div>
                 <div class="stat-label">Screening Kaki</div>
             </div>
             <div class="stat-card">
-                <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mx-auto mb-3">
-                    <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
                 </div>
-                <div class="stat-value">8</div>
+                <div class="stat-value text-red-500">{{ $bloodSugarCount }}</div>
                 <div class="stat-label">Gula Darah</div>
+            </div>
+            <div class="stat-card">
+                <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h1m16 0h1M5.5 5.5l.7.7m11.6 11.6l.7.7M5.5 18.5l.7-.7m11.6-11.6l.7-.7M12 3v1m0 16v1M8.5 6.5a3.5 3.5 0 107 0 3.5 3.5 0 00-7 0zm7 7a3.5 3.5 0 10-7 0 3.5 3.5 0 007 0z"/></svg>
+                </div>
+                <div class="stat-value text-green-600">{{ $weightLogCount }}</div>
+                <div class="stat-label">Berat Badan</div>
+            </div>
+            <div class="stat-card">
+                <div class="w-10 h-10 rounded-xl bg-yellow-50 flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="stat-value text-yellow-600">{{ $medicationCount }}</div>
+                <div class="stat-label">Jadwal Obat</div>
             </div>
         </div>
     </div>
+
+    {{-- Recent Blood Sugar --}}
+    @if($recentBloodSugar->count() > 0)
+    <div>
+        <h3 class="text-lg font-bold text-gray-800 mb-4">Riwayat Gula Darah Terbaru</h3>
+        <div class="card overflow-hidden !p-0">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-50 text-left">
+                            <th class="px-5 py-3 font-semibold text-gray-600">Tipe</th>
+                            <th class="px-5 py-3 font-semibold text-gray-600">Nilai</th>
+                            <th class="px-5 py-3 font-semibold text-gray-600">Kategori</th>
+                            <th class="px-5 py-3 font-semibold text-gray-600">Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        @foreach($recentBloodSugar as $record)
+                        <tr class="hover:bg-gray-50/50">
+                            <td class="px-5 py-3">
+                                @if($record->type === 'GDP')
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-primary-100 text-primary-700">GDP</span>
+                                @else
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-pink-100 text-pink-700">GDS</span>
+                                @endif
+                            </td>
+                            <td class="px-5 py-3 font-semibold text-gray-800">{{ $record->value }} <span class="text-gray-400 font-normal text-xs">mg/dL</span></td>
+                            <td class="px-5 py-3">
+                                @php
+                                    $catColor = match($record->category) {
+                                        'Normal' => 'bg-green-100 text-green-700',
+                                        'Tinggi' => 'bg-yellow-100 text-yellow-700',
+                                        'Sangat Tinggi' => 'bg-red-100 text-red-700',
+                                        'Rendah' => 'bg-orange-100 text-orange-700',
+                                        'Sangat Rendah' => 'bg-red-100 text-red-700',
+                                        default => 'bg-gray-100 text-gray-600',
+                                    };
+                                @endphp
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold {{ $catColor }}">{{ $record->category }}</span>
+                            </td>
+                            <td class="px-5 py-3 text-gray-500 whitespace-nowrap">{{ $record->recorded_at->format('d M Y, H:i') }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @endif
 
 </div>
 @endsection

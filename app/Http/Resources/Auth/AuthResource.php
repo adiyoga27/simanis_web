@@ -24,8 +24,8 @@ class AuthResource extends JsonResource
             'role' => $this->role,
             'token_type' => 'Bearer',
             'access_token' => $this->token->plainTextToken,
-            'avatar' => $this->avatar? url(Storage::url($this->avatar)) : null,
-            'expires_at' => Carbon::parse($this->token->accessToken?->expires_at)->toDateTimeString(),  
+            'avatar' => $this->avatar ? url(Storage::url($this->avatar)) : null,
+            'expires_at' => Carbon::parse($this->token->accessToken?->expires_at)->toDateTimeString(),
         ];
     }
 }

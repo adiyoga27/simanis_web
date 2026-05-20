@@ -38,9 +38,7 @@ class UserResource extends JsonResource
             'blood' => $this->blood,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-          
+
         ];
     }
-
-   
 }

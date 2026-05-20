@@ -12,10 +12,16 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                 </svg>
             </div>
-            <div>
+            <div class="flex-1">
                 <h2 class="text-xl font-bold text-gray-800">Kalkulator Kebutuhan Kalori</h2>
                 <p class="text-sm text-gray-400">Isi data diri untuk menghitung kebutuhan nutrisi harian Anda</p>
             </div>
+            <a href="{{ route('tnt.history') }}" class="inline-flex items-center gap-1.5 text-sm text-primary-600 hover:text-primary-700 font-medium transition-colors bg-primary-50 hover:bg-primary-100 px-3 py-2 rounded-lg">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Riwayat
+            </a>
         </div>
 
         <form action="{{ route('tnt.calculate') }}" method="POST" class="space-y-6">

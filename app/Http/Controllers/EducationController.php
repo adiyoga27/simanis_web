@@ -43,17 +43,18 @@ class EducationController extends Controller
         try {
             EducationCategory::create([
                 'title' => $request->title,
-               'slug' => Str::slug($request->title),
+                'slug' => Str::slug($request->title),
             ]);
+
             return response()->json([
                 'status' => true,
-            'message' => 'Education category created successfully',
+                'message' => 'Education category created successfully',
             ]);
         } catch (\Throwable $th) {
-            //throw $th;
+            // throw $th;
             return response()->json([
                 'status' => false,
-            'message' => 'Education failed created successfully',
+                'message' => 'Education failed created successfully',
             ]);
         }
     }
@@ -71,7 +72,7 @@ class EducationController extends Controller
             [
                 'status' => true,
                 'message' => 'success',
-                'data' => EducationResource::collection($education)
+                'data' => EducationResource::collection($education),
             ]
         );
     }
@@ -100,8 +101,8 @@ class EducationController extends Controller
         //
     }
 
-
-    public function storeEducation(Request $request, string $slug) {
+    public function storeEducation(Request $request, string $slug)
+    {
         try {
             $educationCategory = EducationCategory::where('slug', $slug)->first();
             $educationCategory->educations()->create([
@@ -110,14 +111,15 @@ class EducationController extends Controller
                 'slug' => Str::slug($request->title),
                 'image' => $request->image->store('education', 'public'),
             ]);
+
             return response()->json([
-               'status' => true,
-            'message' => 'Education created successfully',
+                'status' => true,
+                'message' => 'Education created successfully',
             ]);
         } catch (\Throwable $th) {
             return response()->json([
-               'status' => false,
-            'message' => 'Education failed created successfully'. $th->getMessage(),
+                'status' => false,
+                'message' => 'Education failed created successfully'.$th->getMessage(),
             ]);
         }
     }

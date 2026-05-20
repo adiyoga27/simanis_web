@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\AssessmentAdminController;
+use App\Http\Controllers\Web\AssessmentController;
+use App\Http\Controllers\Web\MedicationController;
 use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +22,7 @@ Route::middleware('guest')->group(function () {
 });
 
 // Email verification
-Route::get('/success-verification', fn() => view('success-verification', ['user' => auth()->user()]))
+Route::get('/success-verification', fn () => view('success-verification', ['user' => auth()->user()]))
     ->middleware('auth')->name('success-verification');
 Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])->name('verification.verify');
 
@@ -37,32 +41,105 @@ Route::middleware('auth')->group(function () {
     Route::get('/blood-sugar/gdp', [PageController::class, 'bloodSugarGdp'])->name('blood-sugar.gdp');
     Route::get('/blood-sugar/gds', [PageController::class, 'bloodSugarGds'])->name('blood-sugar.gds');
     Route::get('/blood-sugar/tutorial', [PageController::class, 'bloodSugarTutorial'])->name('blood-sugar.tutorial');
+    Route::post('/blood-sugar/save', [PageController::class, 'saveBloodSugar'])->name('blood-sugar.save');
+    Route::get('/blood-sugar/history', [PageController::class, 'bloodSugarHistory'])->name('blood-sugar.history');
+
+    // Weight Tracking
+    Route::get('/health/weight', [PageController::class, 'weightLog'])->name('weight.log');
+    Route::post('/health/weight', [PageController::class, 'saveWeight'])->name('weight.save');
 
     // Foot Screening
     Route::get('/foot-screening', [PageController::class, 'footScreening'])->name('foot-screening');
     Route::get('/foot-screening/survey', [PageController::class, 'footScreeningSurvey'])->name('foot-screening.survey');
     Route::post('/foot-screening/result', [PageController::class, 'footScreeningResult'])->name('foot-screening.result');
+    Route::get('/foot-screening/history', [PageController::class, 'footScreeningHistory'])->name('foot-screening.history');
+    Route::get('/foot-screening/history/{id}', [PageController::class, 'footScreeningDetail'])->name('foot-screening.detail');
 
     // Nutrition Therapy
     Route::get('/tnt', [PageController::class, 'tnt'])->name('tnt');
     Route::post('/tnt/calculate', [PageController::class, 'tntCalculate'])->name('tnt.calculate');
+    Route::get('/tnt/history', [PageController::class, 'tntHistory'])->name('tnt.history');
+    Route::get('/tnt/history/{id}', [PageController::class, 'tntDetail'])->name('tnt.detail');
+    Route::post('/tnt/save', [PageController::class, 'tntSave'])->name('tnt.save');
+
+    // Assessment Diabetes Foot
+    Route::get('/assessment', [AssessmentController::class, 'index'])->name('assessment.index');
+    Route::get('/assessment/start', [AssessmentController::class, 'start'])->name('assessment.start');
+    Route::get('/assessment/riwayat', [AssessmentController::class, 'history'])->name('assessment.history');
+    Route::get('/assessment/riwayat/{id}', [AssessmentController::class, 'detail'])->name('assessment.detail');
+    Route::get('/assessment/{groupSlug}', [AssessmentController::class, 'step'])->name('assessment.step');
+    Route::post('/assessment/{groupSlug}', [AssessmentController::class, 'saveStep'])->name('assessment.save');
+    Route::get('/assessment-review', [AssessmentController::class, 'review'])->name('assessment.review');
 
     // Pharmacology
     Route::get('/pharmacology', [PageController::class, 'pharmacology'])->name('pharmacology');
+
+    // Medications
+    Route::get('/medications', [MedicationController::class, 'index'])->name('medications.index');
+    Route::get('/medications/create', [MedicationController::class, 'create'])->name('medications.create');
+    Route::post('/medications', [MedicationController::class, 'store'])->name('medications.store');
+    Route::get('/medications/{id}/edit', [MedicationController::class, 'edit'])->name('medications.edit');
+    Route::put('/medications/{id}', [MedicationController::class, 'update'])->name('medications.update');
+    Route::delete('/medications/{id}', [MedicationController::class, 'destroy'])->name('medications.destroy');
 
     // Profile
     Route::get('/profile', [PageController::class, 'profile'])->name('profile');
     Route::get('/profile/edit', [PageController::class, 'profileEdit'])->name('profile.edit');
     Route::post('/profile/update', [PageController::class, 'profileUpdate'])->name('profile.update');
+
+    // Change Password
+    Route::get('/change-password', [PageController::class, 'changePassword'])->name('change.password');
+    Route::post('/change-password', [PageController::class, 'doChangePassword'])->name('change.password.update');
+});
+
+// Admin routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/users/{id}', [AdminController::class, 'userDetail'])->name('admin.users.detail');
+    Route::get('/users/{id}/edit', [AdminController::class, 'userEdit'])->name('admin.users.edit');
+    Route::put('/users/{id}', [AdminController::class, 'userUpdate'])->name('admin.users.update');
+
+    // Assessment management
+    Route::get('/assessments', [AssessmentAdminController::class, 'index'])->name('admin.assessments.index');
+    Route::get('/assessments/create', [AssessmentAdminController::class, 'create'])->name('admin.assessments.create');
+    Route::post('/assessments', [AssessmentAdminController::class, 'store'])->name('admin.assessments.store');
+    Route::get('/assessments/{id}/edit', [AssessmentAdminController::class, 'edit'])->name('admin.assessments.edit');
+    Route::put('/assessments/{id}', [AssessmentAdminController::class, 'update'])->name('admin.assessments.update');
+    Route::delete('/assessments/{id}', [AssessmentAdminController::class, 'destroy'])->name('admin.assessments.destroy');
+
+    // Sub-groups
+    Route::get('/assessments/{groupId}/sub-groups/create', [AssessmentAdminController::class, 'createSubGroup'])->name('admin.assessments.sub-groups.create');
+    Route::post('/assessments/{groupId}/sub-groups', [AssessmentAdminController::class, 'storeSubGroup'])->name('admin.assessments.sub-groups.store');
+    Route::get('/assessments/{groupId}/sub-groups/{subGroupId}/edit', [AssessmentAdminController::class, 'editSubGroup'])->name('admin.assessments.sub-groups.edit');
+    Route::put('/assessments/{groupId}/sub-groups/{subGroupId}', [AssessmentAdminController::class, 'updateSubGroup'])->name('admin.assessments.sub-groups.update');
+    Route::delete('/assessments/{groupId}/sub-groups/{subGroupId}', [AssessmentAdminController::class, 'destroySubGroup'])->name('admin.assessments.sub-groups.destroy');
+
+    // Options
+    Route::get('/assessments/{groupId}/sub-groups/{subGroupId}/options', [AssessmentAdminController::class, 'indexOptions'])->name('admin.assessments.options.index');
+    Route::get('/assessments/{groupId}/sub-groups/{subGroupId}/options/create', [AssessmentAdminController::class, 'createOption'])->name('admin.assessments.options.create');
+    Route::post('/assessments/{groupId}/sub-groups/{subGroupId}/options', [AssessmentAdminController::class, 'storeOption'])->name('admin.assessments.options.store');
+    Route::get('/assessments/{groupId}/sub-groups/{subGroupId}/options/{optionId}/edit', [AssessmentAdminController::class, 'editOption'])->name('admin.assessments.options.edit');
+    Route::put('/assessments/{groupId}/sub-groups/{subGroupId}/options/{optionId}', [AssessmentAdminController::class, 'updateOption'])->name('admin.assessments.options.update');
+    Route::delete('/assessments/{groupId}/sub-groups/{subGroupId}/options/{optionId}', [AssessmentAdminController::class, 'destroyOption'])->name('admin.assessments.options.destroy');
+
+    // Rules
+    Route::get('/assessments/rules', [AssessmentAdminController::class, 'indexRules'])->name('admin.assessments.rules.index');
+    Route::get('/assessments/rules/create', [AssessmentAdminController::class, 'createRule'])->name('admin.assessments.rules.create');
+    Route::post('/assessments/rules', [AssessmentAdminController::class, 'storeRule'])->name('admin.assessments.rules.store');
+    Route::get('/assessments/rules/{id}/edit', [AssessmentAdminController::class, 'editRule'])->name('admin.assessments.rules.edit');
+    Route::put('/assessments/rules/{id}', [AssessmentAdminController::class, 'updateRule'])->name('admin.assessments.rules.update');
+    Route::delete('/assessments/rules/{id}', [AssessmentAdminController::class, 'destroyRule'])->name('admin.assessments.rules.destroy');
 });
 
 // Static pages (public)
 Route::get('/tentang', [PageController::class, 'about'])->name('about');
 Route::get('/privasi', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
+Route::get('/syarat-ketentuan', [PageController::class, 'terms'])->name('terms');
 
 // Webview pages
-Route::get('/tutorial-check-gula-darah', fn() => view('webview.gula-darah'))->name('tutorial.gula-darah');
-Route::get('/tutorial-cara-perawatan-hipoglekimia', fn() => view('webview.hipoglekimia'))->name('tutorial.hipoglekimia');
-Route::get('/tutorial-cara-perawatan-hiperglikemia', fn() => view('webview.hiperglikemia'))->name('tutorial.hiperglikemia');
+Route::get('/tutorial-check-gula-darah', fn () => view('webview.gula-darah'))->name('tutorial.gula-darah');
+Route::get('/tutorial-cara-perawatan-hipoglekimia', fn () => view('webview.hipoglekimia'))->name('tutorial.hipoglekimia');
+Route::get('/tutorial-cara-perawatan-hiperglikemia', fn () => view('webview.hiperglikemia'))->name('tutorial.hiperglikemia');
 Route::get('/recomendasi-foot', [PageController::class, 'recommendationFoot'])->name('recommendation.foot');

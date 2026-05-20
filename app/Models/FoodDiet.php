@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class FoodDiet extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'time_id',
         'material',
         'unit',
-        'menu'
+        'menu',
     ];
+
     protected $casts = [
-        'time_id' => 'integer'
+        'time_id' => 'integer',
     ];
 }

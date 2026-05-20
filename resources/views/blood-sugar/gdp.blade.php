@@ -37,6 +37,20 @@
             <div id="gdpStatusBadge" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3"></div>
             <p id="gdpMessage" class="text-gray-700 font-medium"></p>
             <p id="gdpRecommendation" class="text-sm text-gray-500 mt-2 hidden"></p>
+
+            <div id="gdpSaveArea" class="hidden mt-4 pt-4 border-t border-gray-100">
+                <div class="mb-3">
+                    <label for="gdpNotes" class="input-label">Catatan (opsional)</label>
+                    <input type="text" id="gdpNotes" class="input-field" placeholder="Tambahkan catatan...">
+                </div>
+                <button onclick="saveGDP()" id="gdpSaveBtn" class="btn-primary w-full">
+                    <svg class="w-5 h-5 inline-block mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
+                    </svg>
+                    Simpan Hasil
+                </button>
+                <p id="gdpSaveMessage" class="hidden text-sm font-medium mt-2 text-center"></p>
+            </div>
         </div>
     </div>
 
@@ -80,12 +94,20 @@
 
 @push('scripts')
 <script>
+let gdpCategory = '';
+let gdpValue = 0;
+
 function checkGDP() {
     const value = parseInt(document.getElementById('gdpValue').value);
     const resultDiv = document.getElementById('gdpResult');
     const badge = document.getElementById('gdpStatusBadge');
     const message = document.getElementById('gdpMessage');
     const recommendation = document.getElementById('gdpRecommendation');
+    const saveArea = document.getElementById('gdpSaveArea');
+    const saveMsg = document.getElementById('gdpSaveMessage');
+
+    saveArea.classList.add('hidden');
+    saveMsg.classList.add('hidden');
 
     if (isNaN(value) || value <= 0) {
         resultDiv.classList.remove('hidden');
@@ -97,31 +119,82 @@ function checkGDP() {
     }
 
     resultDiv.classList.remove('hidden');
+    gdpValue = value;
 
     if (value >= 300) {
+        gdpCategory = 'Sangat Tinggi';
         badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-red-100 text-red-700';
         badge.innerHTML = '&#9888;&#65039; Sangat Tinggi';
         message.textContent = 'Gula darah sangat tinggi, segera konsultasi ke dokter!';
         recommendation.classList.remove('hidden');
         recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL tergolong sangat tinggi (hiperglikemia berat). Segera hubungi dokter atau fasilitas kesehatan terdekat. Periksa kembali kadar gula darah Anda dan hindari makanan tinggi karbohidrat.';
     } else if (value > 130) {
+        gdpCategory = 'Tinggi';
         badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-yellow-100 text-yellow-700';
         badge.innerHTML = '&#9888;&#65039; Tinggi';
         message.textContent = 'Gula darah tinggi';
         recommendation.classList.remove('hidden');
         recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL berada di atas batas normal. Disarankan untuk memantau pola makan, mengurangi asupan gula dan karbohidrat sederhana, serta berkonsultasi dengan dokter jika hasil tetap tinggi dalam pemeriksaan berikutnya.';
     } else if (value >= 80) {
+        gdpCategory = 'Normal';
         badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-green-100 text-green-700';
         badge.innerHTML = '&#10004;&#65039; Normal';
         message.textContent = 'Gula darah normal';
         recommendation.classList.add('hidden');
     } else {
+        gdpCategory = 'Rendah';
         badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-red-100 text-red-700';
         badge.innerHTML = '&#9888;&#65039; Rendah';
         message.textContent = 'Gula darah rendah';
         recommendation.classList.remove('hidden');
         recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL tergolong rendah (hipoglikemia). Segera konsumsi makanan atau minuman yang mengandung gula sederhana seperti jus buah, permen, atau glukosa tablet. Jika gejala berlanjut, segera cari bantuan medis.';
     }
+
+    saveArea.classList.remove('hidden');
+}
+
+function saveGDP() {
+    const btn = document.getElementById('gdpSaveBtn');
+    const msg = document.getElementById('gdpSaveMessage');
+    const notes = document.getElementById('gdpNotes').value;
+
+    btn.disabled = true;
+    btn.innerHTML = '<svg class="w-5 h-5 inline-block mr-1.5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> Menyimpan...';
+
+    fetch('{{ route('blood-sugar.save') }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({
+            type: 'GDP',
+            value: gdpValue,
+            category: gdpCategory,
+            notes: notes
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            msg.className = 'text-sm font-medium mt-2 text-center text-green-600';
+            msg.textContent = 'Hasil berhasil disimpan!';
+            document.getElementById('gdpSaveArea').classList.add('hidden');
+        } else {
+            msg.className = 'text-sm font-medium mt-2 text-center text-red-600';
+            msg.textContent = data.message || 'Gagal menyimpan. Coba lagi.';
+        }
+        msg.classList.remove('hidden');
+    })
+    .catch(() => {
+        msg.className = 'text-sm font-medium mt-2 text-center text-red-600';
+        msg.textContent = 'Terjadi kesalahan. Coba lagi.';
+        msg.classList.remove('hidden');
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<svg class="w-5 h-5 inline-block mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg> Simpan Hasil';
+    });
 }
 </script>
 @endpush

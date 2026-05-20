@@ -69,6 +69,22 @@
         </a>
     </div>
 
+    <!-- History Link -->
+    <a href="{{ route('blood-sugar.history') }}" class="card-clickable flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-400/30 shrink-0">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold text-gray-800 text-lg">Riwayat Pemeriksaan</h3>
+            <p class="text-sm text-gray-500 mt-0.5">Lihat rekam jejak hasil pemeriksaan gula darah Anda</p>
+        </div>
+        <svg class="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+    </a>
+
     <!-- Reference Card -->
     <div class="card">
         <h3 class="font-semibold text-gray-800 text-lg mb-3">Informasi Penting</h3>

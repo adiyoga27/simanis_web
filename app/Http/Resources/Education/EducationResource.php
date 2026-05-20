@@ -18,7 +18,7 @@ class EducationResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'content' => $this->content,
-            'image' => url('storage/'. $this->image),
+            'image' => url('storage/'.$this->image),
             'slug' => $this->slug,
         ];
     }

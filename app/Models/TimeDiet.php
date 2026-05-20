@@ -8,16 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class TimeDiet extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'diet_id',
-        'title'
+        'title',
     ];
 
     protected $casts = [
-        'diet_id' => 'integer'
+        'diet_id' => 'integer',
     ];
 
-    function food() {
+    public function food()
+    {
         return $this->hasMany(FoodDiet::class, 'time_id', 'id');
     }
 }

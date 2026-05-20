@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Education extends Model
 {
     use HasFactory;
+
     protected $table = 'educations';
-    protected $fillable = ['education_category_id', 'title','slug', 'content', 'image'];
-    
-    public function category() {
+
+    protected $fillable = ['education_category_id', 'title', 'slug', 'content', 'image'];
+
+    public function category()
+    {
         return $this->belongsTo(EducationCategory::class, 'education_category_id');
     }
 }

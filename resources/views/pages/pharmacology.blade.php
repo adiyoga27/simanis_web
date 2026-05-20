@@ -144,6 +144,27 @@
         </div>
     </div>
 
+    <a href="{{ route('medications.index') }}" class="block relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-500 via-primary-600 to-pink-500 p-8 text-white shadow-xl shadow-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/40 hover:scale-[1.02] transition-all duration-300">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+        <div class="relative flex flex-col sm:flex-row items-center gap-5">
+            <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <div class="text-center sm:text-left">
+                <h4 class="text-xl font-bold">Kelola Jadwal Obat Anda</h4>
+                <p class="text-sm text-white/80 mt-1">Atur jadwal, dosis, dan pengingat konsumsi obat diabetes Anda secara personal</p>
+            </div>
+            <div class="flex-shrink-0">
+                <svg class="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </div>
+        </div>
+    </a>
+
     <div class="card bg-gradient-to-r from-gray-50 to-pink-50 border border-pink-100 text-center">
         <div class="flex flex-col items-center gap-3">
             <div class="w-14 h-14 rounded-full bg-pink-100 flex items-center justify-center">

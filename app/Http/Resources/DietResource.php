@@ -18,7 +18,7 @@ class DietResource extends JsonResource
             'diet_id' => $this->id,
             'title' => $this->title,
             'amount' => $this->amount,
-            'times' => TimeDietResource::collection($this->time)
+            'times' => TimeDietResource::collection($this->time),
         ];
     }
 }

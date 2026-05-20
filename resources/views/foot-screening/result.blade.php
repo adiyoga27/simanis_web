@@ -9,9 +9,7 @@
     @php
         $score = $score ?? 0;
         $answers = $answers ?? [];
-        if (is_string($answers)) {
-            $answers = json_decode($answers, true) ?? [];
-        }
+        $riskLevel = $score >= 3 ? 'Risiko Tinggi' : ($score >= 1 ? 'Risiko Ringan' : 'Normal');
     @endphp
 
     <!-- Risk Level Card -->
@@ -23,7 +21,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                     </svg>
                 </div>
-                <div class="badge-red text-base px-4 py-1.5 mb-3">Risiko Tinggi</div>
+                <div class="badge-red text-base px-4 py-1.5 mb-3">{{ $riskLevel }}</div>
                 <h3 class="text-xl font-bold text-red-700 mb-2">Segera konsultasikan dengan dokter!</h3>
                 <p class="text-gray-600 text-sm leading-relaxed mb-4">Hasil screening menunjukkan risiko tinggi komplikasi kaki diabetik. Sangat disarankan untuk segera berkonsultasi dengan dokter spesialis untuk pemeriksaan lebih lanjut.</p>
                 <div class="bg-white rounded-xl p-4 text-left space-y-2">
@@ -57,7 +55,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                 </div>
-                <div class="badge-yellow text-base px-4 py-1.5 mb-3">Risiko Ringan</div>
+                <div class="badge-yellow text-base px-4 py-1.5 mb-3">{{ $riskLevel }}</div>
                 <h3 class="text-xl font-bold text-yellow-700 mb-2">Perlu Perhatian Khusus</h3>
                 <p class="text-gray-600 text-sm leading-relaxed mb-4">Terdapat beberapa gejala yang perlu diwaspadai. Tingkatkan perawatan kaki dan pantau perkembangan kondisi Anda.</p>
                 <div class="bg-white rounded-xl p-4 text-left space-y-2">
@@ -91,7 +89,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                 </div>
-                <div class="badge-green text-base px-4 py-1.5 mb-3">Risiko Normal</div>
+                <div class="badge-green text-base px-4 py-1.5 mb-3">{{ $riskLevel }}</div>
                 <h3 class="text-xl font-bold text-green-700 mb-2">Kaki Anda dalam kondisi baik</h3>
                 <p class="text-gray-600 text-sm leading-relaxed">Kaki Anda dalam kondisi baik. Tetap jaga kesehatan kaki Anda dengan perawatan rutin dan pemeriksaan berkala.</p>
             </div>
@@ -117,23 +115,23 @@
         <div class="space-y-2">
             @php
                 $questions = [
-                    1 => 'Sensasi terbakar atau kesemutan pada kaki',
-                    2 => 'Penurunan sensasi sentuhan pada kaki',
-                    3 => 'Sering merasakan nyeri pada kaki',
-                    4 => 'Kaki sering terasa dingin',
-                    5 => 'Denyut nadi di kaki terasa lemah',
-                    6 => 'Kulit kaki kering atau pecah-pecah',
-                    7 => 'Terdapat kapalan (callus) pada kaki',
-                    8 => 'Terjadi perubahan bentuk pada kaki',
+                    'sensasi_terbakar'     => 'Sensasi terbakar, mati rasa, ataupun tajam pada kaki',
+                    'sensasi_sentuhan'     => 'Sensasi sentuhan pada telapak kaki menggunakan ujung pena/pensil',
+                    'pulsasi_nyeri'        => 'Nyeri saat malam hari atau istirahat pada kaki kanan dan kiri',
+                    'pulsasi_kaki'         => 'Kaki terasa dingin',
+                    'pulsasi_pemeriksaan'  => 'Pemeriksaan nadi pada dorsalis pedis dan tibial posterior',
+                    'bentuk_kulit'         => 'Kulit kering dan pecah-pecah',
+                    'bentuk_kapalan'       => 'Kapalan dan kuku kaki menebal',
+                    'bentuk_kaki'          => 'Bentuk kaki berubah',
                 ];
             @endphp
 
-            @foreach ($questions as $num => $text)
-                @php $key = 'q' . $num; $answer = $answers[$key] ?? 0; @endphp
+            @foreach ($questions as $key => $text)
+                @php $num = $loop->iteration; $answer = ($answers[$key] ?? 'TIDAK') === 'YA'; @endphp
                 <div class="flex items-center justify-between p-3 rounded-xl {{ $answer ? 'bg-red-50' : 'bg-gray-50' }}">
                     <span class="text-sm text-gray-700">{{ $num }}. {{ $text }}</span>
                     <span class="text-sm font-semibold {{ $answer ? 'text-red-600' : 'text-green-600' }}">
-                        {{ $answer ? 'Ya' : 'Tidak' }}
+                        {{ $answers[$key] ?? 'TIDAK' }}
                     </span>
                 </div>
             @endforeach

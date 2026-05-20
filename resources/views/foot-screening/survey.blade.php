@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Survey Screening Kaki Diabetik')
-@section('page-title', 'Survey Screening Kaki Diabetik')
+@section('title', 'Screening Kaki')
+@section('page-title', 'Screening Kaki')
 
 @section('content')
 <div class="max-w-2xl mx-auto space-y-6">
@@ -23,152 +23,38 @@
         @csrf
         <input type="hidden" name="score" id="scoreInput" value="0">
 
-        <!-- Question 1 -->
+        @php
+            $questions = [
+                'sensasi_terbakar'     => 'Sensasi terbakar, mati rasa, ataupun tajam pada kaki',
+                'sensasi_sentuhan'     => 'Sensasi sentuhan pada telapak kaki menggunakan ujung pena/pensil (tampilkan telapak kaki dan titik sensasi)',
+                'pulsasi_nyeri'        => 'Nyeri saat malam hari atau istirahat pada kaki kanan dan kiri (Sering kesentuhan nyeri kaki saat istirahat)',
+                'pulsasi_kaki'         => 'Kaki terasa dingin',
+                'pulsasi_pemeriksaan'  => 'Pemeriksaan nadi pada dorsalis pedis dan tibial posterior kaki kanan dan kaki kiri (Penurunan denyut nadi arteri dorsalis pedis, tibialis dan poplitea)',
+                'bentuk_kulit'         => 'Kulit kering dan pecah-pecah',
+                'bentuk_kapalan'       => 'Kapalan dan kuku kaki menebal',
+                'bentuk_kaki'          => 'Bentuk kaki berubah (cantumkan bentuk kaki diabetes)',
+            ];
+        @endphp
+
+        @foreach ($questions as $key => $text)
+        @php $num = $loop->iteration; $color = $num <= 5 ? 'primary' : 'pink'; @endphp
         <div class="card">
             <div class="flex items-start gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-primary-500/20">1</div>
-                <p class="text-gray-800 font-medium pt-0.5">Apakah Anda merasakan sensasi terbakar atau kesemutan pada kaki?</p>
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-{{ $color }}-500 to-{{ $color }}-600 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-{{ $color }}-500/20">{{ $num }}</div>
+                <p class="text-gray-800 font-medium pt-0.5">{{ $text }} <span class="text-red-500">*</span></p>
             </div>
             <div class="flex gap-4 pl-11">
                 <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q1" value="1" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Ya</span>
+                    <input type="radio" name="{{ $key }}" value="YA" class="w-5 h-5 text-{{ $color }}-600 border-gray-300 focus:ring-{{ $color }}-500" required>
+                    <span class="text-sm text-gray-700">YA</span>
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q1" value="0" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Tidak</span>
+                    <input type="radio" name="{{ $key }}" value="TIDAK" class="w-5 h-5 text-{{ $color }}-600 border-gray-300 focus:ring-{{ $color }}-500" required>
+                    <span class="text-sm text-gray-700">TIDAK</span>
                 </label>
             </div>
         </div>
-
-        <!-- Question 2 -->
-        <div class="card">
-            <div class="flex items-start gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-primary-500/20">2</div>
-                <p class="text-gray-800 font-medium pt-0.5">Apakah Anda mengalami penurunan sensasi sentuhan pada kaki?</p>
-            </div>
-            <div class="flex gap-4 pl-11">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q2" value="1" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Ya</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q2" value="0" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Tidak</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Question 3 -->
-        <div class="card">
-            <div class="flex items-start gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-primary-500/20">3</div>
-                <p class="text-gray-800 font-medium pt-0.5">Apakah Anda sering merasakan nyeri pada kaki?</p>
-            </div>
-            <div class="flex gap-4 pl-11">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q3" value="1" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Ya</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q3" value="0" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Tidak</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Question 4 -->
-        <div class="card">
-            <div class="flex items-start gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-primary-500/20">4</div>
-                <p class="text-gray-800 font-medium pt-0.5">Apakah kaki Anda sering terasa dingin?</p>
-            </div>
-            <div class="flex gap-4 pl-11">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q4" value="1" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Ya</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q4" value="0" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Tidak</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Question 5 -->
-        <div class="card">
-            <div class="flex items-start gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-primary-500/20">5</div>
-                <p class="text-gray-800 font-medium pt-0.5">Apakah denyut nadi di kaki Anda terasa lemah?</p>
-            </div>
-            <div class="flex gap-4 pl-11">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q5" value="1" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Ya</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q5" value="0" class="w-5 h-5 text-primary-600 border-gray-300 focus:ring-primary-500" required>
-                    <span class="text-sm text-gray-700">Tidak</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Question 6 -->
-        <div class="card">
-            <div class="flex items-start gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-400 to-pink-500 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-pink-400/20">6</div>
-                <p class="text-gray-800 font-medium pt-0.5">Apakah kulit kaki Anda kering atau pecah-pecah?</p>
-            </div>
-            <div class="flex gap-4 pl-11">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q6" value="1" class="w-5 h-5 text-pink-500 border-gray-300 focus:ring-pink-500" required>
-                    <span class="text-sm text-gray-700">Ya</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q6" value="0" class="w-5 h-5 text-pink-500 border-gray-300 focus:ring-pink-500" required>
-                    <span class="text-sm text-gray-700">Tidak</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Question 7 -->
-        <div class="card">
-            <div class="flex items-start gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-400 to-pink-500 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-pink-400/20">7</div>
-                <p class="text-gray-800 font-medium pt-0.5">Apakah terdapat kapalan (callus) pada kaki Anda?</p>
-            </div>
-            <div class="flex gap-4 pl-11">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q7" value="1" class="w-5 h-5 text-pink-500 border-gray-300 focus:ring-pink-500" required>
-                    <span class="text-sm text-gray-700">Ya</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q7" value="0" class="w-5 h-5 text-pink-500 border-gray-300 focus:ring-pink-500" required>
-                    <span class="text-sm text-gray-700">Tidak</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Question 8 -->
-        <div class="card">
-            <div class="flex items-start gap-3 mb-4">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-400 to-pink-500 flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-lg shadow-pink-400/20">8</div>
-                <p class="text-gray-800 font-medium pt-0.5">Apakah terjadi perubahan bentuk pada kaki Anda?</p>
-            </div>
-            <div class="flex gap-4 pl-11">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q8" value="1" class="w-5 h-5 text-pink-500 border-gray-300 focus:ring-pink-500" required>
-                    <span class="text-sm text-gray-700">Ya</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="q8" value="0" class="w-5 h-5 text-pink-500 border-gray-300 focus:ring-pink-500" required>
-                    <span class="text-sm text-gray-700">Tidak</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Hidden answer field for server processing -->
-        <input type="hidden" name="answers" id="answersInput" value="">
+        @endforeach
 
         <!-- Submit -->
         <div class="card text-center">
@@ -176,7 +62,7 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                Lihat Hasil
+                Check
             </button>
             <p class="text-xs text-gray-400 mt-3">Pastikan semua pertanyaan telah dijawab sebelum melihat hasil</p>
         </div>
@@ -188,24 +74,28 @@
 @push('scripts')
 <script>
 document.getElementById('screeningForm').addEventListener('submit', function(e) {
-    const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+    const keys = ['sensasi_terbakar','sensasi_sentuhan','pulsasi_nyeri','pulsasi_kaki','pulsasi_pemeriksaan','bentuk_kulit','bentuk_kapalan','bentuk_kaki'];
     let score = 0;
-    const answers = {};
+    let allAnswered = true;
 
-    for (const q of questions) {
-        const selected = this.querySelector('input[name="' + q + '"]:checked');
+    for (const key of keys) {
+        const selected = this.querySelector('input[name="' + key + '"]:checked');
         if (!selected) {
-            e.preventDefault();
-            alert('Harap jawab semua pertanyaan sebelum melihat hasil.');
-            return false;
+            allAnswered = false;
+            break;
         }
-        const value = parseInt(selected.value);
-        score += value;
-        answers[q] = value;
+        if (selected.value === 'YA') {
+            score++;
+        }
+    }
+
+    if (!allAnswered) {
+        e.preventDefault();
+        alert('Harap jawab semua pertanyaan sebelum melihat hasil.');
+        return false;
     }
 
     document.getElementById('scoreInput').value = score;
-    document.getElementById('answersInput').value = JSON.stringify(answers);
 });
 </script>
 @endpush

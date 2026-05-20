@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class EducationCategory extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['title','slug'];
 
+    protected $fillable = ['title', 'slug'];
 
-    function educations() {
-        return $this->hasMany(Education::class, 'education_category_id', 'id'  );
+    public function educations()
+    {
+        return $this->hasMany(Education::class, 'education_category_id', 'id');
     }
 }
