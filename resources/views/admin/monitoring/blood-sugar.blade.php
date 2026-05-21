@@ -6,6 +6,13 @@
 @section('content')
 <div class="max-w-6xl mx-auto space-y-6">
 
+    @if(session('success'))
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3 text-green-700 text-sm">
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="flex items-center justify-between">
         <div>
             <h2 class="text-xl font-bold text-gray-800">Gula Darah</h2>
@@ -27,7 +34,7 @@
                         <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Nilai</th>
                         <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Kategori</th>
                         <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Tanggal</th>
-                        <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider text-right">Aksi</th>
+                        <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider text-right w-32">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-50">
@@ -62,11 +69,13 @@
                             <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold {{ $catColor }}">{{ $r->category }}</span>
                         </td>
                         <td class="px-5 py-4 text-gray-500 text-xs">{{ $r->recorded_at->format('d M Y · H:i') }}</td>
-                        <td class="px-5 py-4 text-right">
-                            <form action="{{ route('admin.monitoring.blood-sugar.destroy', $r->id) }}" method="POST" onsubmit="return confirm('Hapus permanen?')">
-                                @csrf @method('DELETE')
-                                <button class="p-1.5 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors">
+                        <td class="px-5 py-4 text-right whitespace-nowrap">
+                            <form action="{{ route('admin.monitoring.blood-sugar.destroy', $r->id) }}" method="POST" onsubmit="return confirm('Hapus permanen?')" style="display:inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-50 text-red-600 text-xs font-semibold hover:bg-red-100 transition-colors">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                    Hapus
                                 </button>
                             </form>
                         </td>
