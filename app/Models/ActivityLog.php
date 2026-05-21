@@ -4,15 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class InstrumentResult extends Model
+class ActivityLog extends Model
 {
-    use SoftDeletes;
-    protected $fillable = ['user_id', 'total_score', 'max_score', 'percentage', 'interpretation', 'answers'];
+    protected $fillable = ['user_id', 'action', 'module', 'description', 'metadata', 'ip_address', 'user_agent'];
 
     protected $casts = [
-        'answers' => 'array',
+        'metadata' => 'array',
     ];
 
     public function user(): BelongsTo

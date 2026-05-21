@@ -148,4 +148,10 @@ class AdminInstrumentController extends Controller
 
         return view('admin.instruments.result-detail', compact('result', 'groups'));
     }
+
+    public function destroyResult($id)
+    {
+        InstrumentResult::findOrFail($id)->delete();
+        return back()->with('success', 'Data berhasil dihapus.');
+    }
 }

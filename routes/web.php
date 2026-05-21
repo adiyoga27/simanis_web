@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Web\AdminController;
 use App\Http\Controllers\Web\AdminEducationController;
 use App\Http\Controllers\Web\AdminInstrumentController;
+use App\Http\Controllers\Web\AdminLogController;
 use App\Http\Controllers\Web\AssessmentAdminController;
 use App\Http\Controllers\Web\AssessmentController;
 use App\Http\Controllers\Web\InstrumentController;
@@ -144,7 +145,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     // Monitoring
     Route::get('/monitoring/foot-screening', [AdminController::class, 'monitoringFootScreening'])->name('admin.monitoring.foot-screening');
     Route::get('/monitoring/foot-screening/{id}', [AdminController::class, 'monitoringFootScreeningDetail'])->name('admin.monitoring.foot-screening.detail');
+    Route::delete('/monitoring/foot-screening/{id}', [AdminController::class, 'monitoringFootScreeningDestroy'])->name('admin.monitoring.foot-screening.destroy');
     Route::get('/monitoring/assessments', [AdminController::class, 'monitoringAssessments'])->name('admin.monitoring.assessments');
+    Route::delete('/monitoring/assessments/{id}', [AdminController::class, 'monitoringAssessmentDestroy'])->name('admin.monitoring.assessments.destroy');
+    Route::get('/monitoring/blood-sugar', [AdminController::class, 'monitoringBloodSugar'])->name('admin.monitoring.blood-sugar');
+    Route::delete('/monitoring/blood-sugar/{id}', [AdminController::class, 'monitoringBloodSugarDestroy'])->name('admin.monitoring.blood-sugar.destroy');
 
     // Instrument Keyakinan
     Route::get('/instruments', [AdminInstrumentController::class, 'index'])->name('admin.instruments.index');
@@ -158,6 +163,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::delete('/instruments/questions/{id}', [AdminInstrumentController::class, 'destroyQuestion'])->name('admin.instruments.questions.destroy');
     Route::get('/instruments/results', [AdminInstrumentController::class, 'results'])->name('admin.instruments.results');
     Route::get('/instruments/results/{id}', [AdminInstrumentController::class, 'resultDetail'])->name('admin.instruments.results.detail');
+    Route::delete('/instruments/results/{id}', [AdminInstrumentController::class, 'destroyResult'])->name('admin.instruments.results.destroy');
 
     // Education
     Route::get('/education', [AdminEducationController::class, 'index'])->name('admin.education.index');
@@ -170,6 +176,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/education/articles/{id}/edit', [AdminEducationController::class, 'editArticle'])->name('admin.education.articles.edit');
     Route::put('/education/articles/{id}', [AdminEducationController::class, 'updateArticle'])->name('admin.education.articles.update');
     Route::delete('/education/articles/{id}', [AdminEducationController::class, 'destroyArticle'])->name('admin.education.articles.destroy');
+
+    // Log System
+    Route::get('/logs', [AdminLogController::class, 'index'])->name('admin.logs');
+    Route::get('/logs/data', [AdminLogController::class, 'data'])->name('admin.logs.data');
 });
 
 // Static pages (public)

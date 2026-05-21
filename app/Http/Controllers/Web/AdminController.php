@@ -195,6 +195,12 @@ class AdminController extends Controller
         return view('admin.monitoring.foot-screening-detail', compact('result'));
     }
 
+    public function monitoringFootScreeningDestroy($id)
+    {
+        FootScreeningResult::findOrFail($id)->delete();
+        return back()->with('success', 'Data berhasil dihapus.');
+    }
+
     public function monitoringAssessments(Request $request)
     {
         $search = $request->get('search');
@@ -210,5 +216,34 @@ class AdminController extends Controller
             ->withQueryString();
 
         return view('admin.monitoring.assessments', compact('results', 'search'));
+    }
+
+    public function monitoringAssessmentDestroy($id)
+    {
+        AssessmentResult::findOrFail($id)->delete();
+        return back()->with('success', 'Data berhasil dihapus.');
+    }
+
+    public function monitoringBloodSugar(Request $request)
+    {
+        $search = $request->get('search');
+
+        $results = BloodSugarRecord::with('user')
+            ->when($search, function ($q) use ($search) {
+                $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
+                    ->orWhere('username', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%"));
+            })
+            ->orderBy('recorded_at', 'desc')
+            ->paginate(20)
+            ->withQueryString();
+
+        return view('admin.monitoring.blood-sugar', compact('results', 'search'));
+    }
+
+    public function monitoringBloodSugarDestroy($id)
+    {
+        BloodSugarRecord::findOrFail($id)->delete();
+        return back()->with('success', 'Data berhasil dihapus.');
     }
 }
