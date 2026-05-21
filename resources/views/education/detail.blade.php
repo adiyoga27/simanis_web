@@ -30,7 +30,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         @forelse($educations ?? [] as $education)
-            <a href="{{ route('education.show', [$category->slug ?? 'edukasi', $education->slug]) }}" class="card-clickable overflow-hidden flex flex-col group">
+            <a href="{{ route('education.article', [$category->slug ?? 'edukasi', $education->slug]) }}" class="card-clickable overflow-hidden flex flex-col group">
                 <div class="h-48 relative overflow-hidden">
                     @if(!empty($education->image))
                         <img src="{{ asset('storage/' . $education->image) }}" alt="{{ $education->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">

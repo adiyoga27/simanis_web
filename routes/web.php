@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     // Education
     Route::get('/education', [PageController::class, 'education'])->name('education');
     Route::get('/education/{slug}', [PageController::class, 'educationDetail'])->name('education.detail');
-    Route::get('/education/{categorySlug}/{articleSlug}', [PageController::class, 'educationShow'])->name('education.show');
+    Route::get('/education/{categorySlug}/{articleSlug}', [PageController::class, 'educationShow'])->name('education.article');
 
     // Blood Sugar
     Route::get('/blood-sugar', [PageController::class, 'bloodSugar'])->name('blood-sugar');
