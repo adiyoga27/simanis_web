@@ -29,11 +29,22 @@
     @endif
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        @forelse($educations ?? [] as $education)
-            <a href="{{ route('education.article', [$category->slug ?? 'edukasi', $education->slug]) }}" class="card-clickable overflow-hidden flex flex-col group">
+        @php
+            $displayData = !empty($apiEducations) ? $apiEducations : ($educations ?? []);
+        @endphp
+        @forelse($displayData as $item)
+            @php
+                $isApi = is_array($item);
+                $title = $isApi ? ($item['title'] ?? '') : $item->title;
+                $img = $isApi ? ($item['image'] ?? null) : $item->image;
+                $content = $isApi ? ($item['content'] ?? '') : $item->content;
+                $itemSlug = $isApi ? ($item['slug'] ?? '') : $item->slug;
+                $catSlug = $isApi ? ($item['category']['slug'] ?? $slug) : ($category->slug ?? 'edukasi');
+            @endphp
+            <a href="{{ route('education.article', [$catSlug, $itemSlug]) }}" class="card-clickable overflow-hidden flex flex-col group">
                 <div class="h-48 relative overflow-hidden">
-                    @if(!empty($education->image))
-                        <img src="{{ asset('storage/' . $education->image) }}" alt="{{ $education->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    @if(!empty($img))
+                        <img src="{{ $isApi ? $img : asset('storage/' . $img) }}" alt="{{ $title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     @else
                         <div class="w-full h-full bg-gradient-to-br from-primary-400 via-pink-400 to-primary-500 flex items-center justify-center">
                             <svg class="w-16 h-16 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
@@ -41,9 +52,9 @@
                     @endif
                 </div>
                 <div class="p-5 flex-1 flex flex-col">
-                    <h3 class="font-bold text-gray-800 group-hover:text-primary-600 transition-colors text-lg leading-snug">{{ $education->title }}</h3>
+                    <h3 class="font-bold text-gray-800 group-hover:text-primary-600 transition-colors text-lg leading-snug">{{ $title }}</h3>
                     <p class="text-gray-500 text-sm mt-2 line-clamp-3 flex-1">
-                        {{ Str::limit(strip_tags($education->content ?? ''), 100) }}
+                        {{ Str::limit(strip_tags($content), 100) }}
                     </p>
                     <span class="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary-600 group-hover:gap-2 transition-all">
                         Baca Selengkapnya
@@ -58,7 +69,7 @@
                         <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-600">Belum ada artikel</h3>
-                    <p class="text-gray-400 mt-1">Konten edukasi sedang disiapkan. Silakan kembali lagi nanti.</p>
+                    <p class="text-gray-400 mt-1">Konten edukasi sedang disiapkan.</p>
                 </div>
             </div>
         @endforelse

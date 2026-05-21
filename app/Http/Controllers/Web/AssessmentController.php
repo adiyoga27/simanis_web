@@ -117,23 +117,51 @@ class AssessmentController extends Controller
 
         $rules = AssessmentRule::orderBy('order')->get();
         $matchedRules = [];
+        $aggregateResults = []; // [rule_id => ['total' => x, 'group_names' => []]]
 
         foreach ($rules as $rule) {
-            $conditions = $rule->conditions;
-            if (is_string($conditions)) {
-                $conditions = json_decode($conditions, true) ?? [];
-            }
-            $allMatch = true;
-
-            foreach ($conditions as $condGroupId => $minScore) {
-                if (!isset($groupScores[$condGroupId]) || $groupScores[$condGroupId] < $minScore) {
-                    $allMatch = false;
-                    break;
+            if ($rule->score_mode === 'aggregate') {
+                $selectedGroups = $rule->selected_groups ?? [];
+                if (is_string($selectedGroups)) {
+                    $selectedGroups = json_decode($selectedGroups, true) ?? [];
                 }
-            }
+                if (empty($selectedGroups)) continue;
 
-            if ($allMatch) {
-                $matchedRules[] = $rule;
+                $aggregateTotal = 0;
+                $groupNames = [];
+                foreach ($selectedGroups as $gId) {
+                    $aggregateTotal += $groupScores[$gId] ?? 0;
+                    $groupName = AssessmentGroup::find($gId)?->title;
+                    if ($groupName) $groupNames[] = $groupName;
+                }
+
+                $minOk = $rule->min_score === null || $aggregateTotal >= $rule->min_score;
+                $maxOk = $rule->max_score === null || $aggregateTotal <= $rule->max_score;
+
+                if ($minOk && $maxOk) {
+                    $matchedRules[] = $rule;
+                    $aggregateResults[$rule->id] = [
+                        'total'       => $aggregateTotal,
+                        'group_names' => $groupNames,
+                    ];
+                }
+            } else {
+                $conditions = $rule->conditions;
+                if (is_string($conditions)) {
+                    $conditions = json_decode($conditions, true) ?? [];
+                }
+                $allMatch = true;
+
+                foreach ($conditions as $condGroupId => $minScore) {
+                    if (!isset($groupScores[$condGroupId]) || $groupScores[$condGroupId] < $minScore) {
+                        $allMatch = false;
+                        break;
+                    }
+                }
+
+                if ($allMatch) {
+                    $matchedRules[] = $rule;
+                }
             }
         }
 
@@ -152,15 +180,16 @@ class AssessmentController extends Controller
                     'assessment_option_id'   => $selection['option_id'],
                     'assessment_group_id'    => $groupId,
                     'assessment_sub_group_id' => $subGroupId,
+                    'option_text'            => $selection['text'],
+                    'option_score'           => $selection['score'],
+                    'option_image'           => $selection['image'],
                 ]);
             }
         }
 
         session()->forget('assessment_selections');
 
-        return view('assessments.review', compact(
-            'groups', 'selections', 'groupScores', 'totalScore', 'matchedRules', 'result'
-        ));
+        return redirect()->route('assessment.detail', $result->id);
     }
 
     public function history()
@@ -175,19 +204,18 @@ class AssessmentController extends Controller
     public function detail($id)
     {
         $result = AssessmentResult::where('user_id', Auth::id())
-            ->with(['resultOptions.option.subGroup.group', 'resultOptions.group', 'resultOptions.subGroup'])
+            ->with(['resultOptions.option'])
             ->findOrFail($id);
 
         $groups = AssessmentGroup::with('subGroups')->orderBy('order')->get();
 
         $selections = [];
         foreach ($result->resultOptions as $ro) {
-            $option = $ro->option;
             $selections[$ro->assessment_group_id][$ro->assessment_sub_group_id] = [
-                'option_id'    => $option->id,
-                'text'         => $option->text,
-                'score'        => $option->score,
-                'image'        => $option->image,
+                'option_id'    => $ro->assessment_option_id,
+                'text'         => $ro->option_text ?? $ro->option?->text ?? '',
+                'score'        => $ro->option_score ?? $ro->option?->score ?? 0,
+                'image'        => $ro->option_image ?? $ro->option?->image ?? null,
                 'group_id'     => $ro->assessment_group_id,
                 'sub_group_id' => $ro->assessment_sub_group_id,
             ];
@@ -195,6 +223,28 @@ class AssessmentController extends Controller
 
         $matchedRules = AssessmentRule::whereIn('id', $result->matched_rules ?? [])->get();
 
-        return view('assessments.detail', compact('result', 'groups', 'selections', 'matchedRules'));
+        $groupScores = $result->group_scores ?? [];
+        $aggregateResults = [];
+        foreach ($matchedRules as $rule) {
+            if ($rule->score_mode === 'aggregate') {
+                $selectedGroups = $rule->selected_groups ?? [];
+                if (is_string($selectedGroups)) {
+                    $selectedGroups = json_decode($selectedGroups, true) ?? [];
+                }
+                $aggregateTotal = 0;
+                $groupNames = [];
+                foreach ($selectedGroups as $gId) {
+                    $aggregateTotal += $groupScores[$gId] ?? 0;
+                    $name = AssessmentGroup::find($gId)?->title;
+                    if ($name) $groupNames[] = $name;
+                }
+                $aggregateResults[$rule->id] = [
+                    'total'       => $aggregateTotal,
+                    'group_names' => $groupNames,
+                ];
+            }
+        }
+
+        return view('assessments.detail', compact('result', 'groups', 'selections', 'matchedRules', 'aggregateResults'));
     }
 }

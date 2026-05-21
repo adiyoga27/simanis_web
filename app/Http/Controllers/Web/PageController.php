@@ -15,6 +15,7 @@ use App\Models\WeightLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
 {
@@ -125,9 +126,23 @@ class PageController extends Controller
 
     public function education()
     {
-        $categories = EducationCategory::with('educations')->get();
+        $categories = EducationCategory::whereIn('slug', ['edukasi', 'latihan-fisik', 'perawatan-kaki'])
+            ->with('educations')
+            ->get();
 
-        return view('education.index', compact('categories'));
+        $apiData = [];
+        foreach (['edukasi', 'latihan-fisik', 'perawatan-kaki'] as $slug) {
+            try {
+                $res = Http::timeout(5)->get(url("/api/education/{$slug}"));
+                if ($res->successful()) {
+                    $apiData[$slug] = $res->json('data', []);
+                }
+            } catch (\Throwable $e) {
+                $apiData[$slug] = [];
+            }
+        }
+
+        return view('education.index', compact('categories', 'apiData'));
     }
 
     public function educationDetail($slug)
@@ -135,7 +150,14 @@ class PageController extends Controller
         $category = EducationCategory::where('slug', $slug)->firstOrFail();
         $educations = $category->educations()->get();
 
-        return view('education.detail', compact('category', 'educations'));
+        try {
+            $res = Http::timeout(5)->get(url("/api/education/{$slug}"));
+            $apiEducations = $res->successful() ? $res->json('data', []) : [];
+        } catch (\Throwable $e) {
+            $apiEducations = [];
+        }
+
+        return view('education.detail', compact('category', 'educations', 'apiEducations'));
     }
 
     public function educationShow($categorySlug, $articleSlug)

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssessmentGroup;
+use App\Models\AssessmentResult;
+use App\Models\AssessmentRule;
 use App\Models\BloodSugarRecord;
 use App\Models\Education;
 use App\Models\FootScreeningResult;
@@ -71,6 +74,12 @@ class AdminController extends Controller
             ->limit(5)
             ->get();
 
+        $assessmentCount = AssessmentResult::where('user_id', $user->id)->count();
+        $recentAssessments = AssessmentResult::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
+
         return view('admin.users.detail', compact(
             'user',
             'bloodSugarCount',
@@ -79,7 +88,9 @@ class AdminController extends Controller
             'medicationCount',
             'weightLogCount',
             'recentBloodSugar',
-            'recentFootScreening'
+            'recentFootScreening',
+            'assessmentCount',
+            'recentAssessments'
         ));
     }
 
@@ -108,5 +119,96 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->route('admin.users.detail', $user->id)->with('success', 'Data pengguna berhasil diperbarui.');
+    }
+
+    public function userAssessmentDetail($userId, $resultId)
+    {
+        $user = User::findOrFail($userId);
+        $result = AssessmentResult::where('user_id', $user->id)
+            ->with(['resultOptions.option'])
+            ->findOrFail($resultId);
+
+        $groups = AssessmentGroup::with('subGroups')->orderBy('order')->get();
+
+        $selections = [];
+        foreach ($result->resultOptions as $ro) {
+            $selections[$ro->assessment_group_id][$ro->assessment_sub_group_id] = [
+                'option_id'    => $ro->assessment_option_id,
+                'text'         => $ro->option_text ?? $ro->option?->text ?? '',
+                'score'        => $ro->option_score ?? $ro->option?->score ?? 0,
+                'image'        => $ro->option_image ?? $ro->option?->image ?? null,
+                'group_id'     => $ro->assessment_group_id,
+                'sub_group_id' => $ro->assessment_sub_group_id,
+            ];
+        }
+
+        $matchedRules = AssessmentRule::whereIn('id', $result->matched_rules ?? [])->get();
+
+        $groupScores = $result->group_scores ?? [];
+        $aggregateResults = [];
+        foreach ($matchedRules as $rule) {
+            if ($rule->score_mode === 'aggregate') {
+                $selectedGroups = $rule->selected_groups ?? [];
+                if (is_string($selectedGroups)) {
+                    $selectedGroups = json_decode($selectedGroups, true) ?? [];
+                }
+                $aggregateTotal = 0;
+                $groupNames = [];
+                foreach ($selectedGroups as $gId) {
+                    $aggregateTotal += $groupScores[$gId] ?? 0;
+                    $name = AssessmentGroup::find($gId)?->title;
+                    if ($name) $groupNames[] = $name;
+                }
+                $aggregateResults[$rule->id] = [
+                    'total'       => $aggregateTotal,
+                    'group_names' => $groupNames,
+                ];
+            }
+        }
+
+        return view('assessments.detail', compact('result', 'groups', 'selections', 'matchedRules', 'aggregateResults'));
+    }
+
+    // ─── MONITORING ────────────────────────────────────────────────────
+
+    public function monitoringFootScreening(Request $request)
+    {
+        $search = $request->get('search');
+
+        $results = FootScreeningResult::with('user')
+            ->when($search, function ($q) use ($search) {
+                $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
+                    ->orWhere('username', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%"));
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(20)
+            ->withQueryString();
+
+        return view('admin.monitoring.foot-screening', compact('results', 'search'));
+    }
+
+    public function monitoringFootScreeningDetail($id)
+    {
+        $result = FootScreeningResult::with('user')->findOrFail($id);
+
+        return view('admin.monitoring.foot-screening-detail', compact('result'));
+    }
+
+    public function monitoringAssessments(Request $request)
+    {
+        $search = $request->get('search');
+
+        $results = AssessmentResult::with('user')
+            ->when($search, function ($q) use ($search) {
+                $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
+                    ->orWhere('username', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%"));
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(20)
+            ->withQueryString();
+
+        return view('admin.monitoring.assessments', compact('results', 'search'));
     }
 }

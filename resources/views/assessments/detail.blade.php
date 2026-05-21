@@ -1,120 +1,145 @@
 @extends('layouts.app')
 
 @section('title', 'Detail Assessment')
-@section('page-title', 'Detail Assessment Kaki Diabetes')
+@section('page-title', 'Hasil Assessment Kaki Diabetes')
+
+@php
+function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
+    $data = $aggregateResults[$ruleId] ?? null;
+    if ($data) {
+        $text = str_replace('{total}', $data['total'], $text);
+        $text = str_replace('{groups}', implode(', ', $data['group_names']), $text);
+    }
+    return $text;
+}
+@endphp
 
 @section('content')
-<div class="max-w-4xl mx-auto space-y-8">
+<div class="max-w-3xl mx-auto space-y-6">
 
     <div class="flex items-center justify-between">
         <div>
-            <h2 class="text-xl font-bold text-gray-800">Detail Penilaian</h2>
-            <p class="text-sm text-gray-400 mt-0.5">{{ $result->created_at->format('d M Y, H:i') }}</p>
+            <p class="text-xs text-gray-400">{{ $result->created_at->isoFormat('dddd, D MMMM Y · HH:mm') }}</p>
         </div>
         <div class="flex items-center gap-2">
-            <a href="{{ route('assessment.history') }}" class="btn-white text-sm inline-flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-                Kembali
-            </a>
+            @if(Auth::user()->role === 'admin')
+                <a href="{{ route('admin.users.detail', $result->user_id) }}" class="text-sm text-gray-500 hover:text-gray-700 inline-flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    Kembali
+                </a>
+            @else
+                <a href="{{ route('assessment.history') }}" class="text-sm text-gray-500 hover:text-gray-700 inline-flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    Kembali
+                </a>
+            @endif
         </div>
     </div>
 
-    {{-- Ringkasan Skor --}}
-    <div class="card">
-        <h3 class="font-semibold text-gray-800 text-lg mb-4">Ringkasan Skor</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            @foreach($groups as $group)
-                @php $gs = $result->group_scores[$group->id] ?? 0; @endphp
-                <div class="bg-gray-50 rounded-xl p-4 text-center">
-                    <p class="text-sm text-gray-500 mb-1">{{ $group->title }}</p>
-                    <p class="text-3xl font-bold text-primary-600">{{ $gs }}</p>
-                    <p class="text-xs text-gray-400">skor</p>
-                </div>
-            @endforeach
-        </div>
-        <div class="bg-gradient-to-r from-primary-50 to-pink-50 rounded-xl p-6 text-center mt-4">
-            <p class="text-sm text-gray-500 mb-1">Total Skor</p>
-            <p class="text-5xl font-extrabold text-primary-600">{{ $result->total_score }}</p>
-        </div>
-    </div>
-
-    {{-- Pilihan --}}
+    {{-- Pilihan Anda --}}
     @if(count($selections) > 0)
     <div class="card">
-        <h3 class="font-semibold text-gray-800 text-lg mb-4">Pilihan Anda</h3>
-        <div class="space-y-6">
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Pilihan Anda</h3>
+        <div class="space-y-4">
             @foreach($groups as $group)
                 @if(isset($selections[$group->id]))
+                @php $gScore = $result->group_scores[$group->id] ?? 0; @endphp
                 <div>
-                    <h4 class="font-semibold text-gray-700 text-base mb-3 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-primary-500"></span>
-                        {{ $group->title }}
-                        <span class="badge badge-pink text-xs">Skor: {{ $result->group_scores[$group->id] ?? 0 }}</span>
-                    </h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 ml-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-semibold text-gray-700">{{ $group->title }}</span>
+                        <span class="text-xs font-bold text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">{{ $gScore }} poin</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
                         @foreach($selections[$group->id] as $subGroupId => $selection)
-                            @php $subGroup = \App\Models\AssessmentSubGroup::find($subGroupId); @endphp
-                            <div class="bg-gray-50 rounded-xl p-3">
-                                <p class="text-xs text-gray-400 mb-1">{{ $subGroup?->title ?? 'Sub #'.$subGroupId }}</p>
-                                <div class="flex items-start gap-3">
-                                    @if($selection['image'])
-                                        <img src="{{ asset('storage/' . $selection['image']) }}" alt="" class="w-12 h-12 rounded-lg object-cover flex-shrink-0">
-                                    @endif
-                                    <div>
-                                        <p class="text-sm text-gray-700">{{ $selection['text'] }}</p>
-                                        <span class="text-xs text-primary-600 font-medium">Skor: +{{ $selection['score'] }}</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <span class="inline-flex items-center gap-1 bg-gray-100 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs text-gray-700">
+                                @if($selection['image'])
+                                    <img src="{{ asset('storage/' . $selection['image']) }}" alt="" class="w-4 h-4 rounded object-cover">
+                                @endif
+                                <span>{{ $selection['text'] }}</span>
+                                <span class="text-primary-500 font-medium ml-0.5">+{{ $selection['score'] }}</span>
+                            </span>
                         @endforeach
                     </div>
                 </div>
                 @endif
             @endforeach
         </div>
+
+        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-sm font-medium text-gray-500">Total Skor</span>
+            <span class="text-lg font-extrabold text-primary-600">{{ $result->total_score }}</span>
+        </div>
     </div>
     @endif
 
-    {{-- Aturan Cocok --}}
-    <div class="card">
-        <h3 class="font-semibold text-gray-800 text-lg mb-4">Hasil Analisis</h3>
+    {{-- Kesimpulan --}}
+    <div>
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            Kesimpulan
+            @if($matchedRules->isNotEmpty())
+                <span class="font-normal text-gray-400 normal-case tracking-normal ml-1">· {{ $matchedRules->count() }} aturan cocok</span>
+            @endif
+        </h3>
 
         @if($matchedRules->isNotEmpty())
             <div class="space-y-4">
                 @foreach($matchedRules as $rule)
                     @php
-                        $severityStyles = [
-                            'normal' => 'border-l-green-500 bg-green-50/50',
-                            'ringan' => 'border-l-yellow-500 bg-yellow-50/50',
-                            'sedang' => 'border-l-orange-500 bg-orange-50/50',
-                            'tinggi' => 'border-l-red-500 bg-red-50/50',
+                        $customColor = $rule->color ?? null;
+
+                        $severityColors = ['normal' => '#16a34a','ringan' => '#ca8a04','sedang' => '#ea580c','tinggi' => '#dc2626'];
+                        $severityIcons = [
+                            'normal' => '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+                            'ringan' => '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>',
+                            'sedang' => '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>',
+                            'tinggi' => '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>',
                         ];
-                        $severityBadges = [
-                            'normal' => 'badge-green',
-                            'ringan' => 'badge-yellow',
-                            'sedang' => 'bg-orange-100 text-orange-700 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold',
-                            'tinggi' => 'badge-red',
-                        ];
-                        $style = $severityStyles[$rule->severity] ?? 'border-l-gray-300 bg-gray-50';
-                        $badge = $severityBadges[$rule->severity] ?? 'badge';
+
+                        $color = $customColor ?: ($severityColors[$rule->severity] ?? '#6b7280');
+                        $icon = $severityIcons[$rule->severity] ?? $severityIcons['normal'];
+
+                        $severityLabels = ['normal' => 'Normal','ringan' => 'Ringan','sedang' => 'Sedang','tinggi' => 'Tinggi'];
+                        $sevLabel = $severityLabels[$rule->severity] ?? ucfirst($rule->severity);
+
+                        $displayText = formatRuleTextDetail($rule->result_text, $aggregateResults ?? [], $rule->id);
                     @endphp
-                    <div class="border-l-4 rounded-r-xl p-5 {{ $style }}">
-                        <div class="flex items-center gap-3 mb-2">
-                            <h4 class="font-semibold text-gray-800">{{ $rule->title }}</h4>
-                            <span class="{{ $badge }}">{{ ucfirst($rule->severity) }}</span>
+                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        {{-- Header bar --}}
+                        <div class="flex items-center gap-2 px-5 py-3 text-white text-sm font-semibold" style="background-color: {{ $color }}">
+                            {!! $icon !!}
+                            <span>{{ $sevLabel }}</span>
                         </div>
-                        @if($rule->description)
-                            <p class="text-sm text-gray-500 mb-2">{{ $rule->description }}</p>
-                        @endif
-                        <p class="text-sm text-gray-700">{{ $rule->result_text }}</p>
+
+                        {{-- Body --}}
+                        <div class="px-5 py-4 space-y-3">
+                            <h4 class="text-base font-bold text-gray-800">{{ $rule->title }}</h4>
+
+                            @if($rule->description)
+                                <p class="text-sm text-gray-500 leading-relaxed">{{ $rule->description }}</p>
+                            @endif
+
+                            @if($rule->score_mode === 'aggregate' && isset($aggregateResults[$rule->id]))
+                                <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 text-xs font-semibold px-3 py-1.5 rounded-xl">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                    Skor agregat: {{ $aggregateResults[$rule->id]['total'] }} · {{ implode(', ', $aggregateResults[$rule->id]['group_names']) }}
+                                </div>
+                            @endif
+
+                            <div class="text-sm text-gray-800 leading-relaxed bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                {!! nl2br(e($displayText)) !!}
+                            </div>
+                        </div>
                     </div>
                 @endforeach
             </div>
         @else
-            <div class="text-center py-8">
-                <p class="text-gray-500">Tidak ada aturan yang cocok.</p>
+            <div class="card text-center py-12">
+                <div class="w-16 h-16 mx-auto rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <p class="text-gray-500">Tidak ada aturan yang cocok dengan skor Anda.</p>
             </div>
         @endif
     </div>

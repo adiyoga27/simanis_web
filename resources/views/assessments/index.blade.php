@@ -59,7 +59,6 @@
                     @if($group->description)
                         <p class="text-xs text-gray-400 mt-0.5">{{ $group->description }}</p>
                     @endif
-                    <p class="text-xs text-gray-400 mt-1">{{ $group->subGroups->count() }} sub-kelompok</p>
                 </div>
             </div>
             @endforeach

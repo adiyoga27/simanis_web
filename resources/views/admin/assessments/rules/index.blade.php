@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Aturan Penilaian')
-@section('page-title', 'Aturan Penilaian Kaki Diabetes')
+@section('page-title', 'Aturan Penilaian')
 
 @section('content')
 <div class="max-w-6xl mx-auto space-y-6">
@@ -17,8 +17,8 @@
 
     <div class="flex items-center justify-between">
         <div>
-            <h2 class="text-xl font-bold text-gray-800">Daftar Aturan Penilaian</h2>
-            <p class="text-sm text-gray-400 mt-0.5">Kelola aturan pencocokan skor dan hasil penilaian</p>
+            <h2 class="text-xl font-bold text-gray-800">Aturan Penilaian</h2>
+            <p class="text-sm text-gray-400 mt-0.5">Kelola logika pencocokan skor dan hasil analisis</p>
         </div>
         <div class="flex items-center gap-2">
             <a href="{{ route('admin.assessments.index') }}" class="btn-white inline-flex items-center gap-2 text-sm">
@@ -26,9 +26,7 @@
                 Kelompok
             </a>
             <a href="{{ route('admin.assessments.rules.create') }}" class="btn-primary inline-flex items-center gap-2 text-sm">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                 Tambah Aturan
             </a>
         </div>
@@ -44,65 +42,103 @@
             <h3 class="text-lg font-semibold text-gray-700 mb-1">Belum ada aturan penilaian</h3>
             <p class="text-sm text-gray-400 mb-6">Tambahkan aturan untuk mencocokkan skor dengan hasil penilaian</p>
             <a href="{{ route('admin.assessments.rules.create') }}" class="btn-primary inline-flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                 Tambah Aturan Pertama
             </a>
         </div>
     @else
-        <div class="space-y-4">
-            @foreach($rules as $rule)
-            <div class="card">
-                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                    <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-3 mb-2">
-                            <h3 class="font-semibold text-gray-800 text-lg">{{ $rule->title }}</h3>
-                            @php
-                                $severityColors = [
-                                    'normal' => 'badge-green',
-                                    'ringan' => 'badge-yellow',
-                                    'sedang' => 'bg-orange-100 text-orange-700 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold',
-                                    'tinggi' => 'badge-red',
-                                ];
-                            @endphp
-                            <span class="{{ $severityColors[$rule->severity] ?? 'badge' }}">{{ ucfirst($rule->severity) }}</span>
-                        </div>
-                        @if($rule->description)
-                            <p class="text-sm text-gray-500 mb-2">{{ $rule->description }}</p>
-                        @endif
-                        <div class="mb-2">
-                            <span class="text-xs font-medium text-gray-500">Kondisi:</span>
-                            <div class="flex flex-wrap gap-2 mt-1">
-                                @foreach($rule->conditions as $groupId => $minScore)
-                                    @php $groupModel = \App\Models\AssessmentGroup::find($groupId); @endphp
-                                    <span class="badge bg-gray-100 text-gray-600 text-xs">
-                                        {{ $groupModel?->title ?? 'Group #'.$groupId }} &ge; {{ $minScore }}
+        <div class="card overflow-hidden !p-0">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-50 text-left">
+                            <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider w-12">#</th>
+                            <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Judul / Mode</th>
+                            <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Tingkat</th>
+                            <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Kondisi / Rentang</th>
+                            <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Deskripsi</th>
+                            <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider text-right">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50">
+                        @foreach($rules as $rule)
+                        @php
+                            $sevColor = $rule->color ?: match($rule->severity) {
+                                'normal' => '#16a34a', 'ringan' => '#ca8a04',
+                                'sedang' => '#ea580c', 'tinggi' => '#dc2626',
+                                default => '#6b7280'
+                            };
+                            $sevLabel = ucfirst($rule->severity);
+                        @endphp
+                        <tr class="hover:bg-gray-50/50 transition-colors group">
+                            <td class="px-5 py-4 text-gray-400 text-xs font-mono">{{ $rule->order }}</td>
+                            <td class="px-5 py-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-semibold text-gray-800">{{ $rule->title }}</span>
+                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold {{ $rule->score_mode === 'aggregate' ? 'bg-indigo-100 text-indigo-700' : 'bg-gray-100 text-gray-500' }}">
+                                        {{ $rule->score_mode === 'aggregate' ? 'AGR' : 'AND' }}
                                     </span>
-                                @endforeach
-                            </div>
-                        </div>
-                        <p class="text-sm text-gray-600 italic mt-2">"{{ Str::limit($rule->result_text, 120) }}"</p>
-                    </div>
-                    <div class="flex items-center gap-2 flex-shrink-0">
-                        <a href="{{ route('admin.assessments.rules.edit', $rule->id) }}" class="p-2 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 transition-colors" title="Edit">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                        </a>
-                        <form action="{{ route('admin.assessments.rules.destroy', $rule->id) }}" method="POST" onsubmit="return confirm('Hapus aturan ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="p-2 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors" title="Hapus">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-2 ring-offset-1" style="background-color: {{ $sevColor }}; --tw-ring-color: {{ $sevColor }}30"></span>
+                                    <span class="text-gray-700 text-xs font-medium">{{ $sevLabel }}</span>
+                                </div>
+                            </td>
+                            <td class="px-5 py-4">
+                                <div class="flex flex-wrap gap-1">
+                                    @if($rule->score_mode === 'aggregate')
+                                        @foreach((array) ($rule->selected_groups ?? []) as $gId)
+                                            @php $g = \App\Models\AssessmentGroup::find($gId); @endphp
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-indigo-50 text-indigo-600 border border-indigo-100">
+                                                {{ $g?->title ?? '#' . $gId }}
+                                            </span>
+                                        @endforeach
+                                        @if($rule->min_score !== null || $rule->max_score !== null)
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium bg-purple-50 text-purple-600 border border-purple-100">
+                                                @if($rule->min_score !== null && $rule->max_score !== null)
+                                                    {{ $rule->min_score }}–{{ $rule->max_score }}
+                                                @elseif($rule->min_score !== null)
+                                                    &ge;{{ $rule->min_score }}
+                                                @elseif($rule->max_score !== null)
+                                                    &le;{{ $rule->max_score }}
+                                                @endif
+                                            </span>
+                                        @endif
+                                    @else
+                                        @foreach((array) ($rule->conditions ?? []) as $groupId => $minScore)
+                                            @php $g = \App\Models\AssessmentGroup::find($groupId); @endphp
+                                            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-gray-100 text-gray-600 border border-gray-200">
+                                                {{ $g?->title ?? '#' . $groupId }}
+                                                <span class="text-gray-400">&ge;</span>
+                                                {{ $minScore }}
+                                            </span>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </td>
+                            <td class="px-5 py-4">
+                                <p class="text-xs text-gray-500 max-w-[200px] truncate">{{ $rule->description ?: Str::limit($rule->result_text, 60) }}</p>
+                            </td>
+                            <td class="px-5 py-4">
+                                <div class="flex items-center justify-end gap-1">
+                                    <a href="{{ route('admin.assessments.rules.edit', $rule->id) }}" class="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 transition-colors opacity-0 group-hover:opacity-100" title="Edit">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                    </a>
+                                    <form action="{{ route('admin.assessments.rules.destroy', $rule->id) }}" method="POST" onsubmit="return confirm('Hapus aturan ini?')">
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="p-1.5 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100" title="Hapus">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            @endforeach
         </div>
     @endif
 

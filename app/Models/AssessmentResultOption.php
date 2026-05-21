@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AssessmentResultOption extends Model
 {
-    protected $fillable = ['assessment_result_id', 'assessment_option_id', 'assessment_group_id', 'assessment_sub_group_id'];
+    protected $fillable = [
+        'assessment_result_id', 'assessment_option_id',
+        'assessment_group_id', 'assessment_sub_group_id',
+        'option_text', 'option_score', 'option_image',
+    ];
 
     public $timestamps = false;
 

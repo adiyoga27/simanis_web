@@ -155,6 +155,10 @@
                 <div class="stat-value text-blue-600">{{ $weightLogCount }}</div>
                 <div class="stat-label">Berat Badan</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-value text-indigo-600">{{ $assessmentCount }}</div>
+                <div class="stat-label">Assessment</div>
+            </div>
         </div>
     </div>
 
@@ -235,6 +239,44 @@
                             <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold {{ $riskColor }}">{{ $result->risk_level }}</span>
                         </td>
                         <td class="px-5 py-3 text-gray-500 whitespace-nowrap">{{ $result->created_at->format('d M Y, H:i') }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @endif
+
+    @if($recentAssessments->count() > 0)
+    <div class="card overflow-hidden !p-0">
+        <div class="px-5 py-4 border-b border-gray-100">
+            <h3 class="font-semibold text-gray-800">Riwayat Assessment Kaki Diabetes</h3>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-gray-50 text-left">
+                        <th class="px-5 py-3 font-semibold text-gray-600">Total Skor</th>
+                        <th class="px-5 py-3 font-semibold text-gray-600">Aturan Cocok</th>
+                        <th class="px-5 py-3 font-semibold text-gray-600">Tanggal</th>
+                        <th class="px-5 py-3 font-semibold text-gray-600 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    @foreach($recentAssessments as $result)
+                    <tr class="hover:bg-gray-50/50">
+                        <td class="px-5 py-3">
+                            <span class="badge {{ $result->total_score > 6 ? 'badge-red' : ($result->total_score > 3 ? 'badge-yellow' : 'badge-green') }}">
+                                {{ $result->total_score }}
+                            </span>
+                        </td>
+                        <td class="px-5 py-3 text-gray-600">{{ is_array($result->matched_rules) ? count($result->matched_rules) : 0 }} aturan</td>
+                        <td class="px-5 py-3 text-gray-500 whitespace-nowrap">{{ $result->created_at->format('d M Y, H:i') }}</td>
+                        <td class="px-5 py-3 text-center">
+                            <a href="{{ route('admin.assessments.result.detail', [$user->id, $result->id]) }}" class="text-sm font-medium text-primary-600 hover:text-primary-700">
+                                Detail
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

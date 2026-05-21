@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\AdminEducationController;
+use App\Http\Controllers\Web\AdminInstrumentController;
 use App\Http\Controllers\Web\AssessmentAdminController;
 use App\Http\Controllers\Web\AssessmentController;
+use App\Http\Controllers\Web\InstrumentController;
 use App\Http\Controllers\Web\MedicationController;
 use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Route;
@@ -90,6 +93,12 @@ Route::middleware('auth')->group(function () {
     // Change Password
     Route::get('/change-password', [PageController::class, 'changePassword'])->name('change.password');
     Route::post('/change-password', [PageController::class, 'doChangePassword'])->name('change.password.update');
+
+    // Instrument Keyakinan
+    Route::get('/instrument', [InstrumentController::class, 'index'])->name('instruments.index');
+    Route::post('/instrument', [InstrumentController::class, 'store'])->name('instruments.store');
+    Route::get('/instrument/result/{id}', [InstrumentController::class, 'result'])->name('instruments.result');
+    Route::get('/instrument/history', [InstrumentController::class, 'history'])->name('instruments.history');
 });
 
 // Admin routes
@@ -99,6 +108,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/users/{id}', [AdminController::class, 'userDetail'])->name('admin.users.detail');
     Route::get('/users/{id}/edit', [AdminController::class, 'userEdit'])->name('admin.users.edit');
     Route::put('/users/{id}', [AdminController::class, 'userUpdate'])->name('admin.users.update');
+    Route::get('/users/{userId}/assessments/{resultId}', [AdminController::class, 'userAssessmentDetail'])->name('admin.assessments.result.detail');
 
     // Assessment management
     Route::get('/assessments', [AssessmentAdminController::class, 'index'])->name('admin.assessments.index');
@@ -130,6 +140,36 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/assessments/rules/{id}/edit', [AssessmentAdminController::class, 'editRule'])->name('admin.assessments.rules.edit');
     Route::put('/assessments/rules/{id}', [AssessmentAdminController::class, 'updateRule'])->name('admin.assessments.rules.update');
     Route::delete('/assessments/rules/{id}', [AssessmentAdminController::class, 'destroyRule'])->name('admin.assessments.rules.destroy');
+
+    // Monitoring
+    Route::get('/monitoring/foot-screening', [AdminController::class, 'monitoringFootScreening'])->name('admin.monitoring.foot-screening');
+    Route::get('/monitoring/foot-screening/{id}', [AdminController::class, 'monitoringFootScreeningDetail'])->name('admin.monitoring.foot-screening.detail');
+    Route::get('/monitoring/assessments', [AdminController::class, 'monitoringAssessments'])->name('admin.monitoring.assessments');
+
+    // Instrument Keyakinan
+    Route::get('/instruments', [AdminInstrumentController::class, 'index'])->name('admin.instruments.index');
+    Route::post('/instruments/groups', [AdminInstrumentController::class, 'storeGroup'])->name('admin.instruments.groups.store');
+    Route::put('/instruments/groups/{id}', [AdminInstrumentController::class, 'updateGroup'])->name('admin.instruments.groups.update');
+    Route::delete('/instruments/groups/{id}', [AdminInstrumentController::class, 'destroyGroup'])->name('admin.instruments.groups.destroy');
+    Route::get('/instruments/{groupId}/questions/create', [AdminInstrumentController::class, 'createQuestion'])->name('admin.instruments.questions.create');
+    Route::post('/instruments/{groupId}/questions', [AdminInstrumentController::class, 'storeQuestion'])->name('admin.instruments.questions.store');
+    Route::get('/instruments/questions/{id}/edit', [AdminInstrumentController::class, 'editQuestion'])->name('admin.instruments.questions.edit');
+    Route::put('/instruments/questions/{id}', [AdminInstrumentController::class, 'updateQuestion'])->name('admin.instruments.questions.update');
+    Route::delete('/instruments/questions/{id}', [AdminInstrumentController::class, 'destroyQuestion'])->name('admin.instruments.questions.destroy');
+    Route::get('/instruments/results', [AdminInstrumentController::class, 'results'])->name('admin.instruments.results');
+    Route::get('/instruments/results/{id}', [AdminInstrumentController::class, 'resultDetail'])->name('admin.instruments.results.detail');
+
+    // Education
+    Route::get('/education', [AdminEducationController::class, 'index'])->name('admin.education.index');
+    Route::post('/education/categories', [AdminEducationController::class, 'storeCategory'])->name('admin.education.categories.store');
+    Route::put('/education/categories/{id}', [AdminEducationController::class, 'updateCategory'])->name('admin.education.categories.update');
+    Route::delete('/education/categories/{id}', [AdminEducationController::class, 'destroyCategory'])->name('admin.education.categories.destroy');
+    Route::get('/education/{categoryId}/articles', [AdminEducationController::class, 'articles'])->name('admin.education.articles');
+    Route::get('/education/{categoryId}/articles/create', [AdminEducationController::class, 'createArticle'])->name('admin.education.articles.create');
+    Route::post('/education/{categoryId}/articles', [AdminEducationController::class, 'storeArticle'])->name('admin.education.articles.store');
+    Route::get('/education/articles/{id}/edit', [AdminEducationController::class, 'editArticle'])->name('admin.education.articles.edit');
+    Route::put('/education/articles/{id}', [AdminEducationController::class, 'updateArticle'])->name('admin.education.articles.update');
+    Route::delete('/education/articles/{id}', [AdminEducationController::class, 'destroyArticle'])->name('admin.education.articles.destroy');
 });
 
 // Static pages (public)

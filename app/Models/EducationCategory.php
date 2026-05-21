@@ -10,7 +10,7 @@ class EducationCategory extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['title', 'slug'];
+    protected $fillable = ['title', 'slug', 'description', 'color'];
 
     public function educations()
     {

@@ -266,15 +266,33 @@ class AssessmentAdminController extends Controller
     public function storeRule(Request $request)
     {
         $validated = $request->validate([
-            'title'       => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'conditions'  => 'required|json',
-            'result_text' => 'required|string',
-            'severity'    => 'required|in:normal,ringan,sedang,tinggi',
-            'order'       => 'nullable|integer|min:0',
+            'title'           => 'required|string|max:255',
+            'description'     => 'nullable|string',
+            'score_mode'      => 'required|in:per_group,aggregate',
+            'conditions'      => 'nullable|json',
+            'selected_groups' => 'nullable|array',
+            'result_text'     => 'required|string',
+            'color'           => 'nullable|string|max:30',
+            'min_score'       => 'nullable|integer|min:0',
+            'max_score'       => 'nullable|integer|min:0|gte:min_score',
+            'severity'        => 'required|in:normal,ringan,sedang,tinggi',
+            'order'           => 'nullable|integer|min:0',
         ]);
 
+        if ($validated['score_mode'] === 'aggregate') {
+            $validated['conditions'] = null;
+            $validated['selected_groups'] = array_map('intval', $validated['selected_groups'] ?? []);
+        } else {
+            $validated['selected_groups'] = null;
+            $validated['min_score'] = null;
+            $validated['max_score'] = null;
+        }
+
         $validated['order'] = $validated['order'] ?? 0;
+
+        if (!empty($validated['conditions'])) {
+            $validated['conditions'] = json_decode($validated['conditions'], true);
+        }
 
         AssessmentRule::create($validated);
 
@@ -294,15 +312,33 @@ class AssessmentAdminController extends Controller
         $rule = AssessmentRule::findOrFail($id);
 
         $validated = $request->validate([
-            'title'       => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'conditions'  => 'required|json',
-            'result_text' => 'required|string',
-            'severity'    => 'required|in:normal,ringan,sedang,tinggi',
-            'order'       => 'nullable|integer|min:0',
+            'title'           => 'required|string|max:255',
+            'description'     => 'nullable|string',
+            'score_mode'      => 'required|in:per_group,aggregate',
+            'conditions'      => 'nullable|json',
+            'selected_groups' => 'nullable|array',
+            'result_text'     => 'required|string',
+            'color'           => 'nullable|string|max:30',
+            'min_score'       => 'nullable|integer|min:0',
+            'max_score'       => 'nullable|integer|min:0|gte:min_score',
+            'severity'        => 'required|in:normal,ringan,sedang,tinggi',
+            'order'           => 'nullable|integer|min:0',
         ]);
 
+        if ($validated['score_mode'] === 'aggregate') {
+            $validated['conditions'] = null;
+            $validated['selected_groups'] = array_map('intval', $validated['selected_groups'] ?? []);
+        } else {
+            $validated['selected_groups'] = null;
+            $validated['min_score'] = null;
+            $validated['max_score'] = null;
+        }
+
         $validated['order'] = $validated['order'] ?? 0;
+
+        if (!empty($validated['conditions'])) {
+            $validated['conditions'] = json_decode($validated['conditions'], true);
+        }
 
         $rule->update($validated);
 
