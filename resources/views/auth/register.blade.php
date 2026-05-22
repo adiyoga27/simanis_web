@@ -224,10 +224,21 @@
                 </div>
 
                 {{-- Submit --}}
-                <button type="submit" class="btn-primary w-full !py-3.5 !text-base !rounded-2xl">
-                    Daftar
+                <button type="submit" id="register-submit" class="btn-primary w-full !py-3.5 !text-base !rounded-2xl relative">
+                    <span id="submit-text">Daftar</span>
                 </button>
             </form>
+
+            {{-- Loading Overlay --}}
+            <div id="loading-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/50 backdrop-blur-sm hidden">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-4 max-w-sm w-full mx-4 animate-fade-in">
+                    <div class="relative w-12 h-12">
+                        <div class="w-12 h-12 rounded-full border-4 border-primary-100 border-t-primary-600 animate-spin"></div>
+                    </div>
+                    <p class="text-gray-700 font-semibold text-base">Mohon menunggu...</p>
+                    <p class="text-gray-400 text-sm text-center">Sedang memproses pendaftaran Anda</p>
+                </div>
+            </div>
 
             {{-- Login Link --}}
             <p class="mt-6 text-center text-sm text-gray-500">
@@ -241,6 +252,15 @@
 </div>
 
 @push('scripts')
+<style>
+    @keyframes fade-in {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .animate-fade-in {
+        animation: fade-in 0.2s ease-out;
+    }
+</style>
 <script>
     function togglePassword(inputId, btn) {
         const input = document.getElementById(inputId);
@@ -256,6 +276,40 @@
             eyeOff.classList.add('hidden');
         }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        const overlay = document.getElementById('loading-overlay');
+        const submitBtn = document.getElementById('register-submit');
+        const submitText = document.getElementById('submit-text');
+
+        if (form && overlay) {
+            form.addEventListener('submit', function(e) {
+                const valid = form.checkValidity();
+                if (!valid) {
+                    form.reportValidity();
+                    e.preventDefault();
+                    return;
+                }
+
+                if (submitBtn.disabled) {
+                    e.preventDefault();
+                    return;
+                }
+
+                e.preventDefault();
+
+                overlay.classList.remove('hidden');
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
+                submitText.textContent = 'Mendaftar...';
+
+                setTimeout(function() {
+                    form.submit();
+                }, 100);
+            });
+        }
+    });
 </script>
 @endpush
 @endsection
