@@ -57,6 +57,13 @@ class PageController extends Controller
 
     public function doRegister(Request $request)
     {
+        $existingUser = User::where('email', $request->email)->first();
+        if ($existingUser && !$existingUser->hasVerifiedEmail()) {
+            return redirect()->back()
+                ->with('unverified_email', $request->email)
+                ->withInput($request->except('password', 'password_confirmation'));
+        }
+
         $payload = $request->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
@@ -87,6 +94,25 @@ class PageController extends Controller
         $user->sendEmailVerificationNotification();
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan cek email Anda untuk verifikasi.');
+    }
+
+    public function resendVerificationWeb(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->with('error', 'Email tidak ditemukan.');
+        }
+
+        if ($user->hasVerifiedEmail()) {
+            return redirect()->route('login')->with('success', 'Email sudah terverifikasi. Silakan login.');
+        }
+
+        $user->sendEmailVerificationNotification();
+
+        return back()->with('success', 'Link verifikasi telah dikirim ulang. Silakan cek inbox atau spam Anda.');
     }
 
     public function forgotPassword()

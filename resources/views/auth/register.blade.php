@@ -33,6 +33,46 @@
             </div>
         @endif
 
+        {{-- Unverified Email Alert --}}
+        @if (session('unverified_email'))
+            <div class="mb-6 p-5 rounded-xl bg-amber-50 border border-amber-200">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 shrink-0 text-amber-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <div class="flex-1">
+                        <p class="text-amber-800 font-semibold text-sm mb-1">Email Belum Diverifikasi</p>
+                        <p class="text-amber-700 text-sm">
+                            <strong>{{ session('unverified_email') }}</strong> sudah terdaftar tetapi belum diverifikasi.
+                            Jika belum menerima email verifikasi, silakan kirim ulang.
+                        </p>
+                        <form action="{{ route('verification.resend') }}" method="POST" class="mt-3">
+                            @csrf
+                            <input type="hidden" name="email" value="{{ session('unverified_email') }}">
+                            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md shadow-amber-500/25">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                                Kirim Ulang Verifikasi
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        {{-- Session Messages --}}
+        @if (session('error'))
+            <div class="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="mb-6 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm font-medium">
+                {{ session('success') }}
+            </div>
+        @endif
+
         {{-- Register Card --}}
         <div class="card !p-8 !shadow-xl !shadow-gray-200/60">
             <form action="{{ route('register.post') }}" method="POST">

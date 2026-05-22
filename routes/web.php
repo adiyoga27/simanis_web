@@ -21,6 +21,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [PageController::class, 'doLogin'])->name('login.post');
     Route::get('/register', [PageController::class, 'register'])->name('register');
     Route::post('/register', [PageController::class, 'doRegister'])->name('register.post');
+    Route::post('/resend-verification', [PageController::class, 'resendVerificationWeb'])->name('verification.resend');
     Route::get('/forgot-password', [PageController::class, 'forgotPassword'])->name('forgot-password');
     Route::get('/new-password', [PageController::class, 'newPassword'])->name('new-password');
 });
