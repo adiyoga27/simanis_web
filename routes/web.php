@@ -12,8 +12,8 @@ use App\Http\Controllers\Web\MedicationController;
 use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Route;
 
-// Landing page
-Route::get('/', [PageController::class, 'landing'])->name('landing');
+// Redirect root to login
+Route::redirect('/', '/login')->name('landing');
 
 // Authentication
 Route::middleware('guest')->group(function () {

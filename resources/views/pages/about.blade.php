@@ -60,7 +60,7 @@
             </div>
 
             <div class="flex justify-center gap-4 pt-4">
-                <a href="{{ route('landing') }}" class="btn-white">
+                <a href="{{ route('login') }}" class="btn-white">
                     <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                     Kembali
                 </a>

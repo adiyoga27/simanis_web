@@ -58,7 +58,7 @@
             </div>
 
             <div class="flex justify-center gap-4 pt-4">
-                <a href="{{ route('landing') }}" class="btn-white">Kembali</a>
+                <a href="{{ route('login') }}" class="btn-white">Kembali</a>
                 <a href="{{ route('contact') }}" class="btn-primary">Hubungi Kami</a>
             </div>
         </div>
