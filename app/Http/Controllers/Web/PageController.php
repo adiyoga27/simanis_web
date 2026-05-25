@@ -184,7 +184,7 @@ class PageController extends Controller
             $apiEducations = [];
         }
 
-        return view('education.detail', compact('category', 'educations', 'apiEducations'));
+        return view('education.detail', compact('category', 'educations', 'apiEducations', 'slug'));
     }
 
     public function educationShow($categorySlug, $articleSlug)
