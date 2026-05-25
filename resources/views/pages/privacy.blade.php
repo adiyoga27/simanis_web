@@ -17,7 +17,7 @@
             <div class="card">
                 <h2 class="text-lg font-bold text-gray-800 mb-2">Informasi yang Kami Kumpulkan</h2>
                 <p class="text-gray-600 leading-relaxed">
-                    SIMANIS mengumpulkan informasi yang Anda berikan secara langsung, termasuk nama, 
+                    Diamond Care mengumpulkan informasi yang Anda berikan secara langsung, termasuk nama, 
                     alamat email, username, data kesehatan (tinggi badan, berat badan, golongan darah, 
                     riwayat medis), dan data lokasi (provinsi, kota, alamat). Informasi ini digunakan 
                     untuk memberikan layanan manajemen diabetes yang dipersonalisasi.

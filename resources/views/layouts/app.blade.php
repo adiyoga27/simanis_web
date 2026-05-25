@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SIMANIS - Aplikasi Manajemen Diabetes Melitus. Pantau gula darah, screening kaki, edukasi, terapi nutrisi, dan manajemen pengobatan.">
-    <meta name="keywords" content="simanis, diabetes, gula darah, screening kaki, edukasi diabetes, nutrisi diabetes">
-    <meta name="author" content="SIMANIS">
+    <meta name="description" content="Diamond Care - Aplikasi Manajemen Diabetes Melitus. Pantau gula darah, screening kaki, edukasi, terapi nutrisi, dan manajemen pengobatan.">
+    <meta name="keywords" content="Diamond Care, diabetes, gula darah, screening kaki, edukasi diabetes, nutrisi diabetes">
+    <meta name="author" content="Diamond Care">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url()->current() }}">
-    <title>@yield('title', 'Dashboard') - SIMANIS</title>
+    <title>@yield('title', 'Dashboard') - Diamond Care</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
@@ -43,7 +43,7 @@
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.698 50.698 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>
                 </div>
                 <div>
-                    <h2 class="text-lg font-bold text-gray-800">SIMANIS</h2>
+                    <h2 class="text-lg font-bold text-gray-800">Diamond Care</h2>
                     <p class="text-xs text-gray-400">#sehatkayabahagia</p>
                 </div>
             </div>
@@ -165,7 +165,7 @@
                         <div class="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347" /></svg>
                         </div>
-                        <span class="font-bold text-gray-800">SIMANIS</span>
+                        <span class="font-bold text-gray-800">Diamond Care</span>
                     </div>
                     <h1 class="hidden lg:block text-lg font-bold text-gray-800">@yield('page-title', 'Dashboard')</h1>
                 </div>
@@ -240,7 +240,7 @@
         <!-- Footer -->
         <footer class="border-t border-gray-100 bg-white/50 backdrop-blur-sm py-4 px-4 lg:px-8">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-400">
-                <p>&copy; {{ date('Y') }} SIMANIS. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} Diamond Care. All rights reserved.</p>
                 <div class="flex items-center gap-4">
                     <a href="{{ route('about') }}" class="hover:text-gray-600 transition-colors">Tentang</a>
                     <a href="{{ route('privacy') }}" class="hover:text-gray-600 transition-colors">Privasi</a>

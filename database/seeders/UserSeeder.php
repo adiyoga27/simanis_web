@@ -12,8 +12,8 @@ class UserSeeder extends Seeder
     {
         // Admin
         User::create([
-            'name' => 'Admin SIMANIS',
-            'email' => 'admin@simanis.com',
+            'name' => 'Admin Diamond Care',
+            'email' => 'admin@diamondcare.id',
             'username' => 'admin',
             'password' => Hash::make('password123'),
             'role' => 'admin',
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
         // User biasa (Diabetes)
         User::create([
             'name' => 'Budi Santoso',
-            'email' => 'budi@simanis.com',
+            'email' => 'budi@diamondcare.id',
             'username' => 'budi',
             'password' => Hash::make('password123'),
             'role' => 'user',
@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
         // User biasa (Diabetes - perempuan)
         User::create([
             'name' => 'Siti Aminah',
-            'email' => 'siti@simanis.com',
+            'email' => 'siti@diamondcare.id',
             'username' => 'siti',
             'password' => Hash::make('password123'),
             'role' => 'user',
@@ -85,7 +85,7 @@ class UserSeeder extends Seeder
         // User biasa (belum verifikasi email)
         User::create([
             'name' => 'Cahyo Wibowo',
-            'email' => 'cahyo@simanis.com',
+            'email' => 'cahyo@diamondcare.id',
             'username' => 'cahyo',
             'password' => Hash::make('password123'),
             'role' => 'user',

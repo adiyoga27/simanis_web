@@ -33,7 +33,7 @@
                         </div>
                         <div>
                             <p class="text-sm text-gray-500">Website</p>
-                            <p class="font-semibold text-gray-800">simanis.codingaja.com</p>
+                            <p class="font-semibold text-gray-800">diamondcare.id</p>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
             <div class="card">
                 <h2 class="text-xl font-bold text-gray-800 mb-3">Butuh Bantuan?</h2>
                 <p class="text-gray-600 leading-relaxed">
-                    Jika Anda memiliki pertanyaan, saran, atau masukan terkait aplikasi SIMANIS, 
+                    Jika Anda memiliki pertanyaan, saran, atau masukan terkait aplikasi Diamond Care, 
                     jangan ragu untuk menghubungi kami melalui email di atas. Tim kami akan merespons 
                     dalam waktu 1-2 hari kerja.
                 </p>

@@ -16,7 +16,7 @@
                 akun Anda telah berhasil diverifikasi.
             </p>
             <p class="text-gray-500 text-sm mb-6">
-                Anda sekarang dapat mengakses semua fitur SIMANIS. 
+                Anda sekarang dapat mengakses semua fitur Diamond Care. 
                 Selamat menggunakan aplikasi manajemen diabetes kami.
             </p>
 
@@ -25,7 +25,7 @@
             </a>
 
             <p class="text-xs text-gray-400 mt-6">
-                &copy; {{ date('Y') }} SIMANIS. #sehatkayabahagia
+                &copy; {{ date('Y') }} Diamond Care. #sehatkayabahagia
             </p>
         </div>
     </div>

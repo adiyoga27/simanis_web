@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 
-@section('title', 'SIMANIS - Kelola Diabetes Anda dengan Lebih Baik')
+@section('title', 'Diamond Care - Kelola Diabetes Anda dengan Lebih Baik')
 
 @section('content')
 {{-- Navbar --}}
@@ -14,7 +14,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-xl lg:text-2xl font-bold text-gray-800 tracking-tight">SIMANIS</h1>
+                    <h1 class="text-xl lg:text-2xl font-bold text-gray-800 tracking-tight">Diamond Care</h1>
                     <p class="text-xs text-gray-400 -mt-0.5">#sehatkayabahagia</p>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             Kelola Diabetes Anda<br class="hidden sm:block"> dengan <span class="text-pink-200">Lebih Baik</span>
         </h1>
         <p class="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-white/80 leading-relaxed" style="animation: fadeInUp 0.8s ease-out 0.2s both;">
-            SIMANIS membantu Anda memantau gula darah, melakukan screening kaki diabetik, mendapatkan edukasi diabetes, dan mengatur terapi nutrisi — semua dalam satu aplikasi.
+            Diamond Care membantu Anda memantau gula darah, melakukan screening kaki diabetik, mendapatkan edukasi diabetes, dan mengatur terapi nutrisi — semua dalam satu aplikasi.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" style="animation: fadeInUp 0.8s ease-out 0.3s both;">
             <a href="{{ route('login') }}" class="btn-white w-full sm:w-auto text-center !text-base !py-3.5 !px-10 !rounded-2xl">
@@ -161,12 +161,12 @@
                 <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-pink-400/30 rounded-3xl blur-2xl"></div>
             </div>
             <div class="mt-12 lg:mt-0">
-                <span class="badge-pink">Tentang SIMANIS</span>
+                <span class="badge-pink">Tentang Diamond Care</span>
                 <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight mt-4">
                     Partner Sehat untuk <span class="text-primary-600">Hidup Lebih Baik</span>
                 </h2>
                 <p class="mt-6 text-gray-600 leading-relaxed text-lg">
-                    SIMANIS adalah aplikasi manajemen diabetes melitus yang dirancang untuk membantu Anda mengontrol kondisi diabetes secara holistik. Dari pemantauan gula darah, screening kaki diabetik, hingga edukasi dan panduan nutrisi — kami hadir sebagai teman perjalanan kesehatan Anda.
+                    Diamond Care adalah aplikasi manajemen diabetes melitus yang dirancang untuk membantu Anda mengontrol kondisi diabetes secara holistik. Dari pemantauan gula darah, screening kaki diabetik, hingga edukasi dan panduan nutrisi — kami hadir sebagai teman perjalanan kesehatan Anda.
                 </p>
                 <div class="mt-8 flex flex-wrap gap-4">
                     <a href="{{ route('register') }}" class="btn-primary !text-base !py-3.5 !px-8 !rounded-2xl">Mulai Perjalanan Sehat</a>
@@ -188,7 +188,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-lg font-bold">SIMANIS</h3>
+                    <h3 class="text-lg font-bold">Diamond Care</h3>
                     <p class="text-xs text-gray-400">#sehatkayabahagia</p>
                 </div>
             </div>
@@ -210,7 +210,7 @@
             </div>
         </div>
         <div class="mt-8 pt-8 border-t border-white/10 text-center">
-            <p class="text-sm text-gray-500">&copy; {{ date('Y') }} SIMANIS. All rights reserved. Dibuat dengan ❤️ untuk Indonesia sehat.</p>
+            <p class="text-sm text-gray-500">&copy; {{ date('Y') }} Diamond Care. All rights reserved. Dibuat dengan ❤️ untuk Indonesia sehat.</p>
         </div>
     </div>
 </footer>

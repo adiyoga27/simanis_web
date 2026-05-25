@@ -9,15 +9,15 @@
             <div class="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary-500/30">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
-            <h1 class="text-3xl font-bold text-gray-800">Tentang SIMANIS</h1>
+            <h1 class="text-3xl font-bold text-gray-800">Tentang Diamond Care</h1>
             <p class="text-gray-500 mt-2">Aplikasi Manajemen Diabetes Melitus</p>
         </div>
 
         <div class="space-y-6">
             <div class="card">
-                <h2 class="text-xl font-bold text-gray-800 mb-3">Apa itu SIMANIS?</h2>
+                <h2 class="text-xl font-bold text-gray-800 mb-3">Apa itu Diamond Care?</h2>
                 <p class="text-gray-600 leading-relaxed">
-                    SIMANIS adalah aplikasi manajemen diri diabetes melitus yang dirancang untuk membantu 
+                    Diamond Care adalah aplikasi manajemen diri diabetes melitus yang dirancang untuk membantu 
                     penderita diabetes dalam mengelola kondisi kesehatan mereka secara mandiri. Aplikasi ini 
                     menyediakan berbagai fitur untuk memantau dan mengelola diabetes melitus secara komprehensif.
                 </p>

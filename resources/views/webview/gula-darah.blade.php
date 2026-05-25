@@ -30,7 +30,7 @@
 </head>
 <body>
     
-    <img src="https://simanis.codingaja.com/storage/education/cek-darah.png" >
+    <img src="https://diamoncare.id/storage/education/cek-darah.png" >
     
    
 </body>

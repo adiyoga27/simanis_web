@@ -174,7 +174,7 @@
             </div>
             <div>
                 <h4 class="text-lg font-bold text-gray-800">Pengingat Pengobatan</h4>
-                <p class="text-sm text-gray-500 mt-1">Fitur alarm pengingat minum obat tersedia di <span class="font-semibold text-pink-600">aplikasi mobile SIMANIS</span>. Unduh aplikasi kami untuk mendapatkan notifikasi tepat waktu.</p>
+                <p class="text-sm text-gray-500 mt-1">Fitur alarm pengingat minum obat tersedia di <span class="font-semibold text-pink-600">aplikasi mobile Diamond Care</span>. Unduh aplikasi kami untuk mendapatkan notifikasi tepat waktu.</p>
             </div>
         </div>
     </div>

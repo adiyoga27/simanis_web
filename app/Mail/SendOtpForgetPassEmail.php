@@ -30,7 +30,7 @@ class SendOtpForgetPassEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Kode OTP Reset Password Simanis',
+            subject: 'Kode OTP Reset Password Diamond Care',
         );
     }
 

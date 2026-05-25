@@ -13,7 +13,7 @@
                 </svg>
             </div>
             <h2 class="text-2xl font-extrabold text-gray-800">Selamat Datang Kembali</h2>
-            <p class="text-sm text-gray-500 mt-1">Masuk ke akun SIMANIS Anda</p>
+            <p class="text-sm text-gray-500 mt-1">Masuk ke akun Diamond Care Anda</p>
         </div>
 
         {{-- Session Success Message --}}
@@ -106,22 +106,22 @@
             </form>
 
             {{-- Divider --}}
-            <div class="relative my-6">
+            {{-- <div class="relative my-6">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-gray-200"></div>
                 </div>
                 <div class="relative flex justify-center text-sm">
                     <span class="px-3 bg-white text-gray-400">atau</span>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- Register Link --}}
-            <p class="text-center text-sm text-gray-500">
+            {{-- <p class="text-center text-sm text-gray-500">
                 Belum punya akun?
                 <a href="{{ route('register') }}" class="font-semibold text-primary-600 hover:text-primary-700 transition-colors">
                     Daftar sekarang
                 </a>
-            </p>
+            </p> --}}
         </div>
     </div>
 </div>

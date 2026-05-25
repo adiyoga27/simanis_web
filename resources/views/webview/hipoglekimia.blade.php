@@ -29,9 +29,9 @@
 </head>
 <body>
     <div style="padding-top:5px; padding-left:5px; padding-right:5px">
-    <img src="https://simanis.codingaja.com/storage/education/hipoglikemia-1.png" >
+    <img src="https://diamoncare.id/storage/education/hipoglikemia-1.png" >
     <div style="padding-top:5px; padding-left:5px; padding-right:5px">
-    <img src="https://simanis.codingaja.com/storage/education/hipoglikemia-2.png" >
+    <img src="https://diamoncare.id/storage/education/hipoglikemia-2.png" >
     
     <script>
         function zoomImage(img) {

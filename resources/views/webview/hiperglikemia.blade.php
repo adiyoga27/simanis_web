@@ -27,10 +27,10 @@
 </head>
 <body>
         <div style="padding-top:5px; padding-left:5px; padding-right:5px">
-    <img src="https://simanis.codingaja.com/storage/education/hipergelkemia-1.png" >
+    <img src="https://diamoncare.id/storage/education/hipergelkemia-1.png" >
     </div>
     <div style="padding-top:5px; padding-left:5px; padding-right:5px">
-    <img src="https://simanis.codingaja.com/storage/education/hipergelkemia-2.png" >
+    <img src="https://diamoncare.id/storage/education/hipergelkemia-2.png" >
     </div>
     
    

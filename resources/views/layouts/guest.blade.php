@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SIMANIS - Aplikasi Manajemen Diabetes Melitus. Pantau gula darah, screening kaki, edukasi, terapi nutrisi, dan manajemen pengobatan.">
-    <meta name="keywords" content="simanis, diabetes, gula darah, screening kaki, edukasi diabetes, nutrisi diabetes">
-    <meta name="author" content="SIMANIS">
+    <meta name="description" content="Diamond Care - Aplikasi Manajemen Diabetes Melitus. Pantau gula darah, screening kaki, edukasi, terapi nutrisi, dan manajemen pengobatan.">
+    <meta name="keywords" content="Diamond Care, diabetes, gula darah, screening kaki, edukasi diabetes, nutrisi diabetes">
+    <meta name="author" content="Diamond Care">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ url()->current() }}">
-    <title>@yield('title', 'SIMANIS') - SIMANIS</title>
+    <title>@yield('title', 'Diamond Care') - Diamond Care</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

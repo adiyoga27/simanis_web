@@ -12,7 +12,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.698 50.698 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
                 </svg>
             </div>
-            <h1 class="text-3xl font-bold text-white">SIMANIS</h1>
+            <h1 class="text-3xl font-bold text-white">Diamond Care</h1>
             <p class="text-primary-100 mt-1">Syarat & Ketentuan</p>
         </div>
     </div>
@@ -25,7 +25,7 @@
                     Pengantar
                 </h2>
                 <p class="text-gray-600 leading-relaxed">
-                    Selamat datang di SIMANIS, aplikasi manajemen diri diabetes melitus. Dengan mengakses dan menggunakan aplikasi ini, Anda setuju untuk terikat dengan syarat dan ketentuan yang tercantum di bawah ini. Harap baca dengan saksama sebelum menggunakan layanan kami. Jika Anda tidak menyetujui ketentuan ini, harap tidak menggunakan aplikasi ini.
+                    Selamat datang di Diamond Care, aplikasi manajemen diri diabetes melitus. Dengan mengakses dan menggunakan aplikasi ini, Anda setuju untuk terikat dengan syarat dan ketentuan yang tercantum di bawah ini. Harap baca dengan saksama sebelum menggunakan layanan kami. Jika Anda tidak menyetujui ketentuan ini, harap tidak menggunakan aplikasi ini.
                 </p>
             </div>
 
@@ -35,7 +35,7 @@
                     Layanan
                 </h2>
                 <p class="text-gray-600 leading-relaxed">
-                    SIMANIS merupakan aplikasi pendukung manajemen diabetes melitus yang menyediakan fitur pemantauan gula darah, screening kaki diabetik, edukasi kesehatan, terapi nutrisi, informasi farmakologi, dan manajemen pengobatan. Aplikasi ini ditujukan sebagai alat bantu dan tidak menggantikan konsultasi dengan tenaga medis profesional.
+                    Diamond Care merupakan aplikasi pendukung manajemen diabetes melitus yang menyediakan fitur pemantauan gula darah, screening kaki diabetik, edukasi kesehatan, terapi nutrisi, informasi farmakologi, dan manajemen pengobatan. Aplikasi ini ditujukan sebagai alat bantu dan tidak menggantikan konsultasi dengan tenaga medis profesional.
                 </p>
             </div>
 
@@ -85,7 +85,7 @@
                     Disclaimer Medis
                 </h2>
                 <p class="text-gray-600 leading-relaxed">
-                    <strong>SIMANIS BUKAN perangkat medis dan TIDAK memberikan diagnosis medis.</strong> Seluruh informasi yang disediakan dalam aplikasi ini bersifat edukatif dan informatif. Aplikasi ini tidak dimaksudkan untuk menggantikan saran, diagnosis, atau pengobatan dari dokter atau tenaga kesehatan profesional.
+                    <strong>Diamond Care BUKAN perangkat medis dan TIDAK memberikan diagnosis medis.</strong> Seluruh informasi yang disediakan dalam aplikasi ini bersifat edukatif dan informatif. Aplikasi ini tidak dimaksudkan untuk menggantikan saran, diagnosis, atau pengobatan dari dokter atau tenaga kesehatan profesional.
                 </p>
                 <ul class="space-y-2 text-gray-600 mt-3">
                     <li class="flex items-start gap-2">
@@ -105,7 +105,7 @@
                     Batasan Tanggung Jawab
                 </h2>
                 <p class="text-gray-600 leading-relaxed">
-                    SIMANIS dan pengembangnya tidak bertanggung jawab atas kerugian langsung, tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan atau ketidakmampuan menggunakan aplikasi. Kami tidak menjamin bahwa aplikasi akan bebas dari kesalahan, gangguan, atau tersedia setiap saat.
+                    Diamond Care dan pengembangnya tidak bertanggung jawab atas kerugian langsung, tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan atau ketidakmampuan menggunakan aplikasi. Kami tidak menjamin bahwa aplikasi akan bebas dari kesalahan, gangguan, atau tersedia setiap saat.
                 </p>
             </div>
 

@@ -26,7 +26,7 @@
             </svg>
         </div>
         <div class="relative z-10 text-center">
-            <h1 class="text-3xl lg:text-5xl font-extrabold text-white text-shadow">SIMANIS</h1>
+            <h1 class="text-3xl lg:text-5xl font-extrabold text-white text-shadow">Diamond Care</h1>
             <p class="text-xl lg:text-2xl font-semibold text-pink-200 mt-2">Manajemen Diabetes</p>
             <p class="text-white/70 mt-4 text-lg">#sehatkayabahagia</p>
         </div>
