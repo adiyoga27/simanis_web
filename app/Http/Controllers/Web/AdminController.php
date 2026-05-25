@@ -52,9 +52,20 @@ class AdminController extends Controller
             });
         }
 
-        $users = $query->orderBy('created_at', 'desc')->paginate(15)->withQueryString();
+        $role = $request->get('role');
+        if ($role) {
+            $query->where('role', $role);
+        }
 
-        return view('admin.users.index', compact('users', 'search'));
+        $desaId = $request->get('desa_id');
+        if ($desaId) {
+            $query->where('desa_id', $desaId);
+        }
+
+        $users = $query->orderBy('created_at', 'desc')->paginate(15)->withQueryString();
+        $desas = Desa::orderBy('name')->get();
+
+        return view('admin.users.index', compact('users', 'search', 'desas', 'role', 'desaId'));
     }
 
     public function createUser()
@@ -247,9 +258,13 @@ class AdminController extends Controller
 
     public function monitoringFootScreening(Request $request)
     {
+        $currentUser = Auth::user();
         $search = $request->get('search');
 
         $results = FootScreeningResult::with('user')
+            ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
                     ->orWhere('username', 'like', "%{$search}%")
@@ -277,9 +292,13 @@ class AdminController extends Controller
 
     public function monitoringAssessments(Request $request)
     {
+        $currentUser = Auth::user();
         $search = $request->get('search');
 
         $results = AssessmentResult::with('user')
+            ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
                     ->orWhere('username', 'like', "%{$search}%")
@@ -300,9 +319,13 @@ class AdminController extends Controller
 
     public function monitoringBloodSugar(Request $request)
     {
+        $currentUser = Auth::user();
         $search = $request->get('search');
 
         $results = BloodSugarRecord::with('user')
+            ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
                     ->orWhere('username', 'like', "%{$search}%")
@@ -319,5 +342,51 @@ class AdminController extends Controller
     {
         BloodSugarRecord::findOrFail($id)->delete();
         return back()->with('success', 'Data berhasil dihapus.');
+    }
+
+    public function showSelectPatient(Request $request)
+    {
+        $currentUser = Auth::user();
+        $redirectTo = $request->get('redirect_to', route('admin.dashboard'));
+        $backUrl = $request->get('back', url()->previous());
+        $q = $request->get('q');
+
+        $pasienUsers = User::where('role', 'pasien')
+            ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($query) use ($currentUser) {
+                $query->where('desa_id', $currentUser->desa_id);
+            })
+            ->when($q, function ($query) use ($q) {
+                $query->where('name', 'like', "%{$q}%");
+            })
+            ->orderBy('name')
+            ->get();
+
+        return view('admin.data-entry.select', compact('pasienUsers', 'redirectTo', 'backUrl', 'q'));
+    }
+
+    public function selectDataEntryUser(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'redirect_to' => 'required|string',
+        ]);
+
+        $user = User::where('role', 'pasien')->findOrFail($request->user_id);
+
+        session([
+            'admin_data_entry_user_id' => $user->id,
+            'admin_data_entry_user_name' => $user->name,
+        ]);
+
+        return redirect()->to($request->redirect_to);
+    }
+
+    public function clearDataEntrySession(Request $request)
+    {
+        session()->forget(['admin_data_entry_user_id', 'admin_data_entry_user_name', 'assessment_selections']);
+
+        $back = $request->get('back', route('admin.dashboard'));
+
+        return redirect()->to($back);
     }
 }

@@ -6,6 +6,8 @@
 @section('content')
 <div class="max-w-4xl mx-auto space-y-6">
 
+    @include('admin.partials.data-entry-banner', ['backUrl' => route('admin.monitoring.blood-sugar')])
+
     <!-- Tutorial Card -->
     <a href="{{ route('blood-sugar.tutorial') }}" class="card-clickable flex items-center gap-4">
         <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-400 to-primary-400 flex items-center justify-center shadow-lg shadow-pink-400/30 shrink-0">

@@ -20,7 +20,7 @@
             </div>
             <div>
                 <p class="font-bold text-gray-800">{{ $result->user?->name ?? '-' }}</p>
-                <p class="text-sm text-gray-400">@{{ $result->user?->username ?? '-' }} · {{ $result->created_at->format('d M Y H:i') }}</p>
+                <p class="text-sm text-gray-400">{{ $result->user?->address ?? '-' }} · {{ $result->created_at->format('d M Y H:i') }}</p>
             </div>
         </div>
 

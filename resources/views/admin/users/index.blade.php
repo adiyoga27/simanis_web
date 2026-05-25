@@ -8,7 +8,7 @@
 
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+            <div class="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-lg shadow-primary-500/30">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13.5 7a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" /></svg>
             </div>
             <div>
@@ -30,10 +30,30 @@
         </div>
     </div>
 
-    <div class="card">
-        <form method="GET" action="{{ route('admin.users') }}" class="relative">
-            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Cari berdasarkan nama, email, atau username..." class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition-all duration-300">
+    <div class="card space-y-3">
+        <form method="GET" action="{{ route('admin.users') }}">
+            <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Cari nama, email, atau username..." class="input-field">
+        </form>
+        <form method="GET" action="{{ route('admin.users') }}" class="flex flex-wrap items-center gap-2">
+            <input type="hidden" name="search" value="{{ $search ?? '' }}">
+            <select name="role" class="input-field !w-auto">
+                <option value="">Semua Role</option>
+                <option value="superadmin" {{ ($role ?? '') === 'superadmin' ? 'selected' : '' }}>Superadmin</option>
+                <option value="kepala_puskesmas" {{ ($role ?? '') === 'kepala_puskesmas' ? 'selected' : '' }}>Kepala Puskesmas</option>
+                <option value="kepala_desa" {{ ($role ?? '') === 'kepala_desa' ? 'selected' : '' }}>Kepala Desa</option>
+                <option value="kader" {{ ($role ?? '') === 'kader' ? 'selected' : '' }}>Kader</option>
+                <option value="pasien" {{ ($role ?? '') === 'pasien' ? 'selected' : '' }}>Pasien</option>
+            </select>
+            <select name="desa_id" class="input-field !w-auto">
+                <option value="">Semua Desa</option>
+                @foreach($desas as $desa)
+                    <option value="{{ $desa->id }}" {{ ($desaId ?? '') == $desa->id ? 'selected' : '' }}>{{ $desa->name }}</option>
+                @endforeach
+            </select>
+            <button type="submit" class="btn-primary text-sm">Filter</button>
+            @if(($role ?? false) || ($desaId ?? false))
+                <a href="{{ route('admin.users') }}" class="btn-white text-sm">Reset</a>
+            @endif
         </form>
     </div>
 

@@ -6,6 +6,8 @@
 @section('content')
 <div class="max-w-2xl mx-auto space-y-6">
 
+    @include('admin.partials.data-entry-banner', ['backUrl' => route('admin.monitoring.blood-sugar')])
+
     <!-- Input Card -->
     <div class="card">
         <div class="flex items-center gap-3 mb-5">

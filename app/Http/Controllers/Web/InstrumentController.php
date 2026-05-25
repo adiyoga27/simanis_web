@@ -63,7 +63,7 @@ class InstrumentController extends Controller
         }
 
         $result = InstrumentResult::create([
-            'user_id'        => Auth::id(),
+            'user_id'        => $this->getDataEntryUserId(),
             'total_score'    => $totalScore,
             'max_score'      => $maxScore,
             'percentage'     => $percentage,
@@ -76,14 +76,14 @@ class InstrumentController extends Controller
 
     public function result($id)
     {
-        $result = InstrumentResult::where('user_id', Auth::id())->findOrFail($id);
+        $result = InstrumentResult::where('user_id', $this->getDataEntryUserId())->findOrFail($id);
 
         return view('instruments.result', compact('result'));
     }
 
     public function history()
     {
-        $results = InstrumentResult::where('user_id', Auth::id())
+        $results = InstrumentResult::where('user_id', $this->getDataEntryUserId())
             ->orderBy('created_at', 'desc')
             ->get();
 

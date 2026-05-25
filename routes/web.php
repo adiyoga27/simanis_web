@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Web\AdminController;
 use App\Http\Controllers\Web\AdminDesaController;
 use App\Http\Controllers\Web\AdminEducationController;
+use App\Http\Controllers\Web\AdminPatientController;
 use App\Http\Controllers\Web\AdminInstrumentController;
 use App\Http\Controllers\Web\AdminLogController;
 use App\Http\Controllers\Web\AssessmentAdminController;
@@ -115,6 +116,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::put('/users/{id}', [AdminController::class, 'userUpdate'])->name('admin.users.update');
     Route::get('/users/{userId}/assessments/{resultId}', [AdminController::class, 'userAssessmentDetail'])->name('admin.assessments.result.detail');
 
+    // Data Entry (select patient & redirect to form)
+    Route::get('/data-entry/select-patient', [AdminController::class, 'showSelectPatient'])->name('admin.data-entry.select-patient');
+    Route::post('/data-entry/select', [AdminController::class, 'selectDataEntryUser'])->name('admin.data-entry.select');
+    Route::get('/data-entry/clear', [AdminController::class, 'clearDataEntrySession'])->name('admin.data-entry.clear');
+
     // Desa (Superadmin only)
     Route::middleware('superadmin')->group(function () {
         Route::get('/desa', [AdminDesaController::class, 'index'])->name('admin.desa.index');
@@ -124,6 +130,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::put('/desa/{id}', [AdminDesaController::class, 'update'])->name('admin.desa.update');
         Route::delete('/desa/{id}', [AdminDesaController::class, 'destroy'])->name('admin.desa.destroy');
     });
+
+    // Patients
+    Route::get('/patients', [AdminPatientController::class, 'index'])->name('admin.patients.index');
+    Route::get('/patients/create', [AdminPatientController::class, 'create'])->name('admin.patients.create');
+    Route::post('/patients', [AdminPatientController::class, 'store'])->name('admin.patients.store');
+    Route::get('/patients/{id}/edit', [AdminPatientController::class, 'edit'])->name('admin.patients.edit');
+    Route::put('/patients/{id}', [AdminPatientController::class, 'update'])->name('admin.patients.update');
+    Route::delete('/patients/{id}', [AdminPatientController::class, 'destroy'])->name('admin.patients.destroy');
 
     // Assessment management
     Route::get('/assessments', [AssessmentAdminController::class, 'index'])->name('admin.assessments.index');

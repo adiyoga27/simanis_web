@@ -166,7 +166,7 @@ class AssessmentController extends Controller
         }
 
         $result = AssessmentResult::create([
-            'user_id'       => Auth::id(),
+            'user_id'       => $this->getDataEntryUserId(),
             'total_score'   => $totalScore,
             'group_scores'  => $groupScores,
             'matched_rules' => collect($matchedRules)->pluck('id')->toArray(),
@@ -194,7 +194,7 @@ class AssessmentController extends Controller
 
     public function history()
     {
-        $results = AssessmentResult::where('user_id', Auth::id())
+        $results = AssessmentResult::where('user_id', $this->getDataEntryUserId())
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -203,7 +203,7 @@ class AssessmentController extends Controller
 
     public function detail($id)
     {
-        $result = AssessmentResult::where('user_id', Auth::id())
+        $result = AssessmentResult::where('user_id', $this->getDataEntryUserId())
             ->with(['resultOptions.option'])
             ->findOrFail($id);
 

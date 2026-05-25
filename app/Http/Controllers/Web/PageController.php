@@ -130,12 +130,12 @@ class PageController extends Controller
         $user = Auth::user();
 
         $educationCount = Education::count();
-        $footScreeningCount = FootScreeningResult::where('user_id', Auth::id())->count();
-        $bloodSugarCount = BloodSugarRecord::where('user_id', Auth::id())->count();
-        $weightLogCount = WeightLog::where('user_id', Auth::id())->count();
-        $medicationCount = Medication::where('user_id', Auth::id())->count();
+        $footScreeningCount = FootScreeningResult::where('user_id', $this->getDataEntryUserId())->count();
+        $bloodSugarCount = BloodSugarRecord::where('user_id', $this->getDataEntryUserId())->count();
+        $weightLogCount = WeightLog::where('user_id', $this->getDataEntryUserId())->count();
+        $medicationCount = Medication::where('user_id', $this->getDataEntryUserId())->count();
 
-        $recentBloodSugar = BloodSugarRecord::where('user_id', Auth::id())
+        $recentBloodSugar = BloodSugarRecord::where('user_id', $this->getDataEntryUserId())
             ->orderBy('recorded_at', 'desc')
             ->limit(5)
             ->get();
@@ -248,7 +248,7 @@ class PageController extends Controller
         }
 
         FootScreeningResult::create([
-            'user_id' => Auth::id(),
+            'user_id' => $this->getDataEntryUserId(),
             'score' => $score,
             'risk_level' => $riskLevel,
             'answers' => $answers,
@@ -260,7 +260,7 @@ class PageController extends Controller
 
     public function footScreeningHistory()
     {
-        $results = FootScreeningResult::where('user_id', Auth::id())
+        $results = FootScreeningResult::where('user_id', $this->getDataEntryUserId())
             ->orderByDesc('created_at')
             ->get();
 
@@ -270,7 +270,7 @@ class PageController extends Controller
     public function footScreeningDetail($id)
     {
         $result = FootScreeningResult::where('id', $id)
-            ->where('user_id', Auth::id())
+            ->where('user_id', $this->getDataEntryUserId())
             ->firstOrFail();
 
         return view('foot-screening.detail', compact('result'));
@@ -335,7 +335,7 @@ class PageController extends Controller
 
         // Save to database
         $tnt = TntCalculation::create([
-            'user_id' => Auth::id(),
+            'user_id' => $this->getDataEntryUserId(),
             'jk' => $jk,
             'height' => $height,
             'weight' => $weight,
@@ -366,14 +366,14 @@ class PageController extends Controller
 
     public function tntHistory()
     {
-        $calculations = TntCalculation::with('diet')->where('user_id', Auth::id())->latest()->paginate(10);
+        $calculations = TntCalculation::with('diet')->where('user_id', $this->getDataEntryUserId())->latest()->paginate(10);
 
         return view('tnt.history', compact('calculations'));
     }
 
     public function tntDetail($id)
     {
-        $calculation = TntCalculation::with('diet.times.food')->where('user_id', Auth::id())->findOrFail($id);
+        $calculation = TntCalculation::with('diet.times.food')->where('user_id', $this->getDataEntryUserId())->findOrFail($id);
 
         $bmi = $calculation->bmi;
         $bbi = $calculation->bbi;
@@ -395,7 +395,7 @@ class PageController extends Controller
             return redirect()->route('tnt')->with('error', 'Tidak ada data perhitungan yang tersimpan.');
         }
 
-        $tnt = TntCalculation::create(array_merge($data, ['user_id' => Auth::id()]));
+        $tnt = TntCalculation::create(array_merge($data, ['user_id' => $this->getDataEntryUserId()]));
         $request->session()->forget('tnt_data');
 
         return redirect()->route('tnt.detail', $tnt->id)->with('success', 'Perhitungan berhasil disimpan ke riwayat.');
@@ -502,7 +502,7 @@ class PageController extends Controller
         ]);
 
         BloodSugarRecord::create([
-            'user_id' => Auth::id(),
+            'user_id' => $this->getDataEntryUserId(),
             'type' => $validated['type'],
             'value' => $validated['value'],
             'category' => $validated['category'],
@@ -515,7 +515,7 @@ class PageController extends Controller
 
     public function bloodSugarHistory(Request $request)
     {
-        $query = BloodSugarRecord::where('user_id', Auth::id())->orderBy('recorded_at', 'desc');
+        $query = BloodSugarRecord::where('user_id', $this->getDataEntryUserId())->orderBy('recorded_at', 'desc');
 
         $filterType = $request->get('type');
         if ($filterType && in_array($filterType, ['GDP', 'GDS'])) {
@@ -524,7 +524,7 @@ class PageController extends Controller
 
         $records = $query->paginate(15)->withQueryString();
 
-        $chartData = BloodSugarRecord::where('user_id', Auth::id())
+        $chartData = BloodSugarRecord::where('user_id', $this->getDataEntryUserId())
             ->orderBy('recorded_at', 'asc')
             ->limit(30)
             ->get();

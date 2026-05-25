@@ -7,6 +7,7 @@ use App\Models\InstrumentGroup;
 use App\Models\InstrumentQuestion;
 use App\Models\InstrumentResult;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminInstrumentController extends Controller
 {
@@ -127,9 +128,13 @@ class AdminInstrumentController extends Controller
 
     public function results(Request $request)
     {
+        $currentUser = Auth::user();
         $search = $request->get('search');
 
         $results = InstrumentResult::with('user')
+            ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
                     ->orWhere('username', 'like', "%{$search}%"));

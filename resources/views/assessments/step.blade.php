@@ -6,6 +6,8 @@
 @section('content')
 <div class="max-w-3xl mx-auto space-y-6">
 
+    @include('admin.partials.data-entry-banner', ['backUrl' => route('admin.monitoring.assessments')])
+
     {{-- Progress Bar --}}
     <div class="card">
         <div class="flex items-center justify-between mb-3">

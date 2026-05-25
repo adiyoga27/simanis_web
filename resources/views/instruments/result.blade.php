@@ -6,6 +6,8 @@
 @section('content')
 <div class="max-w-3xl mx-auto space-y-6">
 
+    @include('admin.partials.data-entry-banner', ['backUrl' => route('admin.instruments.results')])
+
     <div class="card text-center">
         @php
             $intColor = match($result->interpretation) {

@@ -6,6 +6,8 @@
 @section('content')
 <div class="max-w-4xl mx-auto space-y-8">
 
+    @include('admin.partials.data-entry-banner', ['backUrl' => route('admin.monitoring.assessments')])
+
     @if(session('error'))
         <div class="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3 text-red-700 text-sm">
             <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

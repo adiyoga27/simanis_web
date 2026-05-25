@@ -6,6 +6,8 @@
 @section('content')
 <div class="max-w-3xl mx-auto space-y-8">
 
+    @include('admin.partials.data-entry-banner', ['backUrl' => route('admin.instruments.results')])
+
     <div class="text-center">
         <h2 class="text-xl font-bold text-gray-800">Instrument Keyakinan</h2>
         <p class="text-sm text-gray-400 mt-1">Jawab seluruh pertanyaan berikut dengan jujur</p>
