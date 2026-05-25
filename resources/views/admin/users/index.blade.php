@@ -16,10 +16,18 @@
                 <p class="text-xs text-gray-400">Total {{ $users->total() }} pengguna</p>
             </div>
         </div>
-        <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors text-sm font-medium">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-            Kembali
-        </a>
+        <div class="flex items-center gap-2">
+            <a href="{{ route('admin.users.create') }}" class="btn-primary inline-flex items-center gap-2 text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Tambah Pengguna
+            </a>
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                Kembali
+            </a>
+        </div>
     </div>
 
     <div class="card">
@@ -58,11 +66,25 @@
                         <td class="px-5 py-4 text-gray-500">{{ $user->email }}</td>
                         <td class="px-5 py-4 text-gray-500">{{ $user->username }}</td>
                         <td class="px-5 py-4">
-                            @if($user->role === 'admin')
-                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-700">Admin</span>
-                            @else
-                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">User</span>
-                            @endif
+                            @php
+                                $roleColors = [
+                                    'superadmin' => 'bg-purple-100 text-purple-700',
+                                    'kepala_puskesmas' => 'bg-blue-100 text-blue-700',
+                                    'kepala_desa' => 'bg-green-100 text-green-700',
+                                    'kader' => 'bg-orange-100 text-orange-700',
+                                    'pasien' => 'bg-gray-100 text-gray-600',
+                                ];
+                                $roleLabels = [
+                                    'superadmin' => 'Superadmin',
+                                    'kepala_puskesmas' => 'Kepala Puskesmas',
+                                    'kepala_desa' => 'Kepala Desa',
+                                    'kader' => 'Kader',
+                                    'pasien' => 'Pasien',
+                                ];
+                            @endphp
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold {{ $roleColors[$user->role] ?? 'bg-gray-100 text-gray-600' }}">
+                                {{ $roleLabels[$user->role] ?? 'User' }}
+                            </span>
                         </td>
                         <td class="px-5 py-4">
                             @if($user->email_verified_at)

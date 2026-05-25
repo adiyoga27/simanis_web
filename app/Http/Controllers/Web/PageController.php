@@ -86,7 +86,7 @@ class PageController extends Controller
         ]);
 
         $payload['password'] = Hash::make($payload['password']);
-        $payload['role'] = 'user';
+        $payload['role'] = 'pasien';
         $payload['birthdate'] = date('Y-m-d', strtotime($payload['birthdate']));
         $payload['medical_history'] = $payload['medical_history'] ?? '';
 

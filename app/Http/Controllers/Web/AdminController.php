@@ -7,6 +7,7 @@ use App\Models\AssessmentGroup;
 use App\Models\AssessmentResult;
 use App\Models\AssessmentRule;
 use App\Models\BloodSugarRecord;
+use App\Models\Desa;
 use App\Models\Education;
 use App\Models\FootScreeningResult;
 use App\Models\Medication;
@@ -14,6 +15,8 @@ use App\Models\TntCalculation;
 use App\Models\User;
 use App\Models\WeightLog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -52,6 +55,72 @@ class AdminController extends Controller
         $users = $query->orderBy('created_at', 'desc')->paginate(15)->withQueryString();
 
         return view('admin.users.index', compact('users', 'search'));
+    }
+
+    public function createUser()
+    {
+        $desas = Desa::orderBy('name')->get();
+        $currentUser = Auth::user();
+
+        $availableRoles = [];
+        if ($currentUser->role === 'superadmin') {
+            $availableRoles = ['kepala_puskesmas' => 'Kepala Puskesmas', 'kepala_desa' => 'Kepala Desa', 'kader' => 'Kader'];
+        } elseif (in_array($currentUser->role, ['kepala_puskesmas', 'kepala_desa'])) {
+            $availableRoles = ['kader' => 'Kader'];
+        }
+
+        return view('admin.users.create', compact('desas', 'availableRoles'));
+    }
+
+    public function storeUser(Request $request)
+    {
+        $currentUser = Auth::user();
+
+        $allowedRoles = [];
+        if ($currentUser->role === 'superadmin') {
+            $allowedRoles = ['kepala_puskesmas', 'kepala_desa', 'kader'];
+        } elseif (in_array($currentUser->role, ['kepala_puskesmas', 'kepala_desa'])) {
+            $allowedRoles = ['kader'];
+        }
+
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'username' => 'required|string|max:50|unique:users,username',
+            'password' => 'required|string|min:6',
+            'role' => 'required|in:' . implode(',', $allowedRoles),
+            'phone' => 'nullable|string|max:20',
+            'jk' => 'required|in:L,P',
+        ];
+
+        if (in_array('kepala_desa', $allowedRoles) || in_array('kader', $allowedRoles)) {
+            $rules['desa_id'] = 'nullable|exists:desas,id';
+        }
+
+        if ($currentUser->role === 'kepala_desa') {
+            $request->merge(['desa_id' => $currentUser->desa_id]);
+        }
+
+        $validated = $request->validate($rules);
+
+        $validated['password'] = Hash::make($validated['password']);
+        $validated['email_verified_at'] = now();
+        $validated['birthdate'] = $request->birthdate ?? '2000-01-01';
+        $validated['is_smoke'] = $request->has('is_smoke');
+        $validated['medical_history'] = $request->medical_history ?? '-';
+        $validated['province'] = $request->province ?? 'Jawa Timur';
+        $validated['city'] = $request->city ?? '';
+        $validated['subdistrict'] = $request->subdistrict ?? '';
+        $validated['village'] = $request->village ?? '';
+        $validated['address'] = $request->address ?? '';
+        $validated['kode_pos'] = $request->kode_pos ?? 0;
+        $validated['tall'] = $request->tall ?? 0;
+        $validated['weight'] = $request->weight ?? 0;
+        $validated['blood'] = $request->blood ?? '';
+
+        User::create($validated);
+
+        return redirect()->route('admin.users')->with('success', 'Pengguna berhasil ditambahkan.');
     }
 
     public function userDetail($id)
@@ -106,11 +175,16 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
 
         $validated = $request->validate([
-            'role' => 'required|in:admin,user',
+            'role' => 'required|in:superadmin,kepala_puskesmas,kepala_desa,kader,pasien',
+            'desa_id' => 'nullable|exists:desas,id',
             'email_verified_at' => 'nullable|in:0,1',
         ]);
 
         $user->role = $validated['role'];
+
+        if (in_array($validated['role'], ['kepala_desa', 'kader'])) {
+            $user->desa_id = $validated['desa_id'] ?? null;
+        }
 
         if ($request->has('email_verified_at')) {
             $user->email_verified_at = $validated['email_verified_at'] == '1' ? ($user->email_verified_at ?? now()) : null;

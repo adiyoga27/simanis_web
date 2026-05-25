@@ -25,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'password',
         'role',
+        'desa_id',
         'avatar',
         'birthdate',
         'phone',
@@ -67,5 +68,10 @@ class User extends Authenticatable implements MustVerifyEmail
             'tall' => 'integer',
             'weight' => 'integer',
         ];
+    }
+
+    public function desa(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Desa::class);
     }
 }

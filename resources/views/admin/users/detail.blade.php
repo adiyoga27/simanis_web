@@ -26,11 +26,25 @@
                 <h2 class="text-2xl font-bold text-gray-800">{{ $user->name }}</h2>
                 <p class="text-gray-400">{{ '@' . $user->username }}</p>
                 <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-2">
-                    @if($user->role === 'admin')
-                        <span class="badge inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-700">Admin</span>
-                    @else
-                        <span class="badge inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">User</span>
-                    @endif
+                    @php
+                        $roleColors = [
+                            'superadmin' => 'bg-purple-100 text-purple-700',
+                            'kepala_puskesmas' => 'bg-blue-100 text-blue-700',
+                            'kepala_desa' => 'bg-green-100 text-green-700',
+                            'kader' => 'bg-orange-100 text-orange-700',
+                            'pasien' => 'bg-gray-100 text-gray-600',
+                        ];
+                        $roleLabels = [
+                            'superadmin' => 'Superadmin',
+                            'kepala_puskesmas' => 'Kepala Puskesmas',
+                            'kepala_desa' => 'Kepala Desa',
+                            'kader' => 'Kader',
+                            'pasien' => 'Pasien',
+                        ];
+                    @endphp
+                    <span class="badge inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold {{ $roleColors[$user->role] ?? 'bg-gray-100 text-gray-600' }}">
+                        {{ $roleLabels[$user->role] ?? 'User' }}
+                    </span>
                     @if($user->email_verified_at)
                         <span class="badge badge-green">Terverifikasi</span>
                     @else

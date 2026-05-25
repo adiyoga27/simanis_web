@@ -79,7 +79,7 @@ class AuthController extends Controller
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'role' => $request->role ?? 'user',
+                'role' => $request->role ?? 'pasien',
                 'birthdate' => Carbon::createFromFormat('d-m-Y', $request->birthdate),
                 'phone' => $request->phone,
                 'jk' => $request->jk,
@@ -95,7 +95,6 @@ class AuthController extends Controller
                 'address' => $request->address,
                 'kode_pos' => $request->kode_pos ?? null,
             ];
-
             if ($request->has('avatar')) {
                 $payload['avatar'] = Storage::put('images/avatars', $request->file('avatar'));
             }
@@ -122,7 +121,7 @@ class AuthController extends Controller
             $payload = [
                 'name' => $request->name,
                 'email' => $request->email,
-                'role' => $request->role ?? 'user',
+                'role' => $request->role ?? 'pasien',
                 'birthdate' => Carbon::createFromFormat('d-m-Y', $request->birthdate),
                 'phone' => $request->phone,
                 'jk' => $request->jk,

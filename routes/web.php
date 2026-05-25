@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\AdminDesaController;
 use App\Http\Controllers\Web\AdminEducationController;
 use App\Http\Controllers\Web\AdminInstrumentController;
 use App\Http\Controllers\Web\AdminLogController;
@@ -107,10 +108,22 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
     Route::get('/users/{id}', [AdminController::class, 'userDetail'])->name('admin.users.detail');
     Route::get('/users/{id}/edit', [AdminController::class, 'userEdit'])->name('admin.users.edit');
     Route::put('/users/{id}', [AdminController::class, 'userUpdate'])->name('admin.users.update');
     Route::get('/users/{userId}/assessments/{resultId}', [AdminController::class, 'userAssessmentDetail'])->name('admin.assessments.result.detail');
+
+    // Desa (Superadmin only)
+    Route::middleware('superadmin')->group(function () {
+        Route::get('/desa', [AdminDesaController::class, 'index'])->name('admin.desa.index');
+        Route::get('/desa/create', [AdminDesaController::class, 'create'])->name('admin.desa.create');
+        Route::post('/desa', [AdminDesaController::class, 'store'])->name('admin.desa.store');
+        Route::get('/desa/{id}/edit', [AdminDesaController::class, 'edit'])->name('admin.desa.edit');
+        Route::put('/desa/{id}', [AdminDesaController::class, 'update'])->name('admin.desa.update');
+        Route::delete('/desa/{id}', [AdminDesaController::class, 'destroy'])->name('admin.desa.destroy');
+    });
 
     // Assessment management
     Route::get('/assessments', [AssessmentAdminController::class, 'index'])->name('admin.assessments.index');
