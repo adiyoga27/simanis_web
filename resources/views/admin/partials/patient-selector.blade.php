@@ -1,3 +1,4 @@
+@if(Auth::user()->role !== 'kepala_puskesmas')
 @php
 $redirectTo = $redirectTo ?? '';
 $buttonLabel = $buttonLabel ?? 'Input Data';
@@ -10,3 +11,4 @@ $backUrl = $backUrl ?? url()->current();
     </svg>
     {{ $buttonLabel }}
 </a>
+@endif
