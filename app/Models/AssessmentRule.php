@@ -8,7 +8,7 @@ class AssessmentRule extends Model
 {
     protected $fillable = [
         'title', 'description', 'conditions', 'score_mode',
-        'selected_groups', 'result_text', 'color', 'min_score', 'max_score',
+        'selected_groups', 'result_text', 'reference_link', 'color', 'min_score', 'max_score',
         'severity', 'order',
     ];
 

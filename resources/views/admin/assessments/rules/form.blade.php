@@ -151,6 +151,18 @@
                 </div>
 
                 <div>
+                    <label for="reference_link" class="input-label">Link Referensi / Rekomendasi</label>
+                    <input type="url" name="reference_link" id="reference_link"
+                        class="input-field @error('reference_link') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror"
+                        value="{{ old('reference_link', $rule->reference_link ?? '') }}"
+                        placeholder="https://diamondcare.id/rekomendasi/...">
+                    <p class="text-xs text-gray-400 mt-1">Link akan muncul pada hasil assessment sebagai rekomendasi penanganan.</p>
+                    @error('reference_link')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
                     <label for="severity" class="input-label">Tingkat Keparahan <span class="text-red-500">*</span></label>
                     <select name="severity" id="severity"
                         class="input-field @error('severity') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror"

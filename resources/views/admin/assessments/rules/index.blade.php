@@ -81,10 +81,10 @@
                                 </div>
                             </td>
                             <td class="px-5 py-4">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-2.5 h-2.5 rounded-full flex-shrink-0 ring-2 ring-offset-1" style="background-color: {{ $sevColor }}; --tw-ring-color: {{ $sevColor }}30"></span>
-                                    <span class="text-gray-700 text-xs font-medium">{{ $sevLabel }}</span>
-                                </div>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border" style="background-color: {{ $sevColor }}15; color: {{ $sevColor }}; border-color: {{ $sevColor }}30">
+                                    <span class="w-1.5 h-1.5 rounded-full" style="background-color: {{ $sevColor }}"></span>
+                                    {{ $sevLabel }}
+                                </span>
                             </td>
                             <td class="px-5 py-4">
                                 <div class="flex flex-wrap gap-1">
