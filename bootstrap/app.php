@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'superadmin' => \App\Http\Middleware\SuperadminMiddleware::class,
+            'non_puskesmas' => \App\Http\Middleware\NonPuskesmasMiddleware::class,
         ]);
         $middleware->web(append: [
             \App\Http\Middleware\LogActivity::class,

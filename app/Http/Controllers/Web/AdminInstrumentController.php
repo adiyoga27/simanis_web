@@ -156,6 +156,9 @@ class AdminInstrumentController extends Controller
 
     public function destroyResult($id)
     {
+        if (Auth::user()->role === 'kepala_puskesmas') {
+            abort(403, 'Anda tidak memiliki izin untuk menghapus data.');
+        }
         InstrumentResult::findOrFail($id)->delete();
         return back()->with('success', 'Data berhasil dihapus.');
     }

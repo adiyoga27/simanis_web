@@ -69,6 +69,7 @@
                         </td>
                         <td class="px-5 py-4 text-gray-500 text-xs">{{ $r->recorded_at->format('d M Y · H:i') }}</td>
                         <td class="px-5 py-4 text-right whitespace-nowrap">
+                            @if(Auth::user()->role !== 'kepala_puskesmas')
                             <form action="{{ route('admin.monitoring.blood-sugar.destroy', $r->id) }}" method="POST" onsubmit="return confirm('Hapus permanen?')" style="display:inline">
                                 @csrf
                                 @method('DELETE')
@@ -77,6 +78,7 @@
                                     Hapus
                                 </button>
                             </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

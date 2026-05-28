@@ -286,6 +286,9 @@ class AdminController extends Controller
 
     public function monitoringFootScreeningDestroy($id)
     {
+        if (Auth::user()->role === 'kepala_puskesmas') {
+            abort(403, 'Anda tidak memiliki izin untuk menghapus data.');
+        }
         FootScreeningResult::findOrFail($id)->delete();
         return back()->with('success', 'Data berhasil dihapus.');
     }
@@ -313,6 +316,9 @@ class AdminController extends Controller
 
     public function monitoringAssessmentDestroy($id)
     {
+        if (Auth::user()->role === 'kepala_puskesmas') {
+            abort(403, 'Anda tidak memiliki izin untuk menghapus data.');
+        }
         AssessmentResult::findOrFail($id)->delete();
         return back()->with('success', 'Data berhasil dihapus.');
     }
@@ -340,6 +346,9 @@ class AdminController extends Controller
 
     public function monitoringBloodSugarDestroy($id)
     {
+        if (Auth::user()->role === 'kepala_puskesmas') {
+            abort(403, 'Anda tidak memiliki izin untuk menghapus data.');
+        }
         BloodSugarRecord::findOrFail($id)->delete();
         return back()->with('success', 'Data berhasil dihapus.');
     }
