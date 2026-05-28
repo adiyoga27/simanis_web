@@ -1,4 +1,4 @@
-@if(Auth::user()->role !== 'kepala_puskesmas')
+@if(in_array(Auth::user()->role, ['superadmin', 'kepala_puskesmas', 'kepala_desa']))
 @php
 $redirectTo = $redirectTo ?? '';
 $buttonLabel = $buttonLabel ?? 'Input Data';

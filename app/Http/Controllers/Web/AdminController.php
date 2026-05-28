@@ -9,6 +9,7 @@ use App\Models\AssessmentRule;
 use App\Models\BloodSugarRecord;
 use App\Models\Desa;
 use App\Models\Education;
+use App\Models\EducationCategory;
 use App\Models\FootScreeningResult;
 use App\Models\Medication;
 use App\Models\TntCalculation;
@@ -23,6 +24,8 @@ class AdminController extends Controller
     public function dashboard()
     {
         $totalUsers = User::count();
+        $totalPatients = User::where('role', 'pasien')->count();
+        $totalDesas = Desa::count();
         $totalEducations = Education::count();
         $totalBloodSugar = BloodSugarRecord::count();
         $totalFootScreenings = FootScreeningResult::count();
@@ -31,6 +34,8 @@ class AdminController extends Controller
 
         return view('admin.dashboard', compact(
             'totalUsers',
+            'totalPatients',
+            'totalDesas',
             'totalEducations',
             'totalBloodSugar',
             'totalFootScreenings',
@@ -77,7 +82,9 @@ class AdminController extends Controller
         $availableRoles = [];
         if ($currentUser->role === 'superadmin') {
             $availableRoles = ['kepala_puskesmas' => 'Kepala Puskesmas', 'kepala_desa' => 'Kepala Desa', 'kader' => 'Kader'];
-        } elseif (in_array($currentUser->role, ['kepala_puskesmas', 'kepala_desa'])) {
+        } elseif ($currentUser->role === 'kepala_puskesmas') {
+            $availableRoles = ['kepala_desa' => 'Kepala Desa', 'kader' => 'Kader'];
+        } elseif ($currentUser->role === 'kepala_desa') {
             $availableRoles = ['kader' => 'Kader'];
         }
 
@@ -91,7 +98,9 @@ class AdminController extends Controller
         $allowedRoles = [];
         if ($currentUser->role === 'superadmin') {
             $allowedRoles = ['kepala_puskesmas', 'kepala_desa', 'kader'];
-        } elseif (in_array($currentUser->role, ['kepala_puskesmas', 'kepala_desa'])) {
+        } elseif ($currentUser->role === 'kepala_puskesmas') {
+            $allowedRoles = ['kepala_desa', 'kader'];
+        } elseif ($currentUser->role === 'kepala_desa') {
             $allowedRoles = ['kader'];
         }
 
@@ -114,6 +123,10 @@ class AdminController extends Controller
         }
 
         $validated = $request->validate($rules);
+
+        if ($currentUser->role === 'kepala_desa' && $validated['role'] === 'kader') {
+            $validated['desa_id'] = $currentUser->desa_id;
+        }
 
         $validated['password'] = Hash::make($validated['password']);
         $validated['email_verified_at'] = now();
@@ -339,13 +352,21 @@ class AdminController extends Controller
         $search = $request->get('search');
         $desaId = $request->get('desa_id');
 
-        $results = BloodSugarRecord::with('user')
-            ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
-                $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
-            })
-            ->when($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas']), function ($q) use ($desaId) {
-                $q->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
-            })
+        $baseQuery = BloodSugarRecord::query();
+        if (in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id) {
+            $baseQuery->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+        }
+        if ($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas'])) {
+            $baseQuery->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
+        }
+
+        $statsQuery = clone $baseQuery;
+        $stats = [];
+        foreach (['Normal', 'Tinggi', 'Rendah', 'Sangat Tinggi', 'Sangat Rendah'] as $cat) {
+            $stats[$cat] = (clone $statsQuery)->where('category', $cat)->count();
+        }
+
+        $results = $baseQuery->with('user')
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
                     ->orWhere('username', 'like', "%{$search}%")
@@ -357,7 +378,7 @@ class AdminController extends Controller
 
         $desas = Desa::orderBy('name')->get();
 
-        return view('admin.monitoring.blood-sugar', compact('results', 'search', 'desas', 'desaId'));
+        return view('admin.monitoring.blood-sugar', compact('results', 'search', 'desas', 'desaId', 'stats'));
     }
 
     public function monitoringBloodSugarDestroy($id)
@@ -369,24 +390,56 @@ class AdminController extends Controller
         return back()->with('success', 'Data berhasil dihapus.');
     }
 
+    public function monitoringEducation()
+    {
+        $categories = EducationCategory::withCount('educations')->orderBy('created_at', 'desc')->get();
+
+        return view('admin.monitoring.education', compact('categories'));
+    }
+
+    public function monitoringEducationArticles($categoryId)
+    {
+        $category = EducationCategory::findOrFail($categoryId);
+        $educations = $category->educations()->orderBy('created_at', 'desc')->get();
+        $categories = EducationCategory::withCount('educations')->orderBy('created_at', 'desc')->get();
+
+        return view('admin.monitoring.education-articles', compact('category', 'educations', 'categories'));
+    }
+
+    public function monitoringEducationDetail($categoryId, $articleId)
+    {
+        $category = EducationCategory::findOrFail($categoryId);
+        $education = Education::where('education_category_id', $categoryId)->findOrFail($articleId);
+        $categories = EducationCategory::withCount('educations')->orderBy('created_at', 'desc')->get();
+
+        return view('admin.monitoring.education-detail', compact('category', 'education', 'categories'));
+    }
+
     public function showSelectPatient(Request $request)
     {
         $currentUser = Auth::user();
         $redirectTo = $request->get('redirect_to', route('admin.dashboard'));
         $backUrl = $request->get('back', url()->previous());
         $q = $request->get('q');
+        $filterDesaId = $request->get('desa_id');
 
         $pasienUsers = User::where('role', 'pasien')
             ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($query) use ($currentUser) {
                 $query->where('desa_id', $currentUser->desa_id);
             })
+            ->when($filterDesaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas']), function ($query) use ($filterDesaId) {
+                $query->where('desa_id', $filterDesaId);
+            })
             ->when($q, function ($query) use ($q) {
                 $query->where('name', 'like', "%{$q}%");
             })
+            ->with('desa')
             ->orderBy('name')
             ->get();
 
-        return view('admin.data-entry.select', compact('pasienUsers', 'redirectTo', 'backUrl', 'q'));
+        $desas = Desa::orderBy('name')->get();
+
+        return view('admin.data-entry.select', compact('pasienUsers', 'redirectTo', 'backUrl', 'q', 'desas', 'filterDesaId'));
     }
 
     public function selectDataEntryUser(Request $request)

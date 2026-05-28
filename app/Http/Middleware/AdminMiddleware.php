@@ -16,6 +16,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return redirect()->route('home')->with('error', 'Akses ditolak.');
+        return redirect()->route('foot-screening')->with('error', 'Akses ditolak.');
     }
 }

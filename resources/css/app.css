@@ -79,6 +79,14 @@
         @apply bg-primary-50 text-primary-600 font-semibold;
     }
 
+    .quick-link {
+        @apply flex items-center gap-3 p-3 rounded-xl transition-all duration-200;
+    }
+
+    .quick-link:hover {
+        @apply scale-[1.02] shadow-md;
+    }
+
     .stat-card {
         @apply card text-center;
     }
@@ -89,6 +97,15 @@
 
     .stat-label {
         @apply text-sm text-gray-500 mt-1;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.15s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-4px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 }
 

@@ -91,8 +91,19 @@
                     @error('desa_id')<p class="mt-1.5 text-sm text-red-500 font-medium">{{ $message }}</p>@enderror
                 </div>
                 @else
-                    <input type="hidden" name="desa_id" value="{{ $autoDesaId }}">
+                    <input type="hidden" name="desa_id" id="desa_id" value="{{ $autoDesaId }}">
                 @endif
+
+                <div>
+                    <label for="kader_id" class="input-label">Kader Penanganan</label>
+                    <select name="kader_id" id="kader_id" class="input-field @error('kader_id') !border-red-400 @enderror">
+                        <option value="">Pilih Kader</option>
+                        @foreach($kaders as $kader)
+                            <option value="{{ $kader->id }}" {{ old('kader_id', $patient->kader_id ?? '') == $kader->id ? 'selected' : '' }}>{{ $kader->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('kader_id')<p class="mt-1.5 text-sm text-red-500 font-medium">{{ $message }}</p>@enderror
+                </div>
 
                 <div>
                     <label for="address" class="input-label">Alamat Lengkap <span class="text-red-500">*</span></label>
@@ -202,3 +213,53 @@
 
 </div>
 @endsection
+
+@push('scripts')
+<script>
+(function() {
+    const desaSelect = document.getElementById('desa_id');
+    const kaderSelect = document.getElementById('kader_id');
+    if (!desaSelect || !kaderSelect) return;
+
+    const kaderRoute = '{{ route('admin.kader.by.desa', ['desaId' => '__DESA_ID__']) }}';
+    const savedKaderId = '{{ old('kader_id', $patient->kader_id ?? '') }}';
+
+    function populateKaders(kaders, selectedId) {
+        kaderSelect.innerHTML = kaders.length
+            ? '<option value="">Pilih Kader</option>'
+            : '<option value="">Tidak ada kader</option>';
+        kaders.forEach(function(k) {
+            const option = document.createElement('option');
+            option.value = k.id;
+            option.textContent = k.name;
+            if (k.id == selectedId) option.selected = true;
+            kaderSelect.appendChild(option);
+        });
+    }
+
+    function loadKaders(desaId, selectedId) {
+        if (!desaId) {
+            kaderSelect.innerHTML = '<option value="">Pilih Desa terlebih dahulu</option>';
+            return;
+        }
+        kaderSelect.innerHTML = '<option value="">Memuat...</option>';
+        kaderSelect.disabled = true;
+
+        fetch(kaderRoute.replace('__DESA_ID__', desaId))
+            .then(function(res) { return res.json(); })
+            .then(function(data) { populateKaders(data, selectedId); })
+            .catch(function() { kaderSelect.innerHTML = '<option value="">Gagal memuat kader</option>'; })
+            .finally(function() { kaderSelect.disabled = false; });
+    }
+
+    desaSelect.addEventListener('change', function() {
+        loadKaders(this.value, null);
+    });
+
+    const autoDesaId = '{{ $autoDesaId }}';
+    if (autoDesaId) {
+        loadKaders(autoDesaId, savedKaderId);
+    }
+})();
+</script>
+@endpush

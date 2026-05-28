@@ -1,98 +1,161 @@
 @extends('layouts.app')
 
-@section('title', 'Monitoring Gula Darah')
-@section('page-title', 'Monitoring Gula Darah')
+@section('title', 'Pemantauan Gula Darah')
+@section('page-title', 'Pemantauan Gula Darah')
 
 @section('content')
 <div class="max-w-6xl mx-auto space-y-6">
 
     @if(session('success'))
-        <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3 text-green-700 text-sm">
+        <div class="bg-green-50 border border-green-200 rounded-2xl p-4 flex items-center gap-3 text-green-700 text-sm">
             <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             {{ session('success') }}
         </div>
     @endif
 
-    <div class="flex items-center justify-between">
-        <div>
-            <h2 class="text-xl font-bold text-gray-800">Gula Darah</h2>
-            <p class="text-sm text-gray-400 mt-0.5">{{ $results->total() }} catatan · semua pengguna</p>
-        </div>
+    {{-- Header & Input Button --}}
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div class="flex items-center gap-3">
-            @include('admin.partials.patient-selector', ['redirectTo' => route('blood-sugar'), 'dropdownId' => 'bloodSugarPatient'])
-            <form method="GET">
-                <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Cari user..." class="input-field !w-48">
-            </form>
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-red-400 to-orange-500 flex items-center justify-center shadow-lg shadow-red-200">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <div>
+                <h2 class="text-xl font-bold text-gray-800">Pemantauan Gula Darah</h2>
+                <p class="text-sm text-gray-400">{{ $results->total() }} catatan</p>
+            </div>
+        </div>
+        @if(in_array(Auth::user()->role, ['superadmin', 'kepala_puskesmas', 'kepala_desa']))
+        <a href="{{ route('admin.data-entry.select-patient', ['redirect_to' => route('blood-sugar'), 'back' => url()->current()]) }}" class="btn-primary inline-flex items-center gap-2 text-sm !rounded-2xl !px-5 !py-3 shadow-lg shadow-red-200 hover:shadow-xl hover:shadow-red-300 transition-all duration-300 active:scale-95">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Input Gula Darah
+        </a>
+        @endif
+    </div>
+
+    {{-- Quick Stats --}}
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div class="card !p-3 text-center bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100">
+            <p class="text-xs text-green-500 font-medium mb-0.5">Normal</p>
+            <p class="text-xl font-bold text-green-600">{{ $stats['Normal'] ?? 0 }}</p>
+        </div>
+        <div class="card !p-3 text-center bg-gradient-to-br from-yellow-50 to-amber-50 border border-yellow-100">
+            <p class="text-xs text-yellow-500 font-medium mb-0.5">Tinggi</p>
+            <p class="text-xl font-bold text-yellow-600">{{ $stats['Tinggi'] ?? 0 }}</p>
+        </div>
+        <div class="card !p-3 text-center bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-100">
+            <p class="text-xs text-orange-500 font-medium mb-0.5">Rendah</p>
+            <p class="text-xl font-bold text-orange-600">{{ $stats['Rendah'] ?? 0 }}</p>
+        </div>
+        <div class="card !p-3 text-center bg-gradient-to-br from-red-50 to-rose-50 border border-red-100">
+            <p class="text-xs text-red-500 font-medium mb-0.5">Sangat Tinggi</p>
+            <p class="text-xl font-bold text-red-600">{{ $stats['Sangat Tinggi'] ?? 0 }}</p>
+        </div>
+        <div class="card !p-3 text-center bg-gradient-to-br from-red-50 to-rose-50 border border-red-100">
+            <p class="text-xs text-red-500 font-medium mb-0.5">Sangat Rendah</p>
+            <p class="text-xl font-bold text-red-600">{{ $stats['Sangat Rendah'] ?? 0 }}</p>
         </div>
     </div>
 
-    @if(in_array(Auth::user()->role, ['superadmin', 'kepala_puskesmas']))
-    <div class="card">@include('admin.partials.desa-filter')</div>
+    {{-- Search & Filter --}}
+    <div class="card !p-3 sm:!p-4">
+        <div class="flex flex-col sm:flex-row gap-3">
+            <form method="GET" class="flex-1 relative">
+                @if($desaId ?? false)<input type="hidden" name="desa_id" value="{{ $desaId }}">@endif
+                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <input type="text" name="search" value="{{ $search ?? '' }}" placeholder="Cari pasien..." class="w-full pl-12 pr-4 py-3 rounded-2xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-red-300 focus:ring-4 focus:ring-red-50 outline-none transition-all duration-200 text-sm">
+            </form>
+            @if(in_array(Auth::user()->role, ['superadmin', 'kepala_puskesmas']))
+            <form method="GET" class="flex items-center gap-2">
+                @if($search ?? false)<input type="hidden" name="search" value="{{ $search }}">@endif
+                <select name="desa_id" onchange="this.form.submit()" class="px-4 py-3 rounded-2xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-red-300 focus:ring-4 focus:ring-red-50 outline-none transition-all duration-200 text-sm text-gray-600 cursor-pointer">
+                    <option value="">Semua Desa</option>
+                    @foreach($desas as $desa)
+                        <option value="{{ $desa->id }}" {{ ($desaId ?? '') == $desa->id ? 'selected' : '' }}>{{ $desa->name }}</option>
+                    @endforeach
+                </select>
+                @if($desaId ?? false)
+                <a href="{{ url()->current() }}?{{ http_build_query(request()->except('desa_id', 'page')) }}" class="inline-flex items-center gap-1.5 px-4 py-3 rounded-2xl bg-white border border-gray-200 text-gray-500 text-sm font-medium hover:bg-gray-50 hover:text-gray-700 transition-all duration-200">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    Reset
+                </a>
+                @endif
+            </form>
+            @endif
+        </div>
+    </div>
+
+    @if($results->isEmpty())
+        <div class="card text-center py-20 text-gray-400 rounded-3xl">
+            <div class="w-20 h-20 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-10 h-10 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <p class="font-semibold text-gray-500 text-base">Belum ada data gula darah</p>
+            <p class="text-sm text-gray-400 mt-1">Data akan muncul setelah pasien melakukan pencatatan</p>
+        </div>
+    @else
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            @foreach($results as $r)
+            @php
+                $catStyle = match($r->category) {
+                    'Normal' => ['bg' => 'from-green-400 to-emerald-500', 'badge' => 'bg-green-50 text-green-600 border-green-200', 'shadow' => 'shadow-green-200'],
+                    'Tinggi' => ['bg' => 'from-yellow-400 to-amber-500', 'badge' => 'bg-yellow-50 text-yellow-600 border-yellow-200', 'shadow' => 'shadow-yellow-200'],
+                    'Sangat Tinggi' => ['bg' => 'from-red-400 to-rose-500', 'badge' => 'bg-red-50 text-red-600 border-red-200', 'shadow' => 'shadow-red-200'],
+                    'Rendah' => ['bg' => 'from-orange-400 to-amber-500', 'badge' => 'bg-orange-50 text-orange-600 border-orange-200', 'shadow' => 'shadow-orange-200'],
+                    'Sangat Rendah' => ['bg' => 'from-red-400 to-rose-500', 'badge' => 'bg-red-50 text-red-600 border-red-200', 'shadow' => 'shadow-red-200'],
+                    default => ['bg' => 'from-gray-400 to-gray-500', 'badge' => 'bg-gray-50 text-gray-600 border-gray-200', 'shadow' => 'shadow-gray-200'],
+                };
+                $typeStyle = $r->type === 'GDP' ? ['bg' => 'bg-primary-50 text-primary-600 border-primary-200', 'label' => 'GDP (Puasa)'] : ['bg' => 'bg-pink-50 text-pink-600 border-pink-200', 'label' => 'GDS (Sewaktu)'];
+            @endphp
+            <div class="card !p-0 overflow-hidden hover:shadow-xl transition-all duration-300 group rounded-3xl border-0 shadow-md">
+                {{-- Top accent bar --}}
+                <div class="h-1.5 bg-gradient-to-r {{ $catStyle['bg'] }}"></div>
+                <div class="p-5">
+                    {{-- Header --}}
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br {{ $catStyle['bg'] }} flex items-center justify-center text-white font-bold text-sm shadow {{ $catStyle['shadow'] }} flex-shrink-0">
+                                {{ strtoupper(substr($r->user?->name ?? 'U', 0, 1)) }}
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-gray-800 text-sm truncate">{{ $r->user?->name ?? 'Tidak Diketahui' }}</p>
+                                <p class="text-xs text-gray-400 mt-0.5 flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    {{ $r->recorded_at->format('d M Y · H:i') }}
+                                </p>
+                            </div>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border {{ $typeStyle['bg'] }} flex-shrink-0">{{ $typeStyle['label'] }}</span>
+                    </div>
+
+                    {{-- Value --}}
+                    <div class="bg-gray-50 rounded-2xl p-4 mb-4 text-center">
+                        <p class="text-3xl font-extrabold text-gray-800 tracking-tight">{{ $r->value }}</p>
+                        <p class="text-xs text-gray-400 mt-1 font-medium">mg/dL</p>
+                    </div>
+
+                    {{-- Category & Actions --}}
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border {{ $catStyle['badge'] }}">
+                            <span class="w-1.5 h-1.5 rounded-full {{ str_replace(['bg-', 'text-', 'border-'], ['bg-', '', ''], $catStyle['badge']) }}" style="background-color: currentColor"></span>
+                            {{ $r->category }}
+                        </span>
+        @if(in_array(Auth::user()->role, ['superadmin', 'kepala_puskesmas', 'kepala_desa']))
+                        <form action="{{ route('admin.monitoring.blood-sugar.destroy', $r->id) }}" method="POST" onsubmit="return confirm('Hapus permanen?')" class="flex-shrink-0">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-gray-50 text-gray-400 hover:bg-red-50 hover:text-red-500 transition-all duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                            </button>
+                        </form>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     @endif
 
-    <div class="card overflow-hidden !p-0">
-        <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-                <thead>
-                    <tr class="bg-gray-50 text-left">
-                        <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">User</th>
-                        <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Tipe</th>
-                        <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Nilai</th>
-                        <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Kategori</th>
-                        <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider">Tanggal</th>
-                        <th class="px-5 py-3.5 font-semibold text-gray-500 text-xs uppercase tracking-wider text-right w-32">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-50">
-                    @foreach($results as $r)
-                    @php
-                        $catColor = match($r->category) {
-                            'Normal' => 'bg-green-100 text-green-700',
-                            'Tinggi' => 'bg-yellow-100 text-yellow-700',
-                            'Sangat Tinggi' => 'bg-red-100 text-red-700',
-                            'Rendah' => 'bg-orange-100 text-orange-700',
-                            'Sangat Rendah' => 'bg-red-100 text-red-700',
-                            default => 'bg-gray-100 text-gray-600',
-                        };
-                    @endphp
-                    <tr class="hover:bg-gray-50/50 transition-colors">
-                        <td class="px-5 py-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-500">
-                                    {{ strtoupper(substr($r->user?->name ?? 'U', 0, 1)) }}
-                                </div>
-                                <p class="font-medium text-gray-800">{{ $r->user?->name ?? '-' }}</p>
-                            </div>
-                        </td>
-                        <td class="px-5 py-4">
-                            <span class="badge {{ $r->type === 'GDP' ? 'bg-primary-100 text-primary-700' : 'bg-pink-100 text-pink-700' }} text-xs">{{ $r->type }}</span>
-                        </td>
-                        <td class="px-5 py-4 font-semibold text-gray-800">{{ $r->value }} mg/dL</td>
-                        <td class="px-5 py-4">
-                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold {{ $catColor }}">{{ $r->category }}</span>
-                        </td>
-                        <td class="px-5 py-4 text-gray-500 text-xs">{{ $r->recorded_at->format('d M Y · H:i') }}</td>
-                        <td class="px-5 py-4 text-right whitespace-nowrap">
-                            @if(Auth::user()->role !== 'kepala_puskesmas')
-                            <form action="{{ route('admin.monitoring.blood-sugar.destroy', $r->id) }}" method="POST" onsubmit="return confirm('Hapus permanen?')" style="display:inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-100 text-red-600 text-xs font-semibold hover:bg-red-200 transition-colors">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                                    Hapus
-                                </button>
-                            </form>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        @if($results->isEmpty()) <div class="text-center py-12 text-gray-400 text-sm">Tidak ada data.</div> @endif
-    </div>
-
-    <div class="px-1">{{ $results->links() }}</div>
+    <div class="flex justify-center">{{ $results->links() }}</div>
 
 </div>
 @endsection

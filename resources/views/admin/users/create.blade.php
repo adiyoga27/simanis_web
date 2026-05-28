@@ -85,12 +85,17 @@
 
                 <div id="desa-field" class="{{ in_array(old('role'), ['kepala_desa', 'kader']) ? '' : 'hidden' }}">
                     <label for="desa_id" class="input-label">Desa</label>
+                    @if(Auth::user()->role === 'kepala_desa')
+                        <input type="hidden" name="desa_id" value="{{ Auth::user()->desa_id }}">
+                        <p class="text-sm text-gray-500 mt-1">{{ Auth::user()->desa?->name ?? 'Desa tidak diketahui' }} (otomatis)</p>
+                    @else
                     <select name="desa_id" id="desa_id" class="input-field @error('desa_id') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror">
                         <option value="">Pilih Desa</option>
                         @foreach($desas as $desa)
                             <option value="{{ $desa->id }}" {{ old('desa_id') == $desa->id ? 'selected' : '' }}>{{ $desa->name }}</option>
                         @endforeach
                     </select>
+                    @endif
                     @error('desa_id')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror

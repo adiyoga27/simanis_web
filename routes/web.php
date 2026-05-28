@@ -35,7 +35,7 @@ Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])-
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [PageController::class, 'home'])->name('home');
+    Route::redirect('/home', '/admin')->name('home');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Education
@@ -138,6 +138,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/patients/{id}/edit', [AdminPatientController::class, 'edit'])->name('admin.patients.edit');
     Route::put('/patients/{id}', [AdminPatientController::class, 'update'])->name('admin.patients.update');
     Route::delete('/patients/{id}', [AdminPatientController::class, 'destroy'])->name('admin.patients.destroy');
+    Route::get('/kader-by-desa/{desaId}', [AdminPatientController::class, 'kaderByDesa'])->name('admin.kader.by.desa');
 
     // Assessment management
     Route::get('/assessments', [AssessmentAdminController::class, 'index'])->name('admin.assessments.index');
@@ -175,6 +176,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/monitoring/foot-screening/{id}', [AdminController::class, 'monitoringFootScreeningDetail'])->name('admin.monitoring.foot-screening.detail');
     Route::get('/monitoring/assessments', [AdminController::class, 'monitoringAssessments'])->name('admin.monitoring.assessments');
     Route::get('/monitoring/blood-sugar', [AdminController::class, 'monitoringBloodSugar'])->name('admin.monitoring.blood-sugar');
+
+    Route::get('/monitoring/education', [AdminController::class, 'monitoringEducation'])->name('admin.monitoring.education');
+    Route::get('/monitoring/education/{categoryId}', [AdminController::class, 'monitoringEducationArticles'])->name('admin.monitoring.education.articles');
+    Route::get('/monitoring/education/{categoryId}/{articleId}', [AdminController::class, 'monitoringEducationDetail'])->name('admin.monitoring.education.detail');
 
     // Monitoring delete (non-puskesmas only)
     Route::middleware('non_puskesmas')->group(function () {

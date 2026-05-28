@@ -55,11 +55,17 @@ class AdminPatientController extends Controller
             $autoDesaId = $currentUser->desa_id;
         }
 
+        $kaders = collect();
+        if ($autoDesaId) {
+            $kaders = User::where('role', 'kader')->where('desa_id', $autoDesaId)->orderBy('name')->get();
+        }
+
         return view('admin.patients.form', [
             'patient' => new User,
             'desas' => $desas,
             'autoDesaId' => $autoDesaId,
             'showDesaField' => $showDesaField,
+            'kaders' => $kaders,
         ]);
     }
 
@@ -83,6 +89,7 @@ class AdminPatientController extends Controller
             'weight' => 'required|integer|min:1|max:500',
             'is_smoke' => 'required|in:0,1',
             'medical_history' => 'nullable|string',
+            'kader_id' => 'nullable|exists:users,id',
         ];
 
         if (in_array($currentUser->role, ['superadmin', 'kepala_puskesmas'])) {
@@ -139,7 +146,13 @@ class AdminPatientController extends Controller
             $autoDesaId = $currentUser->desa_id;
         }
 
-        return view('admin.patients.form', compact('patient', 'desas', 'autoDesaId', 'showDesaField'));
+        $kaders = collect();
+        $desaId = $autoDesaId ?: $patient->desa_id;
+        if ($desaId) {
+            $kaders = User::where('role', 'kader')->where('desa_id', $desaId)->orderBy('name')->get();
+        }
+
+        return view('admin.patients.form', compact('patient', 'desas', 'autoDesaId', 'showDesaField', 'kaders'));
     }
 
     public function update(Request $request, $id)
@@ -167,6 +180,7 @@ class AdminPatientController extends Controller
             'weight' => 'required|integer|min:1|max:500',
             'is_smoke' => 'required|in:0,1',
             'medical_history' => 'nullable|string',
+            'kader_id' => 'nullable|exists:users,id',
         ];
 
         if (in_array($currentUser->role, ['superadmin', 'kepala_puskesmas'])) {
@@ -196,5 +210,15 @@ class AdminPatientController extends Controller
         $patient->delete();
 
         return redirect()->route('admin.patients.index')->with('success', 'Pasien berhasil dihapus.');
+    }
+
+    public function kaderByDesa($desaId)
+    {
+        $kaders = User::where('role', 'kader')
+            ->where('desa_id', $desaId)
+            ->orderBy('name')
+            ->get(['id', 'name']);
+
+        return response()->json($kaders);
     }
 }

@@ -44,7 +44,7 @@ class PageController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('admin.dashboard'));
         }
 
         return back()->withErrors(['username' => 'Username atau password salah.'])->onlyInput('username');

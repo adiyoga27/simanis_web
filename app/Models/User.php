@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'role',
         'desa_id',
+        'kader_id',
         'avatar',
         'birthdate',
         'phone',
@@ -74,5 +75,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function desa(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Desa::class);
+    }
+
+    public function kader(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'kader_id');
+    }
+
+    public function patients(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(User::class, 'kader_id');
     }
 }
