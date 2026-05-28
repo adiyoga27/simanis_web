@@ -260,10 +260,14 @@ class AdminController extends Controller
     {
         $currentUser = Auth::user();
         $search = $request->get('search');
+        $desaId = $request->get('desa_id');
 
         $results = FootScreeningResult::with('user')
             ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
                 $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
+            ->when($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas']), function ($q) use ($desaId) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
             })
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
@@ -274,7 +278,9 @@ class AdminController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        return view('admin.monitoring.foot-screening', compact('results', 'search'));
+        $desas = Desa::orderBy('name')->get();
+
+        return view('admin.monitoring.foot-screening', compact('results', 'search', 'desas', 'desaId'));
     }
 
     public function monitoringFootScreeningDetail($id)
@@ -297,10 +303,14 @@ class AdminController extends Controller
     {
         $currentUser = Auth::user();
         $search = $request->get('search');
+        $desaId = $request->get('desa_id');
 
         $results = AssessmentResult::with('user')
             ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
                 $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
+            ->when($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas']), function ($q) use ($desaId) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
             })
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
@@ -311,7 +321,9 @@ class AdminController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        return view('admin.monitoring.assessments', compact('results', 'search'));
+        $desas = Desa::orderBy('name')->get();
+
+        return view('admin.monitoring.assessments', compact('results', 'search', 'desas', 'desaId'));
     }
 
     public function monitoringAssessmentDestroy($id)
@@ -327,10 +339,14 @@ class AdminController extends Controller
     {
         $currentUser = Auth::user();
         $search = $request->get('search');
+        $desaId = $request->get('desa_id');
 
         $results = BloodSugarRecord::with('user')
             ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
                 $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
+            ->when($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas']), function ($q) use ($desaId) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
             })
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
@@ -341,7 +357,9 @@ class AdminController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        return view('admin.monitoring.blood-sugar', compact('results', 'search'));
+        $desas = Desa::orderBy('name')->get();
+
+        return view('admin.monitoring.blood-sugar', compact('results', 'search', 'desas', 'desaId'));
     }
 
     public function monitoringBloodSugarDestroy($id)

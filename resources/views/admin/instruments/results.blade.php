@@ -26,6 +26,10 @@
         </div>
     </div>
 
+    @if(in_array(Auth::user()->role, ['superadmin', 'kepala_puskesmas']))
+    <div class="card">@include('admin.partials.desa-filter')</div>
+    @endif
+
     <div class="card overflow-hidden !p-0">
         <div class="overflow-x-auto">
             <table class="w-full text-sm">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\InstrumentGroup;
 use App\Models\InstrumentQuestion;
+use App\Models\Desa;
 use App\Models\InstrumentResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -130,10 +131,14 @@ class AdminInstrumentController extends Controller
     {
         $currentUser = Auth::user();
         $search = $request->get('search');
+        $desaId = $request->get('desa_id');
 
         $results = InstrumentResult::with('user')
             ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
                 $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
+            ->when($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas']), function ($q) use ($desaId) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
             })
             ->when($search, function ($q) use ($search) {
                 $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
@@ -143,7 +148,9 @@ class AdminInstrumentController extends Controller
             ->paginate(20)
             ->withQueryString();
 
-        return view('admin.instruments.results', compact('results', 'search'));
+        $desas = Desa::orderBy('name')->get();
+
+        return view('admin.instruments.results', compact('results', 'search', 'desas', 'desaId'));
     }
 
     public function resultDetail($id)
