@@ -37,8 +37,35 @@ class InstrumentController extends Controller
         ]);
 
         $answers = $validated['answers'];
-        $totalScore = array_sum($answers);
-        $maxScore = $groups->sum(fn($g) => $g->questions->count()) * 3;
+        $totalScore = 0;
+        $maxScore = 0;
+        $answersDetail = [];
+
+        foreach ($groups as $group) {
+            foreach ($group->questions as $q) {
+                $val = (int) ($answers[$q->id] ?? 0);
+                $maxScore += 3;
+
+                if ($q->score_type === 'unfavorable') {
+                    $score = 4 - $val;
+                } else {
+                    $score = $val;
+                }
+                $totalScore += $score;
+
+                $answersDetail[] = [
+                    'group_title'  => $group->title,
+                    'question'     => $q->question,
+                    'score_type'   => $q->score_type,
+                    'answer'       => $val,
+                    'score'        => $score,
+                    'label'        => match ($val) {
+                        1 => 'Tidak Setuju', 2 => 'Kurang Setuju', 3 => 'Setuju', default => '-'
+                    },
+                ];
+            }
+        }
+
         $percentage = round(($totalScore / $maxScore) * 100, 2);
 
         $interpretation = match (true) {
@@ -46,21 +73,6 @@ class InstrumentController extends Controller
             $percentage >= 60 => 'Keyakinan Sedang',
             default           => 'Keyakinan Rendah',
         };
-
-        $answersDetail = [];
-        foreach ($groups as $group) {
-            foreach ($group->questions as $q) {
-                $val = (int) ($answers[$q->id] ?? 0);
-                $answersDetail[] = [
-                    'group_title' => $group->title,
-                    'question'    => $q->question,
-                    'answer'      => $val,
-                    'label'       => match ($val) {
-                        1 => 'Tidak Setuju', 2 => 'Kurang Setuju', 3 => 'Setuju', default => '-'
-                    },
-                ];
-            }
-        }
 
         $result = InstrumentResult::create([
             'user_id'        => $this->getDataEntryUserId(),

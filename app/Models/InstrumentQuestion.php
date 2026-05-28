@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class InstrumentQuestion extends Model
 {
-    protected $fillable = ['instrument_group_id', 'question', 'order'];
+    protected $fillable = ['instrument_group_id', 'question', 'score_type', 'order'];
 
     public function group(): BelongsTo
     {

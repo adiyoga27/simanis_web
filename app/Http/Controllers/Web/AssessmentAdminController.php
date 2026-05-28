@@ -32,12 +32,17 @@ class AssessmentAdminController extends Controller
             'title'       => 'required|string|max:255',
             'slug'        => 'nullable|string|max:255|unique:assessment_groups,slug',
             'description' => 'nullable|string',
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'icon'        => 'nullable|string|max:255',
             'order'       => 'nullable|integer|min:0',
         ]);
 
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
         $validated['order'] = $validated['order'] ?? 0;
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('assessments', 'public');
+        }
 
         AssessmentGroup::create($validated);
 
@@ -59,12 +64,20 @@ class AssessmentAdminController extends Controller
             'title'       => 'required|string|max:255',
             'slug'        => 'nullable|string|max:255|unique:assessment_groups,slug,' . $group->id,
             'description' => 'nullable|string',
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'icon'        => 'nullable|string|max:255',
             'order'       => 'nullable|integer|min:0',
         ]);
 
         $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
         $validated['order'] = $validated['order'] ?? 0;
+
+        if ($request->hasFile('image')) {
+            if ($group->image) {
+                \Storage::disk('public')->delete($group->image);
+            }
+            $validated['image'] = $request->file('image')->store('assessments', 'public');
+        }
 
         $group->update($validated);
 

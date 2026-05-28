@@ -26,7 +26,14 @@
             <div class="space-y-6">
                 @foreach($group->questions as $q)
                 <div class="pb-4 border-b border-gray-50 last:border-0 last:pb-0">
-                    <p class="text-sm font-medium text-gray-700 mb-3">{{ $loop->parent->index + 1 }}.{{ $loop->index + 1 }} {{ $q->question }}</p>
+                    <div class="flex items-start gap-2 mb-3">
+                        @if($q->score_type === 'favorable')
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs font-bold flex-shrink-0 mt-0.5">+</span>
+                        @else
+                            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-100 text-red-700 text-xs font-bold flex-shrink-0 mt-0.5">−</span>
+                        @endif
+                        <p class="text-sm font-medium text-gray-700">{{ $loop->parent->index + 1 }}.{{ $loop->index + 1 }} {{ $q->question }}</p>
+                    </div>
                     <div class="grid grid-cols-3 gap-2">
                         @foreach([1 => 'Tidak Setuju', 2 => 'Kurang Setuju', 3 => 'Setuju'] as $val => $label)
                         <label class="flex items-center justify-center gap-2 p-3 rounded-xl border border-gray-200 cursor-pointer hover:border-primary-300 hover:bg-primary-50/50 transition-colors has-[:checked]:border-primary-500 has-[:checked]:bg-primary-50 has-[:checked]:text-primary-700">

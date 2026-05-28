@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AssessmentGroup extends Model
 {
-    protected $fillable = ['title', 'slug', 'description', 'icon', 'order'];
+    protected $fillable = ['title', 'slug', 'description', 'image', 'icon', 'order'];
 
     public function subGroups(): HasMany
     {

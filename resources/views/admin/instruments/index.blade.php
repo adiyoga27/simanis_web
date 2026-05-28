@@ -82,7 +82,14 @@
                 <div class="space-y-1">
                     @foreach($group->questions as $q)
                     <div class="flex items-center justify-between text-sm py-1.5 px-3 bg-gray-50 rounded-lg">
-                        <span class="text-gray-600">{{ $q->question }}</span>
+                        <span class="text-gray-600 truncate mr-2">
+                            @if($q->score_type === 'favorable')
+                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs font-bold mr-1.5">+</span>
+                            @else
+                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-100 text-red-700 text-xs font-bold mr-1.5">−</span>
+                            @endif
+                            {{ $q->question }}
+                        </span>
                         <div class="flex items-center gap-1">
                             <a href="{{ route('admin.instruments.questions.edit', $q->id) }}" class="p-1 text-gray-400 hover:text-primary-600">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>

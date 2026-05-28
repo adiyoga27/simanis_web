@@ -38,6 +38,12 @@
         </div>
     @endif
 
+    @if($currentIndex > 0 && !empty($group->image))
+        <div class="card !p-2 overflow-hidden rounded-3xl border-0">
+            <img src="{{ asset('storage/' . $group->image) }}" alt="Ilustrasi {{ $group->title }}" class="w-full h-48 sm:h-56 object-cover rounded-2xl">
+        </div>
+    @endif
+
     <form action="{{ route('assessment.save', $group->slug) }}" method="POST">
         @csrf
 

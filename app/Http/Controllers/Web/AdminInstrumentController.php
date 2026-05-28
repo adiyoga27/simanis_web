@@ -79,8 +79,9 @@ class AdminInstrumentController extends Controller
         $group = InstrumentGroup::findOrFail($groupId);
 
         $validated = $request->validate([
-            'question' => 'required|string',
-            'order'    => 'nullable|integer|min:0',
+            'question'   => 'required|string',
+            'score_type' => 'required|in:favorable,unfavorable',
+            'order'      => 'nullable|integer|min:0',
         ]);
         $validated['instrument_group_id'] = $group->id;
         $validated['order'] = $validated['order'] ?? 0;
@@ -106,8 +107,9 @@ class AdminInstrumentController extends Controller
         $question = InstrumentQuestion::findOrFail($id);
 
         $validated = $request->validate([
-            'question' => 'required|string',
-            'order'    => 'nullable|integer|min:0',
+            'question'   => 'required|string',
+            'score_type' => 'required|in:favorable,unfavorable',
+            'order'      => 'nullable|integer|min:0',
         ]);
         $validated['order'] = $validated['order'] ?? 0;
 
