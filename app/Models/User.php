@@ -42,6 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'weight',
         'blood',
         'otp',
+        'email_verified_at',
     ];
 
     /**
