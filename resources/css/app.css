@@ -107,6 +107,22 @@
         from { opacity: 0; transform: translateY(-4px); }
         to   { opacity: 1; transform: translateY(0); }
     }
+
+    .education-content img {
+        @apply rounded-2xl w-full;
+    }
+    .education-content h1, .education-content h2, .education-content h3 {
+        @apply font-bold text-gray-800;
+    }
+    .education-content h2 { @apply text-xl; }
+    .education-content h3 { @apply text-lg; }
+    .education-content p { @apply text-gray-700; }
+    .education-content ul, .education-content ol { @apply pl-5; }
+    .education-content li { @apply mb-1; }
+    .education-content a { @apply text-primary-600 underline; }
+    .education-content table { @apply w-full border-collapse; }
+    .education-content td, .education-content th { @apply border border-gray-200 p-2 text-sm; }
+    .education-content blockquote { @apply border-l-4 border-primary-300 pl-4 italic text-gray-500; }
 }
 
 @layer utilities {

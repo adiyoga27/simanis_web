@@ -397,19 +397,19 @@ class AdminController extends Controller
         return view('admin.monitoring.education', compact('categories'));
     }
 
-    public function monitoringEducationArticles($categoryId)
+    public function monitoringEducationArticles($categorySlug)
     {
-        $category = EducationCategory::findOrFail($categoryId);
+        $category = EducationCategory::where('slug', $categorySlug)->firstOrFail();
         $educations = $category->educations()->orderBy('created_at', 'desc')->get();
         $categories = EducationCategory::withCount('educations')->orderBy('created_at', 'desc')->get();
 
         return view('admin.monitoring.education-articles', compact('category', 'educations', 'categories'));
     }
 
-    public function monitoringEducationDetail($categoryId, $articleId)
+    public function monitoringEducationDetail($categorySlug, $articleSlug)
     {
-        $category = EducationCategory::findOrFail($categoryId);
-        $education = Education::where('education_category_id', $categoryId)->findOrFail($articleId);
+        $category = EducationCategory::where('slug', $categorySlug)->firstOrFail();
+        $education = Education::where('education_category_id', $category->id)->where('slug', $articleSlug)->firstOrFail();
         $categories = EducationCategory::withCount('educations')->orderBy('created_at', 'desc')->get();
 
         return view('admin.monitoring.education-detail', compact('category', 'education', 'categories'));

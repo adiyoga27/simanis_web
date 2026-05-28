@@ -178,8 +178,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/monitoring/blood-sugar', [AdminController::class, 'monitoringBloodSugar'])->name('admin.monitoring.blood-sugar');
 
     Route::get('/monitoring/education', [AdminController::class, 'monitoringEducation'])->name('admin.monitoring.education');
-    Route::get('/monitoring/education/{categoryId}', [AdminController::class, 'monitoringEducationArticles'])->name('admin.monitoring.education.articles');
-    Route::get('/monitoring/education/{categoryId}/{articleId}', [AdminController::class, 'monitoringEducationDetail'])->name('admin.monitoring.education.detail');
+    Route::get('/monitoring/education/{categorySlug}', [AdminController::class, 'monitoringEducationArticles'])->name('admin.monitoring.education.articles');
+    Route::get('/monitoring/education/{categorySlug}/{articleSlug}', [AdminController::class, 'monitoringEducationDetail'])->name('admin.monitoring.education.detail');
 
     // Monitoring delete (non-puskesmas only)
     Route::middleware('non_puskesmas')->group(function () {

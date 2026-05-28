@@ -34,7 +34,7 @@
                 <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Kategori</p>
                 <div class="space-y-1">
                     @foreach($categories as $cat)
-                    <a href="{{ route('admin.monitoring.education.articles', $cat->id) }}" class="flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all duration-200 {{ $cat->id === $category->id ? 'bg-cyan-50 text-cyan-700 font-semibold' : 'text-gray-600 hover:bg-gray-50' }}">
+                    <a href="{{ route('admin.monitoring.education.articles', $cat->slug) }}" class="flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all duration-200 {{ $cat->id === $category->id ? 'bg-cyan-50 text-cyan-700 font-semibold' : 'text-gray-600 hover:bg-gray-50' }}">
                         <span class="flex items-center gap-2">
                             <span class="w-2 h-2 rounded-full" style="background-color: {{ $cat->color ?? '#06B6D4' }}"></span>
                             {{ $cat->title }}
@@ -55,7 +55,7 @@
             @else
                 <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                     @foreach($educations as $edu)
-                    <a href="{{ route('admin.monitoring.education.detail', [$category->id, $edu->id]) }}" class="group card !p-0 overflow-hidden rounded-3xl border-0 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <a href="{{ route('admin.monitoring.education.detail', [$category->slug, $edu->slug]) }}" class="group card !p-0 overflow-hidden rounded-3xl border-0 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                         @if($edu->image)
                         <div class="relative h-44 overflow-hidden">
                             <img src="{{ asset('storage/' . $edu->image) }}" alt="{{ $edu->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">

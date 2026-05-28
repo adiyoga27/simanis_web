@@ -10,7 +10,7 @@
     <div class="flex items-center gap-2 text-sm flex-wrap">
         <a href="{{ route('admin.monitoring.education') }}" class="text-gray-400 hover:text-gray-600 transition-colors">Pilar Tata Laksana</a>
         <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        <a href="{{ route('admin.monitoring.education.articles', $category->id) }}" class="text-gray-400 hover:text-gray-600 transition-colors">{{ $category->title }}</a>
+        <a href="{{ route('admin.monitoring.education.articles', $category->slug) }}" class="text-gray-400 hover:text-gray-600 transition-colors">{{ $category->title }}</a>
         <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         <span class="font-semibold text-gray-700 line-clamp-1">{{ $education->title }}</span>
     </div>
@@ -35,15 +35,15 @@
                 </span>
             </div>
             <h1 class="text-xl sm:text-2xl font-extrabold text-gray-800 leading-tight mb-4">{{ $education->title }}</h1>
-            <div class="prose prose-sm prose-gray max-w-none">
-                {!! nl2br(e($education->content ?? '')) !!}
+            <div class="education-content text-sm text-gray-700 leading-relaxed space-y-3">
+                {!! $education->content ?? '' !!}
             </div>
         </div>
     </div>
 
     {{-- Back --}}
     <div class="text-center pb-6">
-        <a href="{{ route('admin.monitoring.education.articles', $category->id) }}" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition-colors">
+        <a href="{{ route('admin.monitoring.education.articles', $category->slug) }}" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             Kembali ke {{ $category->title }}
         </a>
