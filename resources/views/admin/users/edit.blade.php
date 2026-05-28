@@ -61,20 +61,6 @@
                     @enderror
                 </div>
 
-                <div>
-                    <label class="input-label" for="email_verified_at">Status Verifikasi Email</label>
-                    <select name="email_verified_at" id="email_verified_at" class="input-field">
-                        <option value="0" {{ !$user->email_verified_at ? 'selected' : '' }}>Belum Terverifikasi</option>
-                        <option value="1" {{ $user->email_verified_at ? 'selected' : '' }}>Terverifikasi</option>
-                    </select>
-                    @error('email_verified_at')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                    @if($user->email_verified_at)
-                        <p class="text-xs text-gray-400 mt-1">Terverifikasi pada: {{ $user->email_verified_at->format('d M Y, H:i') }}</p>
-                    @endif
-                </div>
-
                 <div class="flex items-center gap-3 pt-4">
                     <button type="submit" class="btn-primary flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>

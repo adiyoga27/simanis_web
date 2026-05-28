@@ -42,7 +42,6 @@
                 <option value="kepala_puskesmas" {{ ($role ?? '') === 'kepala_puskesmas' ? 'selected' : '' }}>Kepala Puskesmas</option>
                 <option value="kepala_desa" {{ ($role ?? '') === 'kepala_desa' ? 'selected' : '' }}>Kepala Desa</option>
                 <option value="kader" {{ ($role ?? '') === 'kader' ? 'selected' : '' }}>Kader</option>
-                <option value="pasien" {{ ($role ?? '') === 'pasien' ? 'selected' : '' }}>Pasien</option>
             </select>
             <select name="desa_id" class="input-field !w-auto">
                 <option value="">Semua Desa</option>

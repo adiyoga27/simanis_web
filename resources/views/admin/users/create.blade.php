@@ -49,14 +49,25 @@
                 </div>
 
                 <div>
-                    <label for="password" class="input-label">Password <span class="text-red-500">*</span></label>
-                    <input type="password" name="password" id="password"
-                        class="input-field @error('password') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror"
-                        placeholder="Minimal 6 karakter"
-                        required>
-                    @error('password')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="password" class="input-label">Password <span class="text-red-500">*</span></label>
+                            <input type="password" name="password" id="password"
+                                class="input-field @error('password') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror"
+                                placeholder="Minimal 6 karakter"
+                                required>
+                            @error('password')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="password_confirmation" class="input-label">Ulangi Password <span class="text-red-500">*</span></label>
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                class="input-field"
+                                placeholder="Ketik ulang password"
+                                required>
+                        </div>
+                    </div>
                 </div>
 
                 <div>

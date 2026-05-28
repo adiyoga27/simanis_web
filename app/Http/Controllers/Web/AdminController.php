@@ -56,6 +56,7 @@ class AdminController extends Controller
         if ($role) {
             $query->where('role', $role);
         }
+        $query->where('role', '!=', 'pasien');
 
         $desaId = $request->get('desa_id');
         if ($desaId) {
@@ -98,7 +99,7 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'username' => 'required|string|max:50|unique:users,username',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed',
             'role' => 'required|in:' . implode(',', $allowedRoles),
             'phone' => 'nullable|string|max:20',
             'jk' => 'required|in:L,P',
@@ -188,7 +189,6 @@ class AdminController extends Controller
         $validated = $request->validate([
             'role' => 'required|in:superadmin,kepala_puskesmas,kepala_desa,kader,pasien',
             'desa_id' => 'nullable|exists:desas,id',
-            'email_verified_at' => 'nullable|in:0,1',
         ]);
 
         $user->role = $validated['role'];
@@ -197,9 +197,7 @@ class AdminController extends Controller
             $user->desa_id = $validated['desa_id'] ?? null;
         }
 
-        if ($request->has('email_verified_at')) {
-            $user->email_verified_at = $validated['email_verified_at'] == '1' ? ($user->email_verified_at ?? now()) : null;
-        }
+        $user->email_verified_at = $user->email_verified_at ?? now();
 
         $user->save();
 
