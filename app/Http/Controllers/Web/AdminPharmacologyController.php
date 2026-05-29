@@ -43,8 +43,24 @@ class AdminPharmacologyController extends Controller
 
     public function create(Request $request)
     {
-        $patientId = $request->get('patient_id');
-        $patient = $patientId ? User::find($patientId) : null;
+        $patientId = $request->get('patient_id') ?? session('admin_data_entry_user_id');
+
+        if (!$patientId) {
+            return redirect()->route('admin.data-entry.select-patient', [
+                'redirect_to' => route('admin.pharmacology.create'),
+                'back'        => url()->current(),
+            ]);
+        }
+
+        $patient = User::find($patientId);
+
+        if (!$patient) {
+            return redirect()->route('admin.data-entry.select-patient', [
+                'redirect_to' => route('admin.pharmacology.create'),
+                'back'        => url()->current(),
+            ])->with('error', 'Pasien tidak ditemukan.');
+        }
+
         $patients = User::where('role', 'patient')->orderBy('name')->get();
 
         return view('admin.pharmacology.form', compact('patient', 'patients'));

@@ -56,6 +56,9 @@
 
 <div class="max-w-2xl mx-auto space-y-6 pb-8">
 
+    @php $backUrl = route('admin.pharmacology.index'); @endphp
+    @include('admin.partials.data-entry-banner')
+
     <div class="glass-card rounded-3xl p-6 sm:p-8 bg-mesh-teal">
         <div class="flex items-center gap-4">
             <div class="shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-teal-500/25">
