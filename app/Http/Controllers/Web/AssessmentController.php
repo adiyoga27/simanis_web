@@ -46,6 +46,7 @@ class AssessmentController extends Controller
         $totalGroups = $groups->count();
         $isLast = $currentIndex === $totalGroups - 1;
 
+
         $nextGroup = $isLast ? null : $groups[$currentIndex + 1] ?? null;
         $prevGroup = $currentIndex > 0 ? $groups[$currentIndex - 1] : null;
 

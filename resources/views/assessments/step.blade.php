@@ -25,12 +25,13 @@
         </div>
         {{-- Step indicators for desktop --}}
         <div class="hidden sm:flex items-start justify-between mt-3 gap-1">
-            @foreach($groups as $idx => $g)
+             @foreach($groups as $idx => $g)
                 @php
                     $isCompleted = $idx < $currentIndex;
                     $isCurrent = $idx == $currentIndex;
-                    $isLast = $idx == count($groups) - 1;
+                    $isLastStep = $idx == count($groups) - 1;
                 @endphp
+                
                 <div class="flex-1 flex flex-col items-center min-w-0">
                     <div class="flex items-center w-full">
                         <span class="flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold flex-shrink-0 transition-all duration-300
@@ -43,7 +44,7 @@
                                 {{ $idx + 1 }}
                             @endif
                         </span>
-                        @if(!$isLast)
+                        @if(!$isLastStep)
                             <div class="flex-1 h-0.5 mx-0.5 rounded {{ $isCompleted ? 'bg-primary-400' : 'bg-gray-200' }} transition-colors duration-300"></div>
                         @endif
                     </div>
