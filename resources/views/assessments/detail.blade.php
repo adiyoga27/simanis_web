@@ -21,7 +21,7 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
 
     <div class="flex items-center gap-3">
         @if(in_array(Auth::user()->role, ['superadmin', 'kepala_puskesmas', 'kepala_desa', 'kader']))
-            <a href="{{ route('admin.users.detail', $result->user_id) }}" class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors text-sm font-medium">
+            <a href="{{ route('admin.monitoring.assessments') }}" class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors text-sm font-medium">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 Kembali
             </a>

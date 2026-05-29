@@ -23,10 +23,34 @@
                 <span class="w-2 h-2 rounded-full {{ $idx < $currentIndex ? 'bg-primary-400' : ($idx == $currentIndex ? 'bg-primary-600 w-4' : 'bg-gray-300') }} transition-all duration-300"></span>
             @endforeach
         </div>
-        {{-- Step labels for desktop --}}
-        <div class="hidden sm:flex justify-between mt-2">
+        {{-- Step indicators for desktop --}}
+        <div class="hidden sm:flex items-start justify-between mt-3 gap-1">
             @foreach($groups as $idx => $g)
-                <span class="text-xs {{ $idx < $currentIndex ? 'text-primary-500 font-medium' : ($idx == $currentIndex ? 'text-primary-600 font-bold' : 'text-gray-300') }} max-w-[80px] text-center truncate">{{ $g->title }}</span>
+                @php
+                    $isCompleted = $idx < $currentIndex;
+                    $isCurrent = $idx == $currentIndex;
+                    $isLast = $idx == count($groups) - 1;
+                @endphp
+                <div class="flex-1 flex flex-col items-center min-w-0">
+                    <div class="flex items-center w-full">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold flex-shrink-0 transition-all duration-300
+                            {{ $isCompleted ? 'bg-primary-500 text-white shadow-sm shadow-primary-200' : '' }}
+                            {{ $isCurrent ? 'bg-primary-600 text-white shadow-md shadow-primary-300 ring-2 ring-primary-200' : '' }}
+                            {{ !$isCompleted && !$isCurrent ? 'bg-gray-200 text-gray-400' : '' }}">
+                            @if($isCompleted)
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            @else
+                                {{ $idx + 1 }}
+                            @endif
+                        </span>
+                        @if(!$isLast)
+                            <div class="flex-1 h-0.5 mx-0.5 rounded {{ $isCompleted ? 'bg-primary-400' : 'bg-gray-200' }} transition-colors duration-300"></div>
+                        @endif
+                    </div>
+                    <span class="text-[10px] mt-1.5 text-center leading-tight {{ $isCompleted ? 'text-primary-500 font-medium' : ($isCurrent ? 'text-primary-600 font-semibold' : 'text-gray-400') }} line-clamp-2">
+                        {{ $g->title }}
+                    </span>
+                </div>
             @endforeach
         </div>
     </div>
@@ -40,7 +64,7 @@
 
     @if($currentIndex > 0 && !empty($group->image))
         <div class="card !p-2 overflow-hidden rounded-3xl border-0">
-            <img src="{{ asset('storage/' . $group->image) }}" alt="Ilustrasi {{ $group->title }}" class="w-full h-48 sm:h-56 object-cover rounded-2xl">
+            <img src="{{ asset('storage/' . $group->image) }}" alt="Ilustrasi {{ $group->title }}" class="w-full h-48 sm:h-56 object-cover rounded-2xl cursor-pointer hover:opacity-90 transition-opacity" onclick="openZoom('{{ asset('storage/' . $group->image) }}')">
         </div>
     @endif
 
@@ -65,7 +89,12 @@
                         required>
                     <div class="flex-1 min-w-0">
                         @if($option->image)
-                            <img src="{{ asset('storage/' . $option->image) }}" alt="{{ $option->text }}" class="w-full max-w-xs rounded-xl object-cover mb-2 border border-gray-100">
+                            <div class="relative inline-block group cursor-pointer mb-2" onclick="event.stopPropagation();openZoom('{{ asset('storage/' . $option->image) }}')">
+                                <img src="{{ asset('storage/' . $option->image) }}" alt="{{ $option->text }}" class="w-full max-w-xs rounded-xl object-cover border border-gray-100 group-hover:brightness-90 transition-all">
+                                <div class="absolute inset-0 flex items-center justify-center rounded-xl bg-black/0 group-hover:bg-black/20 transition-all">
+                                    <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                                </div>
+                            </div>
                         @endif
                         <p class="text-sm sm:text-base text-gray-700 font-medium">{{ $option->text }}</p>
                         <span class="inline-flex items-center gap-1 mt-1.5 text-xs text-gray-400">
@@ -101,6 +130,33 @@
             </button>
         </div>
     </form>
+
+    {{-- Image Zoom Modal --}}
+    <div id="zoomModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4" onclick="closeZoom()">
+        <div class="relative max-w-4xl max-h-[90vh] flex items-center justify-center" onclick="event.stopPropagation()">
+            <button onclick="closeZoom()" class="absolute -top-10 right-0 p-2 text-white/70 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <img id="zoomImage" src="" alt="" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl">
+        </div>
+    </div>
+
+    <script>
+        function openZoom(src) {
+            document.getElementById('zoomImage').src = src;
+            document.getElementById('zoomModal').classList.remove('hidden');
+            document.getElementById('zoomModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeZoom() {
+            document.getElementById('zoomModal').classList.add('hidden');
+            document.getElementById('zoomModal').classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeZoom();
+        });
+    </script>
 
 </div>
 @endsection

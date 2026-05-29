@@ -73,11 +73,17 @@
             </a>
 
             {{-- Data Master --}}
-            <button type="button" onclick="toggleDataMaster()" class="pt-4 mt-4 border-t border-gray-100 w-full flex items-center justify-between px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider hover:text-gray-500 transition-colors cursor-pointer {{ request()->routeIs(['admin.patients*','admin.users*','admin.desa*','admin.assessments*','admin.instruments*','admin.education*']) ? 'text-primary-600' : '' }}">
+            @php
+                $dataMasterActive = request()->routeIs([
+                    'admin.patients*','admin.users*','admin.desa*',
+                    'admin.instruments*','admin.education*'
+                ]) || (request()->routeIs('admin.assessments*') && !request()->routeIs('admin.assessments.result*'));
+            @endphp
+            <button type="button" onclick="toggleDataMaster()" class="pt-4 mt-4 border-t border-gray-100 w-full flex items-center justify-between px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider hover:text-gray-500 transition-colors cursor-pointer {{ $dataMasterActive ? 'text-primary-600' : '' }}">
                 <span>Data Master</span>
-                <svg id="dataMasterChevron" class="w-3.5 h-3.5 transition-transform duration-200" style="transform: {{ request()->routeIs(['admin.patients*','admin.users*','admin.desa*','admin.assessments*','admin.instruments*','admin.education*']) ? 'rotate(180deg)' : 'rotate(0deg)' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <svg id="dataMasterChevron" class="w-3.5 h-3.5 transition-transform duration-200" style="transform: {{ $dataMasterActive ? 'rotate(180deg)' : 'rotate(0deg)' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div id="dataMasterMenu" class="space-y-1 {{ request()->routeIs(['admin.patients*','admin.users*','admin.desa*','admin.assessments*','admin.instruments*','admin.education*']) ? '' : 'hidden' }}">
+            <div id="dataMasterMenu" class="space-y-1 {{ $dataMasterActive ? '' : 'hidden' }}">
             <a href="{{ route('admin.patients.index') }}" onclick="closeSidebar()" class="sidebar-link {{ request()->routeIs('admin.patients*') ? 'active' : '' }}">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                 Manajemen Pasien
@@ -91,7 +97,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                 Manajemen Desa
             </a>
-            <a href="{{ route('admin.assessments.index') }}" onclick="closeSidebar()" class="sidebar-link {{ request()->routeIs('admin.assessments*') ? 'active' : '' }}">
+            <a href="{{ route('admin.assessments.index') }}" onclick="closeSidebar()" class="sidebar-link {{ request()->routeIs('admin.assessments*') && !request()->routeIs('admin.assessments.result*') ? 'active' : '' }}">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
                 Assessments
             </a>
@@ -122,7 +128,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5"/></svg>
                 Screening Kaki
             </a> --}}
-            <a href="{{ route('admin.monitoring.assessments') }}" onclick="closeSidebar()" class="sidebar-link {{ request()->routeIs('admin.monitoring.assessments*') ? 'active' : '' }}">
+            <a href="{{ route('admin.monitoring.assessments') }}" onclick="closeSidebar()" class="sidebar-link {{ request()->routeIs('admin.monitoring.assessments*') || request()->routeIs('admin.assessments.result*') || request()->routeIs('assessment*') ? 'active' : '' }}">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                 Screening Kaki
             </a>
