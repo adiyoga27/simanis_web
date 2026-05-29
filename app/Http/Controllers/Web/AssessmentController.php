@@ -196,7 +196,7 @@ class AssessmentController extends Controller
 
     private function matchConclusion(array $groupScores): ?int
     {
-        $conclusions = AssessmentConclusion::with('conditions')->orderBy('priority')->get();
+        $conclusions = AssessmentConclusion::with('conditions.category')->orderBy('priority')->get();
 
         if ($conclusions->isEmpty()) return null;
 
@@ -209,7 +209,10 @@ class AssessmentController extends Controller
             $result = null;
 
             foreach ($conclusion->conditions as $condition) {
-                $categoryRuleIds = $condition->category?->rules->pluck('id')->toArray() ?? [];
+                $category = $condition->category;
+                if (!$category) continue;
+
+                $categoryRuleIds = $category->rules->pluck('id')->toArray();
                 $categoryMatchedRules = array_intersect($matchedRuleIds, $categoryRuleIds);
 
                 if ($condition->target_severity) {

@@ -148,9 +148,11 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
                                 </div>
                             @endif
 
+                            @if(!empty($rule->result_text))
                             <div class="text-sm text-gray-800 leading-relaxed rounded-xl p-4 border" style="background-color: {{ $sc['light'] }}; border-color: {{ $sc['bg'] }}20; color: {{ $sc['text'] }}">
                                 {!! nl2br(e($displayText)) !!}
                             </div>
+                            @endif
 
                             @if(!empty($rule->reference_link))
                             <a href="{{ $rule->reference_link }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 bg-primary-50 hover:bg-primary-100 px-4 py-2.5 rounded-xl transition-colors">
@@ -178,35 +180,73 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
 
     {{-- Conclusion --}}
     @if($result->conclusion)
-    <div class="card overflow-hidden !p-0 border-2 border-primary-200 mt-6">
-        <div class="flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white {{ $result->conclusion->color ? '' : 'bg-primary-600' }}" style="{{ $result->conclusion->color ? 'background-color: ' . $result->conclusion->color . ';' : '' }}">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span>{{ $result->conclusion->title }}</span>
-            <span class="ml-auto text-xs font-normal opacity-80">{{ ucfirst($result->conclusion->severity) }}</span>
+    @php
+        $concColor = $result->conclusion->color ?: match($result->conclusion->severity) {
+            'normal' => '#16a34a', 'ringan' => '#ca8a04',
+            'sedang' => '#ea580c', 'tinggi' => '#dc2626',
+            default => '#6b7280'
+        };
+        $sevIcon = match($result->conclusion->severity) {
+            'normal' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+            'ringan' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+            'sedang' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/>',
+            default => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/>',
+        };
+    @endphp
+    <div class="relative mt-8">
+        {{-- Section label --}}
+        <div class="flex items-center gap-2 mb-4">
+            <div class="h-px flex-1" style="background: linear-gradient(to right, {{ $concColor }}40, transparent)"></div>
+            <span class="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="background-color: {{ $concColor }}15; color: {{ $concColor }}">Kesimpulan</span>
+            <div class="h-px flex-1" style="background: linear-gradient(to left, {{ $concColor }}40, transparent)"></div>
         </div>
-        <div class="px-5 py-4 space-y-3">
-            @if($result->conclusion->description)
-                <p class="text-sm text-gray-500 leading-relaxed">{{ $result->conclusion->description }}</p>
-            @endif
 
-            @php
-                $concColor = $result->conclusion->color ?: match($result->conclusion->severity) {
-                    'normal' => '#16a34a', 'ringan' => '#ca8a04',
-                    'sedang' => '#ea580c', 'tinggi' => '#dc2626',
-                    default => '#6b7280'
-                };
-            @endphp
-            <div class="text-sm font-medium text-gray-800 leading-relaxed rounded-xl p-4 border" style="background-color: {{ $concColor }}10; border-color: {{ $concColor }}30; color: {{ $concColor }}">
-                {!! nl2br(e($result->conclusion->result_text)) !!}
+        {{-- Background glow --}}
+        <div class="absolute -inset-1 rounded-3xl opacity-20 blur-xl" style="background: {{ $concColor }}"></div>
+
+        {{-- Main card --}}
+        <div class="relative overflow-hidden rounded-2xl border-2 shadow-lg" style="border-color: {{ $concColor }}40; background: linear-gradient(135deg, {{ $concColor }}08 0%, {{ $concColor }}12 100%)">
+            {{-- Header --}}
+            <div class="flex items-center gap-3 px-6 py-4 text-white" style="background: linear-gradient(135deg, {{ $concColor }}, {{ $concColor }}dd)">
+                <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">{!! $sevIcon !!}</svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h3 class="font-bold text-base leading-tight">{{ $result->conclusion->title }}</h3>
+                    <p class="text-xs text-white/70 mt-0.5">Kesimpulan Hasil Pemeriksaan</p>
+                </div>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                    {{ ucfirst($result->conclusion->severity) }}
+                </span>
             </div>
 
-            @if($result->conclusion->reference_link)
-            <a href="{{ $result->conclusion->reference_link }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-700 bg-primary-50 hover:bg-primary-100 px-4 py-2.5 rounded-xl transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-                Rekomendasi Penanganan
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-            </a>
-            @endif
+            {{-- Body --}}
+            <div class="px-6 py-5 space-y-4">
+                @if($result->conclusion->description)
+                    <p class="text-sm text-gray-600 leading-relaxed">{{ $result->conclusion->description }}</p>
+                @endif
+
+                <div class="relative rounded-2xl p-5 backdrop-blur-xs" style="background-color: {{ $concColor }}0f; border: 1px solid {{ $concColor }}25">
+                    {{-- Quote icon --}}
+                    <div class="absolute -top-3 -left-1" style="color: {{ $concColor }}30">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    </div>
+                    <p class="text-sm font-medium leading-relaxed" style="color: {{ $concColor }}dd">
+                        {!! nl2br(e($result->conclusion->result_text)) !!}
+                    </p>
+                </div>
+
+                @if($result->conclusion->reference_link)
+                <div class="pt-3 border-t" style="border-color: {{ $concColor }}20">
+                <a href="{{ $result->conclusion->reference_link }}" target="_blank" rel="noopener" class="group inline-flex items-center gap-3 w-full sm:w-auto px-5 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]" style="background: {{ $concColor }}; color: #fff; box-shadow: 0 4px 15px {{ $concColor }}40">
+                    <svg class="w-5 h-5 group-hover:animate-bounce flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                    <span>Lihat Rekomendasi Penanganan</span>
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+                </div>
+                @endif
+            </div>
         </div>
     </div>
     @endif

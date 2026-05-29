@@ -150,11 +150,10 @@
                 </div>
 
                 <div>
-                    <label for="result_text" class="input-label">Teks Hasil / Deskripsi Dinamis <span class="text-red-500">*</span></label>
+                    <label for="result_text" class="input-label">Teks Hasil / Deskripsi Dinamis</label>
                     <textarea name="result_text" id="result_text" rows="3"
                         class="input-field @error('result_text') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror"
-                        placeholder="Teks yang ditampilkan saat aturan ini cocok. Gunakan {total}, {groups} untuk placeholder dinamis."
-                        required>{{ old('result_text', $rule->result_text ?? '') }}</textarea>
+                        placeholder="Teks yang ditampilkan saat aturan ini cocok. Gunakan {total}, {groups} untuk placeholder dinamis.">{{ old('result_text', $rule->result_text ?? '') }}</textarea>
                     <p class="text-xs text-gray-400 mt-1">
                         Variabel dinamis: <code class="text-primary-600">{total}</code> = total skor agregat,
                         <code class="text-primary-600">{groups}</code> = nama kelompok terpilih.
