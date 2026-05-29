@@ -120,7 +120,7 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
                         </div>
                         <div class="px-5 py-4 space-y-3">
                             @if($rule->description)
-                                <p class="text-sm text-gray-500 leading-relaxed">{{ $rule->description }}</p>
+                                <p class="text-sm text-gray-500 leading-relaxed">{!! nl2br(e($rule->description)) !!}</p>
                             @endif
 
                             @if($rule->score_mode === 'aggregate' && isset($aggregateResults[$rule->id]))
@@ -222,7 +222,7 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
                 </div>
 
                 @if($result->conclusion->description)
-                    <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-xl">{{ $result->conclusion->description }}</p>
+                    <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-xl">{!! nl2br(e($result->conclusion->description)) !!}</p>
                 @endif
 
                 <div class="relative rounded-3xl p-6 sm:p-7 bg-white/10 backdrop-blur-md border border-white/10 shadow-inner">
