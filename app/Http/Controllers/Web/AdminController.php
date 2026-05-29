@@ -221,7 +221,7 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($userId);
         $result = AssessmentResult::where('user_id', $user->id)
-            ->with(['resultOptions.option'])
+            ->with(['resultOptions.option', 'conclusion'])
             ->findOrFail($resultId);
 
         $groups = AssessmentGroup::with('subGroups')->orderBy('order')->get();

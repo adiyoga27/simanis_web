@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssessmentConclusion;
 use App\Models\AssessmentGroup;
 use App\Models\AssessmentOption;
 use App\Models\AssessmentResult;
@@ -170,6 +171,7 @@ class AssessmentController extends Controller
             'total_score'   => $totalScore,
             'group_scores'  => $groupScores,
             'matched_rules' => collect($matchedRules)->pluck('id')->toArray(),
+            'conclusion_id' => $this->matchConclusion($groupScores),
             'notes'         => null,
         ]);
 
@@ -192,6 +194,97 @@ class AssessmentController extends Controller
         return redirect()->route('assessment.detail', $result->id);
     }
 
+    private function matchConclusion(array $groupScores): ?int
+    {
+        $conclusions = AssessmentConclusion::with('conditions')->orderBy('priority')->get();
+
+        if ($conclusions->isEmpty()) return null;
+
+        $rules = AssessmentRule::with('category')->orderBy('order')->get();
+        $matchedRuleIds = collect($this->matchAllRules($groupScores, $rules))->pluck('id')->toArray();
+
+        foreach ($conclusions as $conclusion) {
+            if ($conclusion->conditions->isEmpty()) continue;
+
+            $allConditionsMet = true;
+
+            foreach ($conclusion->conditions as $condition) {
+                $categoryRuleIds = $condition->category?->rules->pluck('id')->toArray() ?? [];
+                $categoryMatchedRules = array_intersect($matchedRuleIds, $categoryRuleIds);
+
+                if ($condition->target_severity) {
+                    $severityMatched = 0;
+                    foreach ($categoryMatchedRules as $ruleId) {
+                        $rule = $rules->find($ruleId);
+                        if ($rule && $rule->severity === $condition->target_severity) {
+                            $severityMatched++;
+                        }
+                    }
+                    $matchedCount = $severityMatched;
+                } else {
+                    $matchedCount = count($categoryMatchedRules);
+                }
+
+                if ($matchedCount < $condition->min_matched_rules) {
+                    $allConditionsMet = false;
+                    break;
+                }
+            }
+
+            if ($allConditionsMet) {
+                return $conclusion->id;
+            }
+        }
+
+        return null;
+    }
+
+    private function matchAllRules(array $groupScores, $rules): array
+    {
+        $matched = [];
+
+        foreach ($rules as $rule) {
+            if ($rule->score_mode === 'aggregate') {
+                $selectedGroups = $rule->selected_groups ?? [];
+                if (is_string($selectedGroups)) {
+                    $selectedGroups = json_decode($selectedGroups, true) ?? [];
+                }
+                if (empty($selectedGroups)) continue;
+
+                $aggregateTotal = 0;
+                foreach ($selectedGroups as $gId) {
+                    $aggregateTotal += $groupScores[$gId] ?? 0;
+                }
+
+                $minOk = $rule->min_score === null || $aggregateTotal >= $rule->min_score;
+                $maxOk = $rule->max_score === null || $aggregateTotal <= $rule->max_score;
+
+                if ($minOk && $maxOk) {
+                    $matched[] = $rule;
+                }
+            } else {
+                $conditions = $rule->conditions;
+                if (is_string($conditions)) {
+                    $conditions = json_decode($conditions, true) ?? [];
+                }
+                $allMatch = true;
+
+                foreach ($conditions as $condGroupId => $minScore) {
+                    if (!isset($groupScores[$condGroupId]) || $groupScores[$condGroupId] < $minScore) {
+                        $allMatch = false;
+                        break;
+                    }
+                }
+
+                if ($allMatch) {
+                    $matched[] = $rule;
+                }
+            }
+        }
+
+        return $matched;
+    }
+
     public function history()
     {
         $results = AssessmentResult::where('user_id', $this->getDataEntryUserId())
@@ -204,7 +297,7 @@ class AssessmentController extends Controller
     public function detail($id)
     {
         $result = AssessmentResult::where('user_id', $this->getDataEntryUserId())
-            ->with(['resultOptions.option'])
+            ->with(['resultOptions.option', 'conclusion'])
             ->findOrFail($id);
 
         $groups = AssessmentGroup::with('subGroups')->orderBy('order')->get();

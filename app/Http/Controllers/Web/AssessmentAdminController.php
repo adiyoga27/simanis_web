@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssessmentConclusion;
+use App\Models\AssessmentConclusionCondition;
 use App\Models\AssessmentGroup;
 use App\Models\AssessmentOption;
 use App\Models\AssessmentRule;
+use App\Models\AssessmentRuleCategory;
 use App\Models\AssessmentSubGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -264,21 +267,24 @@ class AssessmentAdminController extends Controller
 
     public function indexRules()
     {
-        $rules = AssessmentRule::orderBy('order')->get();
+        $categories = AssessmentRuleCategory::with('rules')->orderBy('order')->get();
+        $uncategorizedRules = AssessmentRule::whereNull('rule_category_id')->orderBy('order')->get();
 
-        return view('admin.assessments.rules.index', compact('rules'));
+        return view('admin.assessments.rules.index', compact('categories', 'uncategorizedRules'));
     }
 
     public function createRule()
     {
         $groups = AssessmentGroup::orderBy('order')->get();
+        $categories = AssessmentRuleCategory::orderBy('order')->get();
 
-        return view('admin.assessments.rules.form', ['rule' => new AssessmentRule, 'groups' => $groups]);
+        return view('admin.assessments.rules.form', ['rule' => new AssessmentRule, 'groups' => $groups, 'categories' => $categories]);
     }
 
     public function storeRule(Request $request)
     {
         $validated = $request->validate([
+            'rule_category_id' => 'nullable|exists:assessment_rule_categories,id',
             'title'           => 'required|string|max:255',
             'description'     => 'nullable|string',
             'score_mode'      => 'required|in:per_group,aggregate',
@@ -317,8 +323,9 @@ class AssessmentAdminController extends Controller
     {
         $rule = AssessmentRule::findOrFail($id);
         $groups = AssessmentGroup::orderBy('order')->get();
+        $categories = AssessmentRuleCategory::orderBy('order')->get();
 
-        return view('admin.assessments.rules.form', compact('rule', 'groups'));
+        return view('admin.assessments.rules.form', compact('rule', 'groups', 'categories'));
     }
 
     public function updateRule(Request $request, $id)
@@ -326,6 +333,7 @@ class AssessmentAdminController extends Controller
         $rule = AssessmentRule::findOrFail($id);
 
         $validated = $request->validate([
+            'rule_category_id' => 'nullable|exists:assessment_rule_categories,id',
             'title'           => 'required|string|max:255',
             'description'     => 'nullable|string',
             'score_mode'      => 'required|in:per_group,aggregate',
@@ -366,5 +374,164 @@ class AssessmentAdminController extends Controller
         $rule->delete();
 
         return redirect()->route('admin.assessments.rules.index')->with('success', 'Aturan penilaian berhasil dihapus.');
+    }
+
+    // ─── RULE CATEGORIES ────────────────────────────────────────────────
+
+    public function createRuleCategory()
+    {
+        return view('admin.assessments.categories.form', ['category' => new AssessmentRuleCategory]);
+    }
+
+    public function storeRuleCategory(Request $request)
+    {
+        $validated = $request->validate([
+            'title'       => 'required|string|max:255',
+            'slug'        => 'nullable|string|max:255|unique:assessment_rule_categories,slug',
+            'description' => 'nullable|string',
+            'order'       => 'nullable|integer|min:0',
+        ]);
+
+        $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
+        $validated['order'] = $validated['order'] ?? 0;
+
+        AssessmentRuleCategory::create($validated);
+
+        return redirect()->route('admin.assessments.rules.index')->with('success', 'Kategori aturan berhasil ditambahkan.');
+    }
+
+    public function editRuleCategory($id)
+    {
+        $category = AssessmentRuleCategory::findOrFail($id);
+
+        return view('admin.assessments.categories.form', compact('category'));
+    }
+
+    public function updateRuleCategory(Request $request, $id)
+    {
+        $category = AssessmentRuleCategory::findOrFail($id);
+
+        $validated = $request->validate([
+            'title'       => 'required|string|max:255',
+            'slug'        => 'nullable|string|max:255|unique:assessment_rule_categories,slug,' . $category->id,
+            'description' => 'nullable|string',
+            'order'       => 'nullable|integer|min:0',
+        ]);
+
+        $validated['slug'] = $validated['slug'] ?: Str::slug($validated['title']);
+        $validated['order'] = $validated['order'] ?? 0;
+
+        $category->update($validated);
+
+        return redirect()->route('admin.assessments.rules.index')->with('success', 'Kategori aturan berhasil diperbarui.');
+    }
+
+    public function destroyRuleCategory($id)
+    {
+        $category = AssessmentRuleCategory::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('admin.assessments.rules.index')->with('success', 'Kategori aturan berhasil dihapus.');
+    }
+
+    // ─── CONCLUSIONS ────────────────────────────────────────────────────
+
+    public function indexConclusions()
+    {
+        $conclusions = AssessmentConclusion::with('conditions.category')->orderBy('order')->get();
+
+        return view('admin.assessments.conclusions.index', compact('conclusions'));
+    }
+
+    public function createConclusion()
+    {
+        $categories = AssessmentRuleCategory::withCount('rules')->orderBy('order')->get();
+
+        return view('admin.assessments.conclusions.form', ['conclusion' => new AssessmentConclusion, 'categories' => $categories]);
+    }
+
+    public function storeConclusion(Request $request)
+    {
+        $validated = $request->validate([
+            'title'              => 'required|string|max:255',
+            'description'        => 'nullable|string',
+            'result_text'        => 'required|string',
+            'color'              => 'nullable|string|max:30',
+            'severity'           => 'required|in:normal,ringan,sedang,tinggi',
+            'priority'           => 'required|integer|min:0',
+            'order'              => 'nullable|integer|min:0',
+            'cond_category_id'   => 'nullable|array',
+            'cond_min_matched'   => 'nullable|array',
+            'cond_severity'      => 'nullable|array',
+        ]);
+
+        $validated['order'] = $validated['order'] ?? 0;
+
+        $conclusion = AssessmentConclusion::create($validated);
+
+        $this->syncConclusionConditions($conclusion, $request);
+
+        return redirect()->route('admin.assessments.conclusions.index')->with('success', 'Kesimpulan berhasil ditambahkan.');
+    }
+
+    public function editConclusion($id)
+    {
+        $conclusion = AssessmentConclusion::with('conditions')->findOrFail($id);
+        $categories = AssessmentRuleCategory::withCount('rules')->orderBy('order')->get();
+
+        return view('admin.assessments.conclusions.form', compact('conclusion', 'categories'));
+    }
+
+    public function updateConclusion(Request $request, $id)
+    {
+        $conclusion = AssessmentConclusion::findOrFail($id);
+
+        $validated = $request->validate([
+            'title'              => 'required|string|max:255',
+            'description'        => 'nullable|string',
+            'result_text'        => 'required|string',
+            'color'              => 'nullable|string|max:30',
+            'severity'           => 'required|in:normal,ringan,sedang,tinggi',
+            'priority'           => 'required|integer|min:0',
+            'order'              => 'nullable|integer|min:0',
+            'cond_category_id'   => 'nullable|array',
+            'cond_min_matched'   => 'nullable|array',
+            'cond_severity'      => 'nullable|array',
+        ]);
+
+        $validated['order'] = $validated['order'] ?? 0;
+
+        $conclusion->update($validated);
+
+        $this->syncConclusionConditions($conclusion, $request);
+
+        return redirect()->route('admin.assessments.conclusions.index')->with('success', 'Kesimpulan berhasil diperbarui.');
+    }
+
+    private function syncConclusionConditions($conclusion, $request)
+    {
+        $conclusion->conditions()->delete();
+
+        $categoryIds = $request->input('cond_category_id', []);
+        $minMatched = $request->input('cond_min_matched', []);
+        $severities = $request->input('cond_severity', []);
+
+        foreach ($categoryIds as $index => $catId) {
+            if (empty($catId)) continue;
+
+            $conclusion->conditions()->create([
+                'rule_category_id'  => $catId,
+                'min_matched_rules' => max(1, (int) ($minMatched[$index] ?? 1)),
+                'target_severity'   => $severities[$index] ?? null,
+            ]);
+        }
+    }
+
+    public function destroyConclusion($id)
+    {
+        $conclusion = AssessmentConclusion::findOrFail($id);
+        $conclusion->delete();
+
+        return redirect()->route('admin.assessments.conclusions.index')->with('success', 'Kesimpulan berhasil dihapus.');
     }
 }

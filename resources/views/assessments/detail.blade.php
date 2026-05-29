@@ -176,5 +176,32 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
         @endif
     </div>
 
+    {{-- Conclusion --}}
+    @if($result->conclusion)
+    <div class="card overflow-hidden !p-0 border-2 border-primary-200 mt-6">
+        <div class="flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white {{ $result->conclusion->color ? '' : 'bg-primary-600' }}" style="{{ $result->conclusion->color ? 'background-color: ' . $result->conclusion->color . ';' : '' }}">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>{{ $result->conclusion->title }}</span>
+            <span class="ml-auto text-xs font-normal opacity-80">{{ ucfirst($result->conclusion->severity) }}</span>
+        </div>
+        <div class="px-5 py-4 space-y-3">
+            @if($result->conclusion->description)
+                <p class="text-sm text-gray-500 leading-relaxed">{{ $result->conclusion->description }}</p>
+            @endif
+
+            @php
+                $concColor = $result->conclusion->color ?: match($result->conclusion->severity) {
+                    'normal' => '#16a34a', 'ringan' => '#ca8a04',
+                    'sedang' => '#ea580c', 'tinggi' => '#dc2626',
+                    default => '#6b7280'
+                };
+            @endphp
+            <div class="text-sm font-medium text-gray-800 leading-relaxed rounded-xl p-4 border" style="background-color: {{ $concColor }}10; border-color: {{ $concColor }}30; color: {{ $concColor }}">
+                {!! nl2br(e($result->conclusion->result_text)) !!}
+            </div>
+        </div>
+    </div>
+    @endif
+
 </div>
 @endsection

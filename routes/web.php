@@ -171,6 +171,21 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::put('/assessments/rules/{id}', [AssessmentAdminController::class, 'updateRule'])->name('admin.assessments.rules.update');
     Route::delete('/assessments/rules/{id}', [AssessmentAdminController::class, 'destroyRule'])->name('admin.assessments.rules.destroy');
 
+    // Rule Categories
+    Route::get('/assessments/categories/create', [AssessmentAdminController::class, 'createRuleCategory'])->name('admin.assessments.categories.create');
+    Route::post('/assessments/categories', [AssessmentAdminController::class, 'storeRuleCategory'])->name('admin.assessments.categories.store');
+    Route::get('/assessments/categories/{id}/edit', [AssessmentAdminController::class, 'editRuleCategory'])->name('admin.assessments.categories.edit');
+    Route::put('/assessments/categories/{id}', [AssessmentAdminController::class, 'updateRuleCategory'])->name('admin.assessments.categories.update');
+    Route::delete('/assessments/categories/{id}', [AssessmentAdminController::class, 'destroyRuleCategory'])->name('admin.assessments.categories.destroy');
+
+    // Conclusions
+    Route::get('/assessments/conclusions', [AssessmentAdminController::class, 'indexConclusions'])->name('admin.assessments.conclusions.index');
+    Route::get('/assessments/conclusions/create', [AssessmentAdminController::class, 'createConclusion'])->name('admin.assessments.conclusions.create');
+    Route::post('/assessments/conclusions', [AssessmentAdminController::class, 'storeConclusion'])->name('admin.assessments.conclusions.store');
+    Route::get('/assessments/conclusions/{id}/edit', [AssessmentAdminController::class, 'editConclusion'])->name('admin.assessments.conclusions.edit');
+    Route::put('/assessments/conclusions/{id}', [AssessmentAdminController::class, 'updateConclusion'])->name('admin.assessments.conclusions.update');
+    Route::delete('/assessments/conclusions/{id}', [AssessmentAdminController::class, 'destroyConclusion'])->name('admin.assessments.conclusions.destroy');
+
     // Monitoring
     Route::get('/monitoring/foot-screening', [AdminController::class, 'monitoringFootScreening'])->name('admin.monitoring.foot-screening');
     Route::get('/monitoring/foot-screening/{id}', [AdminController::class, 'monitoringFootScreeningDetail'])->name('admin.monitoring.foot-screening.detail');

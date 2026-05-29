@@ -14,6 +14,20 @@
 
             <div class="space-y-5">
                 <div>
+                    <label for="rule_category_id" class="input-label">Kategori Aturan</label>
+                    <select name="rule_category_id" id="rule_category_id"
+                        class="input-field @error('rule_category_id') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror">
+                        <option value="">Tanpa Kategori</option>
+                        @foreach($categories as $cat)
+                            <option value="{{ $cat->id }}" {{ old('rule_category_id', $rule->rule_category_id ?? '') == $cat->id ? 'selected' : '' }}>{{ $cat->title }}</option>
+                        @endforeach
+                    </select>
+                    @error('rule_category_id')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
                     <label for="title" class="input-label">Judul <span class="text-red-500">*</span></label>
                     <input type="text" name="title" id="title"
                         class="input-field @error('title') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror"

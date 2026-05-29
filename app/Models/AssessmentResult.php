@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AssessmentResult extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['user_id', 'total_score', 'group_scores', 'matched_rules', 'notes'];
+    protected $fillable = ['user_id', 'total_score', 'group_scores', 'matched_rules', 'conclusion_id', 'notes'];
 
     protected $casts = [
         'group_scores' => 'array',
@@ -25,5 +25,10 @@ class AssessmentResult extends Model
     public function resultOptions(): HasMany
     {
         return $this->hasMany(AssessmentResultOption::class);
+    }
+
+    public function conclusion(): BelongsTo
+    {
+        return $this->belongsTo(AssessmentConclusion::class);
     }
 }
