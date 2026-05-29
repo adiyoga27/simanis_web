@@ -56,7 +56,15 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
                     </div>
                     <div class="space-y-2">
                         @foreach($selections[$group->id] as $subGroupId => $selection)
-                            <div class="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                            @php $subGroup = $group->subGroups->find($subGroupId); @endphp
+                            <div class="p-2.5 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors space-y-1.5">
+                                @if($subGroup)
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                        <span class="text-[11px] font-semibold text-gray-400 uppercase tracking-wide">{{ $subGroup->title }}</span>
+                                    </div>
+                                @endif
+                                <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-lg bg-white border border-gray-200 flex items-center justify-center shrink-0 overflow-hidden">
                                     @if($selection['image'])
                                         <img src="{{ asset('storage/' . $selection['image']) }}" alt="" class="w-full h-full object-cover">
@@ -68,6 +76,7 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
                                     <p class="text-sm text-gray-700">{{ $selection['text'] }}</p>
                                 </div>
                                 <span class="text-xs font-semibold text-primary-500 bg-primary-50 px-2 py-0.5 rounded-full shrink-0">+{{ $selection['score'] }}</span>
+                                </div>
                             </div>
                         @endforeach
                     </div>
