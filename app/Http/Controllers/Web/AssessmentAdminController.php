@@ -455,7 +455,9 @@ class AssessmentAdminController extends Controller
         $validated = $request->validate([
             'title'              => 'required|string|max:255',
             'description'        => 'nullable|string',
+            'match_logic'        => 'required|in:and,or',
             'result_text'        => 'required|string',
+            'reference_link'     => 'nullable|url|max:2048',
             'color'              => 'nullable|string|max:30',
             'severity'           => 'required|in:normal,ringan,sedang,tinggi',
             'priority'           => 'required|integer|min:0',
@@ -489,7 +491,9 @@ class AssessmentAdminController extends Controller
         $validated = $request->validate([
             'title'              => 'required|string|max:255',
             'description'        => 'nullable|string',
+            'match_logic'        => 'required|in:and,or',
             'result_text'        => 'required|string',
+            'reference_link'     => 'nullable|url|max:2048',
             'color'              => 'nullable|string|max:30',
             'severity'           => 'required|in:normal,ringan,sedang,tinggi',
             'priority'           => 'required|integer|min:0',

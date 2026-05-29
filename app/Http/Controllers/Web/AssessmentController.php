@@ -206,7 +206,7 @@ class AssessmentController extends Controller
         foreach ($conclusions as $conclusion) {
             if ($conclusion->conditions->isEmpty()) continue;
 
-            $allConditionsMet = true;
+            $results = [];
 
             foreach ($conclusion->conditions as $condition) {
                 $categoryRuleIds = $condition->category?->rules->pluck('id')->toArray() ?? [];
@@ -225,13 +225,14 @@ class AssessmentController extends Controller
                     $matchedCount = count($categoryMatchedRules);
                 }
 
-                if ($matchedCount < $condition->min_matched_rules) {
-                    $allConditionsMet = false;
-                    break;
-                }
+                $results[] = $matchedCount >= $condition->min_matched_rules;
             }
 
-            if ($allConditionsMet) {
+            $isMatch = $conclusion->match_logic === 'or'
+                ? in_array(true, $results)
+                : !in_array(false, $results);
+
+            if ($isMatch) {
                 return $conclusion->id;
             }
         }

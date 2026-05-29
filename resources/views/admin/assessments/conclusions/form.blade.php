@@ -35,6 +35,25 @@
                     @enderror
                 </div>
 
+                <div>
+                    <label class="input-label">Logika Pencocokan <span class="text-red-500">*</span></label>
+                    <div class="flex items-center gap-4 mt-2">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="match_logic" value="and" {{ old('match_logic', $conclusion->match_logic ?? 'and') === 'and' ? 'checked' : '' }} class="text-primary-600 focus:ring-primary-400">
+                            <span class="text-sm text-gray-700">AND</span>
+                            <span class="text-xs text-gray-400">(semua kondisi harus terpenuhi)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="match_logic" value="or" {{ old('match_logic', $conclusion->match_logic ?? '') === 'or' ? 'checked' : '' }} class="text-primary-600 focus:ring-primary-400">
+                            <span class="text-sm text-gray-700">OR</span>
+                            <span class="text-xs text-gray-400">(salah satu kondisi terpenuhi)</span>
+                        </label>
+                    </div>
+                    @error('match_logic')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 {{-- Category Conditions --}}
                 <div>
                     <label class="input-label">Kondisi Kategori <span class="text-red-500">*</span></label>
@@ -58,6 +77,18 @@
                         placeholder="Teks kesimpulan dan rekomendasi penanganan yang ditampilkan di hasil."
                         required>{{ old('result_text', $conclusion->result_text ?? '') }}</textarea>
                     @error('result_text')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="reference_link" class="input-label">Link Rekomendasi / Penanganan</label>
+                    <input type="url" name="reference_link" id="reference_link"
+                        class="input-field @error('reference_link') border-red-300 focus:border-red-400 focus:ring-red-400/20 @enderror"
+                        value="{{ old('reference_link', $conclusion->reference_link ?? '') }}"
+                        placeholder="https://diamondcare.id/rekomendasi/...">
+                    <p class="text-xs text-gray-400 mt-1">Link akan muncul pada hasil assessment sebagai rekomendasi penanganan.</p>
+                    @error('reference_link')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class AssessmentConclusion extends Model
 {
     protected $fillable = [
-        'title', 'description', 'result_text',
+        'title', 'description', 'match_logic', 'result_text', 'reference_link',
         'color', 'severity', 'priority', 'order',
     ];
 

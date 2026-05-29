@@ -78,6 +78,9 @@
                             </td>
                             <td class="px-5 py-4">
                                 <span class="font-semibold text-gray-800">{{ $conclusion->title }}</span>
+                                <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold {{ $conclusion->match_logic === 'or' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700' }} ml-1.5">
+                                    {{ strtoupper($conclusion->match_logic ?? 'and') }}
+                                </span>
                             </td>
                             <td class="px-5 py-4">
                                 <div class="flex flex-wrap gap-1">
