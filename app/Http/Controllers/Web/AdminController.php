@@ -316,7 +316,7 @@ class AdminController extends Controller
         $search = $request->get('search');
         $desaId = $request->get('desa_id');
 
-        $results = AssessmentResult::with('user')
+        $results = AssessmentResult::with(['user', 'conclusion'])
             ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
                 $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
             })

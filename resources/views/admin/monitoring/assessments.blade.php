@@ -173,12 +173,25 @@
                     <tbody class="divide-y divide-gray-50">
                         @foreach($results as $index => $r)
                         @php
-                            $scoreColor = $r->total_score > 6 ? 'red' : ($r->total_score > 3 ? 'yellow' : 'green');
-                            $scoreStyle = [
-                                'red' => ['bg' => 'bg-red-50', 'text' => 'text-red-700', 'border' => 'border-red-200/60', 'badgeBg' => 'bg-red-100', 'badgeText' => 'text-red-700'],
-                                'yellow' => ['bg' => 'bg-yellow-50', 'text' => 'text-yellow-700', 'border' => 'border-yellow-200/60', 'badgeBg' => 'bg-yellow-100', 'badgeText' => 'text-yellow-700'],
-                                'green' => ['bg' => 'bg-green-50', 'text' => 'text-green-700', 'border' => 'border-green-200/60', 'badgeBg' => 'bg-green-100', 'badgeText' => 'text-green-700'],
-                            ][$scoreColor];
+                            if ($r->conclusion) {
+                                $concColor = $r->conclusion->color ?: match($r->conclusion->severity) {
+                                    'normal' => '#16a34a', 'ringan' => '#ca8a04', 'sedang' => '#ea580c', 'tinggi' => '#dc2626',
+                                    default => '#6b7280',
+                                };
+                                $scoreStyle = ['bg' => 'bg-white', 'text' => '', 'badgeBg' => 'bg-white', 'badgeText' => ''];
+                                $scoreColorName = $r->conclusion->severity;
+                                $scoreLabel = $r->conclusion->title;
+                            } else {
+                                $concColor = null;
+                                $scoreColor = $r->total_score > 6 ? 'red' : ($r->total_score > 3 ? 'yellow' : 'green');
+                                $scoreStyle = [
+                                    'red' => ['bg' => 'bg-red-50', 'text' => 'text-red-700', 'border' => 'border-red-200/60', 'badgeBg' => 'bg-red-100', 'badgeText' => 'text-red-700'],
+                                    'yellow' => ['bg' => 'bg-yellow-50', 'text' => 'text-yellow-700', 'border' => 'border-yellow-200/60', 'badgeBg' => 'bg-yellow-100', 'badgeText' => 'text-yellow-700'],
+                                    'green' => ['bg' => 'bg-green-50', 'text' => 'text-green-700', 'border' => 'border-green-200/60', 'badgeBg' => 'bg-green-100', 'badgeText' => 'text-green-700'],
+                                ][$scoreColor];
+                                $scoreColorName = $scoreColor;
+                                $scoreLabel = $r->total_score > 6 ? 'Risiko Tinggi' : ($r->total_score > 3 ? 'Risiko Sedang' : 'Risiko Rendah');
+                            }
                             $ruleCount = is_array($r->matched_rules) ? count($r->matched_rules) : 0;
                             $initial = strtoupper(substr($r->user?->name ?? 'U', 0, 1));
                             $name = $r->user?->name ?? 'Tidak Diketahui';
@@ -187,7 +200,7 @@
                             {{-- Pasien --}}
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-xl {{ $scoreStyle['badgeBg'] }} flex items-center justify-center text-xs font-extrabold {{ $scoreStyle['badgeText'] }} flex-shrink-0">
+                                    <div class="w-9 h-9 rounded-xl flex items-center justify-center text-xs font-extrabold flex-shrink-0 {{ $r->conclusion ? '' : $scoreStyle['badgeBg'] . ' ' . $scoreStyle['badgeText'] }}" @if($r->conclusion) style="background-color: {{ $concColor }}; color: white;" @endif>
                                         {{ $initial }}
                                     </div>
                                     <div>
@@ -198,9 +211,16 @@
                             </td>
                             {{-- Skor --}}
                             <td class="px-6 py-4 text-center">
+                                @if($r->conclusion)
+                                <span class="score-badge bg-white text-white tabular-nums inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-extrabold border" style="background-color: {{ $concColor }}; color: white;">
+                                    {{ $r->total_score }}
+                                    <span class="font-normal opacity-80 text-[10px]">· {{ $scoreLabel }}</span>
+                                </span>
+                                @else
                                 <span class="score-badge {{ $scoreStyle['bg'] }} {{ $scoreStyle['text'] }} tabular-nums">
                                     {{ $r->total_score }}
                                 </span>
+                                @endif
                             </td>
                             {{-- Aturan Terpicu --}}
                             <td class="px-6 py-4 text-center">
@@ -248,12 +268,25 @@
         <div class="md:hidden space-y-3">
             @foreach($results as $index => $r)
             @php
-                $scoreColor = $r->total_score > 6 ? 'red' : ($r->total_score > 3 ? 'yellow' : 'green');
-                $scoreStyle = [
-                    'red' => ['bg' => 'bg-red-50', 'text' => 'text-red-700', 'border' => 'border-red-200/60', 'badgeBg' => 'bg-red-100', 'badgeText' => 'text-red-700'],
-                    'yellow' => ['bg' => 'bg-yellow-50', 'text' => 'text-yellow-700', 'border' => 'border-yellow-200/60', 'badgeBg' => 'bg-yellow-100', 'badgeText' => 'text-yellow-700'],
-                    'green' => ['bg' => 'bg-green-50', 'text' => 'text-green-700', 'border' => 'border-green-200/60', 'badgeBg' => 'bg-green-100', 'badgeText' => 'text-green-700'],
-                ][$scoreColor];
+                if ($r->conclusion) {
+                    $concColor = $r->conclusion->color ?: match($r->conclusion->severity) {
+                        'normal' => '#16a34a', 'ringan' => '#ca8a04', 'sedang' => '#ea580c', 'tinggi' => '#dc2626',
+                        default => '#6b7280',
+                    };
+                    $scoreStyle = ['bg' => 'bg-white', 'text' => '', 'badgeBg' => 'bg-white', 'badgeText' => ''];
+                    $scoreColorName = $r->conclusion->severity;
+                    $scoreLabel = $r->conclusion->title;
+                } else {
+                    $concColor = null;
+                    $scoreColor = $r->total_score > 6 ? 'red' : ($r->total_score > 3 ? 'yellow' : 'green');
+                    $scoreStyle = [
+                        'red' => ['bg' => 'bg-red-50', 'text' => 'text-red-700', 'border' => 'border-red-200/60', 'badgeBg' => 'bg-red-100', 'badgeText' => 'text-red-700'],
+                        'yellow' => ['bg' => 'bg-yellow-50', 'text' => 'text-yellow-700', 'border' => 'border-yellow-200/60', 'badgeBg' => 'bg-yellow-100', 'badgeText' => 'text-yellow-700'],
+                        'green' => ['bg' => 'bg-green-50', 'text' => 'text-green-700', 'border' => 'border-green-200/60', 'badgeBg' => 'bg-green-100', 'badgeText' => 'text-green-700'],
+                    ][$scoreColor];
+                    $scoreColorName = $scoreColor;
+                    $scoreLabel = $r->total_score > 6 ? 'Risiko Tinggi' : ($r->total_score > 3 ? 'Risiko Sedang' : 'Risiko Rendah');
+                }
                 $ruleCount = is_array($r->matched_rules) ? count($r->matched_rules) : 0;
                 $initial = strtoupper(substr($r->user?->name ?? 'U', 0, 1));
                 $name = $r->user?->name ?? 'Tidak Diketahui';
@@ -261,7 +294,7 @@
             <div class="glass-card rounded-2xl p-4 table-row-anim" style="animation-delay: {{ $index * 0.04 }}s">
                 <div class="flex items-start justify-between mb-3">
                     <div class="flex items-center gap-3 min-w-0">
-                        <div class="w-10 h-10 rounded-xl {{ $scoreStyle['badgeBg'] }} flex items-center justify-center text-sm font-extrabold {{ $scoreStyle['badgeText'] }} flex-shrink-0">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-extrabold flex-shrink-0 {{ $r->conclusion ? '' : $scoreStyle['badgeBg'] . ' ' . $scoreStyle['badgeText'] }}" @if($r->conclusion) style="background-color: {{ $concColor }}; color: white;" @endif>
                             {{ $initial }}
                         </div>
                         <div class="min-w-0">
@@ -269,7 +302,7 @@
                             <p class="text-[11px] text-gray-400 mt-0.5">{{ $r->user?->desa?->name ?? '-' }}</p>
                         </div>
                     </div>
-                    <span class="score-badge {{ $scoreStyle['bg'] }} {{ $scoreStyle['text'] }}">{{ $r->total_score }}</span>
+                    <span class="score-badge {{ $scoreStyle['bg'] }} {{ $scoreStyle['text'] }} tabular-nums inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-extrabold {{ $r->conclusion ? '' : '' }}" @if($r->conclusion) style="background-color: {{ $concColor }}; color: white;" @endif>{{ $r->total_score }}</span>
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg text-[11px] font-bold border bg-gray-50 text-gray-600 border-gray-200/60">
