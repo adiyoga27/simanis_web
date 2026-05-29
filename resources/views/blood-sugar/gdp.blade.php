@@ -4,89 +4,265 @@
 @section('page-title', 'Cek Gula Darah Puasa (GDP)')
 
 @section('content')
-<div class="max-w-2xl mx-auto space-y-6">
+<style>
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes growBar {
+    from { width: 0%; }
+}
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+}
+.gauge-container {
+    position: relative;
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ef4444 0%, #f59e0b 20%, #22c55e 40%, #22c55e 70%, #f59e0b 85%, #ef4444 100%);
+    overflow: visible;
+}
+.gauge-marker {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 3px solid currentColor;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+}
+.gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.7rem;
+    color: #9ca3af;
+}
+.result-appear {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+.status-card {
+    transition: all 0.3s ease;
+}
+.status-card:hover {
+    transform: translateY(-2px);
+}
+.input-modern {
+    transition: all 0.2s ease;
+    border: 2px solid #e5e7eb;
+}
+.input-modern:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+.btn-gradient {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.btn-gradient:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+}
+.btn-gradient:active {
+    transform: translateY(0);
+}
+.bg-mesh {
+    background:
+        radial-gradient(at 0% 0%, rgba(99,102,241,0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(139,92,246,0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(236,72,153,0.06) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(59,130,246,0.06) 0px, transparent 50%);
+}
+</style>
+
+<div class="max-w-2xl mx-auto space-y-6 pb-8">
 
     @include('admin.partials.data-entry-banner', ['backUrl' => route('admin.monitoring.blood-sugar')])
 
-    <!-- Input Card -->
-    <div class="card">
-        <div class="flex items-center gap-3 mb-5">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/30">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <!-- Hero / Input Section -->
+    <div class="glass-card rounded-3xl p-6 sm:p-8 bg-mesh">
+        <div class="flex items-start gap-4 mb-6">
+            <div class="shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/25">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
                 </svg>
             </div>
-            <div>
-                <h3 class="font-semibold text-gray-800">Masukkan Kadar Gula Darah</h3>
-                <p class="text-xs text-gray-400">Hasil pemeriksaan setelah puasa 8 jam</p>
+            <div class="pt-0.5">
+                <h2 class="text-lg font-bold text-gray-900 leading-tight">Gula Darah Puasa (GDP)</h2>
+                <p class="text-sm text-gray-500 mt-0.5">Masukkan hasil pemeriksaan setelah puasa 8 jam</p>
             </div>
         </div>
 
-        <div class="mb-5">
-            <label for="gdpValue" class="input-label">Kadar Gula Darah (mg/dL)</label>
-            <input type="number" id="gdpValue" class="input-field text-lg" placeholder="Masukkan nilai gula darah, contoh: 110" min="0" max="999">
+        <div class="mb-6">
+            <label for="gdpValue" class="block text-sm font-semibold text-gray-700 mb-2">Kadar Gula Darah</label>
+            <div class="relative">
+                <input type="number" id="gdpValue" class="input-modern w-full rounded-2xl px-5 py-4 text-2xl font-bold text-gray-800 placeholder-gray-300 bg-white/70" placeholder="0" min="0" max="999">
+                <span class="absolute right-5 top-1/2 -translate-y-1/2 text-sm font-medium text-gray-400">mg/dL</span>
+            </div>
         </div>
 
-        <button onclick="checkGDP()" class="btn-primary w-full">
-            <svg class="w-5 h-5 inline-block mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button onclick="checkGDP()" class="btn-gradient w-full rounded-2xl py-4 text-white font-semibold shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             Cek Hasil
         </button>
 
         <!-- Result Area -->
-        <div id="gdpResult" class="hidden mt-5 pt-5 border-t border-gray-100">
-            <div id="gdpStatusBadge" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3"></div>
-            <p id="gdpMessage" class="text-gray-700 font-medium"></p>
-            <p id="gdpRecommendation" class="text-sm text-gray-500 mt-2 hidden"></p>
+        <div id="gdpResult" class="hidden mt-6 pt-6 border-t border-gray-100/60">
 
-            <div id="gdpSaveArea" class="hidden mt-4 pt-4 border-t border-gray-100">
-                <div class="mb-3">
-                    <label for="gdpNotes" class="input-label">Catatan (opsional)</label>
-                    <input type="text" id="gdpNotes" class="input-field" placeholder="Tambahkan catatan...">
+            <!-- Status Header -->
+            <div id="gdpStatusHeader" class="flex items-center gap-3 mb-5 result-appear" style="animation-delay:0.05s">
+                <div id="gdpStatusIcon" class="w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-md"></div>
+                <div>
+                    <div id="gdpStatusBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"></div>
+                    <p id="gdpMessage" class="text-gray-800 font-semibold text-base mt-0.5"></p>
                 </div>
-                <button onclick="saveGDP()" id="gdpSaveBtn" class="btn-primary w-full">
-                    <svg class="w-5 h-5 inline-block mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
-                    </svg>
-                    Simpan Hasil
-                </button>
-                <p id="gdpSaveMessage" class="hidden text-sm font-medium mt-2 text-center"></p>
             </div>
+
+            <!-- Gauge -->
+            <div class="mb-5 result-appear" style="animation-delay:0.1s">
+                <div class="flex justify-between items-end mb-2">
+                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Posisi pada Skala</span>
+                    <span id="gaugeValue" class="text-sm font-bold text-gray-800">—</span>
+                </div>
+                <div class="gauge-container">
+                    <div id="gaugeMarker" class="gauge-marker text-indigo-500" style="left:0%; color:#6366f1;"></div>
+                </div>
+                <div class="gauge-labels">
+                    <span>0</span>
+                    <span>80</span>
+                    <span>130</span>
+                    <span>200</span>
+                    <span>300+</span>
+                </div>
+            </div>
+
+            <!-- Recommendation -->
+            <div id="gdpRecommendationBox" class="hidden result-appear" style="animation-delay:0.15s">
+                <div class="rounded-2xl p-5 bg-gradient-to-r from-gray-50 to-gray-100/50 border border-gray-100">
+                    <div class="flex items-start gap-3">
+                        <div class="shrink-0 w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-sm">
+                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-800 mb-1">Rekomendasi</h4>
+                            <p id="gdpRecommendation" class="text-sm text-gray-600 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Area -->
+            <div id="gdpSaveArea" class="hidden mt-5 result-appear" style="animation-delay:0.2s">
+                <div class="rounded-2xl p-5 bg-white/60 border border-gray-100/80">
+                    <label for="gdpNotes" class="block text-sm font-semibold text-gray-700 mb-2">Catatan (opsional)</label>
+                    <input type="text" id="gdpNotes" class="input-modern w-full rounded-xl px-4 py-3 text-sm bg-white/70 mb-4" placeholder="Tambahkan catatan...">
+                    <button onclick="saveGDP()" id="gdpSaveBtn" class="btn-gradient w-full rounded-xl py-3.5 text-white font-semibold shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
+                        </svg>
+                        Simpan Hasil
+                    </button>
+                </div>
+            </div>
+
+            <!-- Save Message -->
+            <div id="gdpSaveMessage" class="hidden mt-4 rounded-2xl p-4 text-sm font-semibold text-center border result-appear" style="animation-delay:0.1s"></div>
         </div>
     </div>
 
     <!-- Reference Card -->
-    <div class="card">
-        <h3 class="font-semibold text-gray-800 text-lg mb-4">Referensi Rentang Gula Darah Puasa</h3>
+    <div class="glass-card rounded-3xl p-6 sm:p-8">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center">
+                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+            </div>
+            <h3 class="font-bold text-gray-800">Referensi Rentang GDP</h3>
+        </div>
+
         <div class="space-y-3">
-            <div class="flex items-center justify-between p-3 bg-green-50 rounded-xl">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 bg-green-500 rounded-full"></span>
-                    <span class="text-sm font-medium text-green-800">Normal</span>
+            <div class="status-card flex items-center justify-between p-4 bg-green-50/70 rounded-2xl border border-green-100/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-sm font-bold text-green-900">Normal</span>
+                        <span class="text-xs text-green-700/70">Gula darah ideal</span>
+                    </div>
                 </div>
-                <span class="text-sm font-bold text-green-700">80 - 130 mg/dL</span>
+                <span class="text-sm font-extrabold text-green-700 tabular-nums">80 – 130</span>
             </div>
-            <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-xl">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
-                    <span class="text-sm font-medium text-yellow-800">Tinggi</span>
+
+            <div class="status-card flex items-center justify-between p-4 bg-yellow-50/70 rounded-2xl border border-yellow-100/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-yellow-100 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-sm font-bold text-yellow-900">Tinggi</span>
+                        <span class="text-xs text-yellow-700/70">Perlu perhatian</span>
+                    </div>
                 </div>
-                <span class="text-sm font-bold text-yellow-700">&gt; 130 mg/dL</span>
+                <span class="text-sm font-extrabold text-yellow-700 tabular-nums">&gt; 130</span>
             </div>
-            <div class="flex items-center justify-between p-3 bg-red-50 rounded-xl">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 bg-red-500 rounded-full"></span>
-                    <span class="text-sm font-medium text-red-800">Sangat Tinggi</span>
+
+            <div class="status-card flex items-center justify-between p-4 bg-red-50/70 rounded-2xl border border-red-100/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-sm font-bold text-red-900">Sangat Tinggi</span>
+                        <span class="text-xs text-red-700/70">Segera konsultasi</span>
+                    </div>
                 </div>
-                <span class="text-sm font-bold text-red-700">&ge; 300 mg/dL</span>
+                <span class="text-sm font-extrabold text-red-700 tabular-nums">≥ 300</span>
             </div>
-            <div class="flex items-center justify-between p-3 bg-red-50 rounded-xl">
-                <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 bg-red-500 rounded-full"></span>
-                    <span class="text-sm font-medium text-red-800">Rendah</span>
+
+            <div class="status-card flex items-center justify-between p-4 bg-blue-50/70 rounded-2xl border border-blue-100/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-sm font-bold text-blue-900">Rendah</span>
+                        <span class="text-xs text-blue-700/70">Hipoglikemia</span>
+                    </div>
                 </div>
-                <span class="text-sm font-bold text-red-700">&lt; 80 mg/dL</span>
+                <span class="text-sm font-extrabold text-blue-700 tabular-nums">&lt; 80</span>
             </div>
         </div>
     </div>
@@ -103,53 +279,82 @@ function checkGDP() {
     const value = parseInt(document.getElementById('gdpValue').value);
     const resultDiv = document.getElementById('gdpResult');
     const badge = document.getElementById('gdpStatusBadge');
+    const icon = document.getElementById('gdpStatusIcon');
     const message = document.getElementById('gdpMessage');
     const recommendation = document.getElementById('gdpRecommendation');
+    const recBox = document.getElementById('gdpRecommendationBox');
     const saveArea = document.getElementById('gdpSaveArea');
     const saveMsg = document.getElementById('gdpSaveMessage');
+    const gaugeMarker = document.getElementById('gaugeMarker');
+    const gaugeValue = document.getElementById('gaugeValue');
 
     saveArea.classList.add('hidden');
     saveMsg.classList.add('hidden');
 
     if (isNaN(value) || value <= 0) {
         resultDiv.classList.remove('hidden');
-        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-gray-100 text-gray-600';
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gray-100 text-gray-500';
         badge.innerHTML = '&#9888;&#65039; Input Tidak Valid';
+        icon.className = 'w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-md bg-gray-100 text-gray-500';
+        icon.innerHTML = '&#9888;&#65039;';
         message.textContent = 'Harap masukkan nilai gula darah yang valid.';
-        recommendation.classList.add('hidden');
+        recBox.classList.add('hidden');
+        gaugeMarker.style.left = '0%';
+        gaugeValue.textContent = '—';
         return;
     }
 
     resultDiv.classList.remove('hidden');
     gdpValue = value;
 
+    // Calculate gauge position (0-400 scale, cap at 100%)
+    const gaugePct = Math.min((value / 400) * 100, 100);
+    gaugeMarker.style.left = gaugePct + '%';
+    gaugeValue.textContent = value + ' mg/dL';
+
     if (value >= 300) {
         gdpCategory = 'Sangat Tinggi';
-        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-red-100 text-red-700';
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-100 text-red-700';
         badge.innerHTML = '&#9888;&#65039; Sangat Tinggi';
+        icon.className = 'w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-md bg-red-100 text-red-600';
+        icon.innerHTML = '&#9888;&#65039;';
         message.textContent = 'Gula darah sangat tinggi, segera konsultasi ke dokter!';
-        recommendation.classList.remove('hidden');
+        recBox.classList.remove('hidden');
         recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL tergolong sangat tinggi (hiperglikemia berat). Segera hubungi dokter atau fasilitas kesehatan terdekat. Periksa kembali kadar gula darah Anda dan hindari makanan tinggi karbohidrat.';
+        gaugeMarker.style.borderColor = '#ef4444';
+        gaugeMarker.style.color = '#ef4444';
     } else if (value > 130) {
         gdpCategory = 'Tinggi';
-        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-yellow-100 text-yellow-700';
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-100 text-yellow-700';
         badge.innerHTML = '&#9888;&#65039; Tinggi';
+        icon.className = 'w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-md bg-yellow-100 text-yellow-600';
+        icon.innerHTML = '&#9888;&#65039;';
         message.textContent = 'Gula darah tinggi';
-        recommendation.classList.remove('hidden');
+        recBox.classList.remove('hidden');
         recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL berada di atas batas normal. Disarankan untuk memantau pola makan, mengurangi asupan gula dan karbohidrat sederhana, serta berkonsultasi dengan dokter jika hasil tetap tinggi dalam pemeriksaan berikutnya.';
+        gaugeMarker.style.borderColor = '#f59e0b';
+        gaugeMarker.style.color = '#f59e0b';
     } else if (value >= 80) {
         gdpCategory = 'Normal';
-        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-green-100 text-green-700';
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-green-100 text-green-700';
         badge.innerHTML = '&#10004;&#65039; Normal';
+        icon.className = 'w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-md bg-green-100 text-green-600';
+        icon.innerHTML = '&#10004;&#65039;';
         message.textContent = 'Gula darah normal';
-        recommendation.classList.add('hidden');
+        recBox.classList.add('hidden');
+        gaugeMarker.style.borderColor = '#22c55e';
+        gaugeMarker.style.color = '#22c55e';
     } else {
         gdpCategory = 'Rendah';
-        badge.className = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold mb-3 bg-red-100 text-red-700';
+        badge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700';
         badge.innerHTML = '&#9888;&#65039; Rendah';
+        icon.className = 'w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-md bg-blue-100 text-blue-600';
+        icon.innerHTML = '&#9888;&#65039;';
         message.textContent = 'Gula darah rendah';
-        recommendation.classList.remove('hidden');
+        recBox.classList.remove('hidden');
         recommendation.textContent = 'Nilai GDP ' + value + ' mg/dL tergolong rendah (hipoglikemia). Segera konsumsi makanan atau minuman yang mengandung gula sederhana seperti jus buah, permen, atau glukosa tablet. Jika gejala berlanjut, segera cari bantuan medis.';
+        gaugeMarker.style.borderColor = '#3b82f6';
+        gaugeMarker.style.color = '#3b82f6';
     }
 
     saveArea.classList.remove('hidden');
@@ -178,20 +383,22 @@ function saveGDP() {
     })
     .then(res => res.json())
     .then(data => {
+        const msg = document.getElementById('gdpSaveMessage');
+        msg.classList.remove('hidden');
         if (data.success) {
-            msg.className = 'text-sm font-medium mt-2 text-center text-green-600';
-            msg.textContent = 'Hasil berhasil disimpan!';
+            msg.className = 'mt-4 rounded-2xl p-4 text-sm font-semibold text-center border bg-green-50 border-green-200 text-green-700';
+            msg.innerHTML = '&#10004;&#65039; Hasil <strong>' + gdpValue + ' mg/dL</strong> (' + gdpCategory + ') berhasil disimpan!';
             document.getElementById('gdpSaveArea').classList.add('hidden');
         } else {
-            msg.className = 'text-sm font-medium mt-2 text-center text-red-600';
+            msg.className = 'mt-4 rounded-2xl p-4 text-sm font-semibold text-center border bg-red-50 border-red-200 text-red-700';
             msg.textContent = data.message || 'Gagal menyimpan. Coba lagi.';
         }
-        msg.classList.remove('hidden');
     })
     .catch(() => {
-        msg.className = 'text-sm font-medium mt-2 text-center text-red-600';
-        msg.textContent = 'Terjadi kesalahan. Coba lagi.';
+        const msg = document.getElementById('gdpSaveMessage');
         msg.classList.remove('hidden');
+        msg.className = 'mt-4 rounded-2xl p-4 text-sm font-semibold text-center border bg-red-50 border-red-200 text-red-700';
+        msg.textContent = 'Terjadi kesalahan. Coba lagi.';
     })
     .finally(() => {
         btn.disabled = false;

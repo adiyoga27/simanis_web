@@ -34,24 +34,6 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
         <p class="text-xs text-gray-400">{{ $result->created_at->isoFormat('dddd, D MMMM Y · HH:mm') }}</p>
     </div>
 
-    {{-- Score Summary --}}
-    <div class="card text-center">
-        @php
-            $scorePercent = $result->total_score > 12 ? 100 : round(($result->total_score / 12) * 100);
-            $scoreColor = $result->total_score > 6 ? 'red' : ($result->total_score > 3 ? 'yellow' : 'green');
-            $scoreLabel = $result->total_score > 6 ? 'Risiko Tinggi' : ($result->total_score > 3 ? 'Risiko Sedang' : 'Risiko Rendah');
-        @endphp
-        <div class="text-xs text-gray-400 uppercase tracking-wider mb-2">Total Skor</div>
-        <div class="text-5xl font-extrabold text-{{ $scoreColor }}-600 mb-2">{{ $result->total_score }}</div>
-        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold bg-{{ $scoreColor }}-50 text-{{ $scoreColor }}-700">
-            <span class="w-2 h-2 rounded-full bg-{{ $scoreColor }}-500"></span>
-            {{ $scoreLabel }}
-        </span>
-        <div class="mt-4 w-full bg-gray-100 rounded-full h-2">
-            <div class="h-2 rounded-full bg-{{ $scoreColor }}-500 transition-all" style="width: {{ $scorePercent }}%"></div>
-        </div>
-    </div>
-
     {{-- Pilihan Anda --}}
     @if(count($selections) > 0)
     <div>
@@ -178,7 +160,7 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
         @endif
     </div>
 
-    {{-- Kesimpulan — Modern Standalone --}}
+    {{-- Hasil Pemeriksaan — Kesimpulan Akhir --}}
     @if($result->conclusion)
     @php
         $concColor = $result->conclusion->color ?: match($result->conclusion->severity) {
@@ -196,9 +178,9 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
         $sevLabel = ucfirst($result->conclusion->severity);
     @endphp
 
-    <div class="relative mt-10 mb-4">
+    <div class="relative">
         {{-- Decorative top bar --}}
-        <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="flex items-center justify-center gap-3 mb-6 -mt-2">
             <div class="h-0.5 w-12 rounded-full opacity-40" style="background: {{ $concColor }}"></div>
             <div class="w-3 h-3 rounded-full" style="background: {{ $concColor }}"></div>
             <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Hasil Pemeriksaan</span>
@@ -208,7 +190,6 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
 
         {{-- Main Section --}}
         <div class="relative overflow-hidden rounded-[2rem] shadow-2xl" style="background: linear-gradient(145deg, {{ $concColor }} 0%, {{ $concColor }}dd 60%, {{ $concColor }}bb 100%)">
-            {{-- Subtle pattern overlay --}}
             <div class="absolute inset-0 opacity-[0.06]">
                 <div class="absolute top-10 -right-10 w-64 h-64 rounded-full bg-white"></div>
                 <div class="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-white"></div>
@@ -216,7 +197,6 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
             </div>
 
             <div class="relative px-6 sm:px-8 py-8 sm:py-10">
-                {{-- Top: badge + label --}}
                 <div class="flex items-center justify-between mb-8">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center">
@@ -233,12 +213,18 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
                     </span>
                 </div>
 
-                {{-- Description --}}
+                {{-- Total Score inline --}}
+                <div class="flex items-center justify-center gap-4 mb-6 -mt-2">
+                    <div class="text-center">
+                        <div class="text-4xl font-black text-white tracking-tight">{{ $result->total_score }}</div>
+                        <div class="text-[10px] font-semibold uppercase tracking-widest text-white/40 mt-0.5">Total Skor</div>
+                    </div>
+                </div>
+
                 @if($result->conclusion->description)
                     <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-xl">{{ $result->conclusion->description }}</p>
                 @endif
 
-                {{-- Result text card (glass) --}}
                 <div class="relative rounded-3xl p-6 sm:p-7 bg-white/10 backdrop-blur-md border border-white/10 shadow-inner">
                     <div class="absolute -top-4 left-6 sm:left-8">
                         <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center shadow-lg">
@@ -250,7 +236,6 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
                     </p>
                 </div>
 
-                {{-- CTA Button --}}
                 @if($result->conclusion->reference_link)
                 <div class="mt-8 text-center">
                     <a href="{{ $result->conclusion->reference_link }}" target="_blank" rel="noopener" class="group inline-flex items-center gap-4 px-7 py-4 rounded-2xl bg-white text-sm font-bold transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl active:scale-[0.98] shadow-lg shadow-black/10" style="color: {{ $concColor }}">
@@ -263,6 +248,24 @@ function formatRuleTextDetail($text, $aggregateResults, $ruleId) {
             </div>
         </div>
     </div>
+    @else
+        {{-- Score only when no conclusion --}}
+        @php
+            $scorePercent = $result->total_score > 12 ? 100 : round(($result->total_score / 12) * 100);
+            $scoreColor = $result->total_score > 6 ? 'red' : ($result->total_score > 3 ? 'yellow' : 'green');
+            $scoreLabel = $result->total_score > 6 ? 'Risiko Tinggi' : ($result->total_score > 3 ? 'Risiko Sedang' : 'Risiko Rendah');
+        @endphp
+        <div class="card text-center">
+            <div class="text-xs text-gray-400 uppercase tracking-wider mb-2">Total Skor</div>
+            <div class="text-5xl font-extrabold text-{{ $scoreColor }}-600 mb-2">{{ $result->total_score }}</div>
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold bg-{{ $scoreColor }}-50 text-{{ $scoreColor }}-700">
+                <span class="w-2 h-2 rounded-full bg-{{ $scoreColor }}-500"></span>
+                {{ $scoreLabel }}
+            </span>
+            <div class="mt-4 w-full bg-gray-100 rounded-full h-2">
+                <div class="h-2 rounded-full bg-{{ $scoreColor }}-500 transition-all" style="width: {{ $scorePercent }}%"></div>
+            </div>
+        </div>
     @endif
 
 </div>

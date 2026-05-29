@@ -77,7 +77,8 @@
                 $dataMasterActive = request()->routeIs([
                     'admin.patients*','admin.users*','admin.desa*',
                     'admin.instruments*','admin.education*'
-                ]) || (request()->routeIs('admin.assessments*') && !request()->routeIs('admin.assessments.result*'));
+                ]) || (request()->routeIs('admin.assessments*') && !request()->routeIs('admin.assessments.result*'))
+                   || (request()->routeIs('admin.instruments*') && !request()->routeIs('admin.instruments.results*'));
             @endphp
             <button type="button" onclick="toggleDataMaster()" class="pt-4 mt-4 border-t border-gray-100 w-full flex items-center justify-between px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider hover:text-gray-500 transition-colors cursor-pointer {{ $dataMasterActive ? 'text-primary-600' : '' }}">
                 <span>Data Master</span>
