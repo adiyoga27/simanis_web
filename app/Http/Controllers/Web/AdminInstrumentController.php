@@ -9,6 +9,7 @@ use App\Models\Desa;
 use App\Models\InstrumentResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class AdminInstrumentController extends Controller
 {
@@ -170,5 +171,53 @@ class AdminInstrumentController extends Controller
         }
         InstrumentResult::findOrFail($id)->delete();
         return back()->with('success', 'Data berhasil dihapus.');
+    }
+
+    public function exportResults(Request $request)
+    {
+        $currentUser = Auth::user();
+        $search = $request->get('search');
+        $desaId = $request->get('desa_id');
+
+        $results = InstrumentResult::with('user')
+            ->when(in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id, function ($q) use ($currentUser) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+            })
+            ->when($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas']), function ($q) use ($desaId) {
+                $q->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
+            })
+            ->when($search, function ($q) use ($search) {
+                $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
+                    ->orWhere('username', 'like', "%{$search}%"));
+            })
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $filename = 'instrumen-keyakinan-' . now()->format('Y-m-d-His') . '.csv';
+
+        $headers = [
+            'Content-Type'        => 'text/csv; charset=utf-8',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+        ];
+
+        $callback = function () use ($results) {
+            $handle = fopen('php://output', 'w');
+            fprintf($handle, "\xEF\xBB\xBF");
+            fputcsv($handle, ['No', 'Pasien', 'Skor', 'Max Skor', 'Persentase', 'Interpretasi', 'Waktu']);
+            foreach ($results as $i => $r) {
+                fputcsv($handle, [
+                    $i + 1,
+                    $r->user?->name ?? '-',
+                    $r->total_score,
+                    $r->max_score,
+                    ($r->percentage ?? 0) . '%',
+                    $r->interpretation ?? '-',
+                    $r->created_at->format('d/m/Y H:i:s'),
+                ]);
+            }
+            fclose($handle);
+        };
+
+        return new StreamedResponse($callback, 200, $headers);
     }
 }

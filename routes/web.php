@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\AdminEducationController;
 use App\Http\Controllers\Web\AdminPatientController;
 use App\Http\Controllers\Web\AdminInstrumentController;
 use App\Http\Controllers\Web\AdminLogController;
+use App\Http\Controllers\Web\AdminPharmacologyController;
 use App\Http\Controllers\Web\AssessmentAdminController;
 use App\Http\Controllers\Web\AssessmentController;
 use App\Http\Controllers\Web\InstrumentController;
@@ -190,7 +191,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/monitoring/foot-screening', [AdminController::class, 'monitoringFootScreening'])->name('admin.monitoring.foot-screening');
     Route::get('/monitoring/foot-screening/{id}', [AdminController::class, 'monitoringFootScreeningDetail'])->name('admin.monitoring.foot-screening.detail');
     Route::get('/monitoring/assessments', [AdminController::class, 'monitoringAssessments'])->name('admin.monitoring.assessments');
+    Route::get('/monitoring/assessments/export', [AdminController::class, 'exportAssessments'])->name('admin.monitoring.assessments.export');
     Route::get('/monitoring/blood-sugar', [AdminController::class, 'monitoringBloodSugar'])->name('admin.monitoring.blood-sugar');
+    Route::get('/monitoring/blood-sugar/export', [AdminController::class, 'exportBloodSugar'])->name('admin.monitoring.blood-sugar.export');
 
     Route::get('/monitoring/education', [AdminController::class, 'monitoringEducation'])->name('admin.monitoring.education');
     Route::get('/monitoring/education/{categorySlug}', [AdminController::class, 'monitoringEducationArticles'])->name('admin.monitoring.education.articles');
@@ -214,6 +217,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::put('/instruments/questions/{id}', [AdminInstrumentController::class, 'updateQuestion'])->name('admin.instruments.questions.update');
     Route::delete('/instruments/questions/{id}', [AdminInstrumentController::class, 'destroyQuestion'])->name('admin.instruments.questions.destroy');
     Route::get('/instruments/results', [AdminInstrumentController::class, 'results'])->name('admin.instruments.results');
+    Route::get('/instruments/results/export', [AdminInstrumentController::class, 'exportResults'])->name('admin.instruments.results.export');
     Route::get('/instruments/results/{id}', [AdminInstrumentController::class, 'resultDetail'])->name('admin.instruments.results.detail');
     Route::middleware('non_puskesmas')->delete('/instruments/results/{id}', [AdminInstrumentController::class, 'destroyResult'])->name('admin.instruments.results.destroy');
 
@@ -232,6 +236,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     // Log System
     Route::get('/logs', [AdminLogController::class, 'index'])->name('admin.logs');
     Route::get('/logs/data', [AdminLogController::class, 'data'])->name('admin.logs.data');
+    Route::get('/logs/export', [AdminLogController::class, 'export'])->name('admin.logs.export');
+
+    // Farmakologi
+    Route::get('/pharmacology', [AdminPharmacologyController::class, 'index'])->name('admin.pharmacology.index');
+    Route::get('/pharmacology/create', [AdminPharmacologyController::class, 'create'])->name('admin.pharmacology.create');
+    Route::post('/pharmacology', [AdminPharmacologyController::class, 'store'])->name('admin.pharmacology.store');
+    Route::get('/pharmacology/{id}/edit', [AdminPharmacologyController::class, 'edit'])->name('admin.pharmacology.edit');
+    Route::put('/pharmacology/{id}', [AdminPharmacologyController::class, 'update'])->name('admin.pharmacology.update');
+    Route::delete('/pharmacology/{id}', [AdminPharmacologyController::class, 'destroy'])->name('admin.pharmacology.destroy');
+    Route::get('/pharmacology/export', [AdminPharmacologyController::class, 'export'])->name('admin.pharmacology.export');
 });
 
 // Static pages (public)

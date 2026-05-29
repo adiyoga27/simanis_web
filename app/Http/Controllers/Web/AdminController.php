@@ -346,6 +346,39 @@ class AdminController extends Controller
         return back()->with('success', 'Data berhasil dihapus.');
     }
 
+    public function exportAssessments(Request $request)
+    {
+        $currentUser = Auth::user();
+        $search = $request->get('search');
+        $desaId = $request->get('desa_id');
+
+        $query = AssessmentResult::with(['user', 'conclusion']);
+        if (in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id) {
+            $query->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+        }
+        if ($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas'])) {
+            $query->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
+        }
+        $records = $query->when($search, function ($q) use ($search) {
+                $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
+                    ->orWhere('username', 'like', "%{$search}%"));
+            })->orderBy('created_at', 'desc')->get();
+
+        $filename = 'screening-kaki-' . now()->format('Y-m-d-His') . '.csv';
+        $headers = ['Content-Type' => 'text/csv; charset=utf-8', 'Content-Disposition' => 'attachment; filename="' . $filename . '"'];
+        $callback = function () use ($records) {
+            $handle = fopen('php://output', 'w');
+            fprintf($handle, "\xEF\xBB\xBF");
+            fputcsv($handle, ['No', 'Pasien', 'Total Skor', 'Kesimpulan', 'Aturan Terpicu', 'Waktu']);
+            foreach ($records as $i => $r) {
+                $matched = is_array($r->matched_rules) ? count($r->matched_rules) : 0;
+                fputcsv($handle, [$i + 1, $r->user?->name ?? '-', $r->total_score, $r->conclusion?->title ?? '-', $matched, $r->created_at->format('d/m/Y H:i:s')]);
+            }
+            fclose($handle);
+        };
+        return new \Symfony\Component\HttpFoundation\StreamedResponse($callback, 200, $headers);
+    }
+
     public function monitoringBloodSugar(Request $request)
     {
         $currentUser = Auth::user();
@@ -388,6 +421,39 @@ class AdminController extends Controller
         }
         BloodSugarRecord::findOrFail($id)->delete();
         return back()->with('success', 'Data berhasil dihapus.');
+    }
+
+    public function exportBloodSugar(Request $request)
+    {
+        $currentUser = Auth::user();
+        $search = $request->get('search');
+        $desaId = $request->get('desa_id');
+
+        $query = BloodSugarRecord::with('user');
+        if (in_array($currentUser->role, ['kader', 'kepala_desa']) && $currentUser->desa_id) {
+            $query->whereHas('user', fn($u) => $u->where('desa_id', $currentUser->desa_id));
+        }
+        if ($desaId && in_array($currentUser->role, ['superadmin', 'kepala_puskesmas'])) {
+            $query->whereHas('user', fn($u) => $u->where('desa_id', $desaId));
+        }
+        $records = $query->when($search, function ($q) use ($search) {
+                $q->whereHas('user', fn($u) => $u->where('name', 'like', "%{$search}%")
+                    ->orWhere('username', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%"));
+            })->orderBy('recorded_at', 'desc')->get();
+
+        $filename = 'gula-darah-' . now()->format('Y-m-d-His') . '.csv';
+        $headers = ['Content-Type' => 'text/csv; charset=utf-8', 'Content-Disposition' => 'attachment; filename="' . $filename . '"'];
+        $callback = function () use ($records) {
+            $handle = fopen('php://output', 'w');
+            fprintf($handle, "\xEF\xBB\xBF");
+            fputcsv($handle, ['No', 'Pasien', 'Jenis', 'Nilai', 'Kategori', 'Catatan', 'Waktu']);
+            foreach ($records as $i => $r) {
+                fputcsv($handle, [$i + 1, $r->user?->name ?? '-', $r->type, $r->value, $r->category, $r->notes ?? '-', $r->recorded_at->format('d/m/Y H:i:s')]);
+            }
+            fclose($handle);
+        };
+        return new \Symfony\Component\HttpFoundation\StreamedResponse($callback, 200, $headers);
     }
 
     public function monitoringEducation()
