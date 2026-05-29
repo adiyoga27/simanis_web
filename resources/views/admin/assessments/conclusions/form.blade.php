@@ -35,25 +35,6 @@
                     @enderror
                 </div>
 
-                <div>
-                    <label class="input-label">Logika Pencocokan <span class="text-red-500">*</span></label>
-                    <div class="flex items-center gap-4 mt-2">
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="match_logic" value="and" {{ old('match_logic', $conclusion->match_logic ?? 'and') === 'and' ? 'checked' : '' }} class="text-primary-600 focus:ring-primary-400">
-                            <span class="text-sm text-gray-700">AND</span>
-                            <span class="text-xs text-gray-400">(semua kondisi harus terpenuhi)</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="match_logic" value="or" {{ old('match_logic', $conclusion->match_logic ?? '') === 'or' ? 'checked' : '' }} class="text-primary-600 focus:ring-primary-400">
-                            <span class="text-sm text-gray-700">OR</span>
-                            <span class="text-xs text-gray-400">(salah satu kondisi terpenuhi)</span>
-                        </label>
-                    </div>
-                    @error('match_logic')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
                 {{-- Category Conditions --}}
                 <div>
                     <label class="input-label">Kondisi Kategori <span class="text-red-500">*</span></label>
@@ -169,14 +150,21 @@
 <script>
     let condIndex = 0;
 
-    function buildCondRow(catId, minMatched, severity) {
+    function buildCondRow(catId, minMatched, severity, logic, isFirst) {
         let idx = condIndex++;
         let catOptions = '';
         @foreach($categories as $cat)
             catOptions += '<option value="{{ $cat->id }}"' + (catId == '{{ $cat->id }}' ? ' selected' : '') + '>{{ $cat->title }}</option>';
         @endforeach
 
+        let logicHtml = isFirst ? '<input type="hidden" name="cond_logic[]" value="and"><span class="w-16"></span>' :
+            '<select name="cond_logic[]" class="input-field w-16 !py-2 text-xs text-center font-semibold">' +
+                '<option value="and"' + (logic == 'and' ? ' selected' : '') + '>AND</option>' +
+                '<option value="or"' + (logic == 'or' ? ' selected' : '') + '>OR</option>' +
+            '</select>';
+
         return '<div class="flex items-center gap-2 bg-gray-50 rounded-xl p-3" data-cond="' + idx + '">' +
+            logicHtml +
             '<select name="cond_category_id[]" class="input-field flex-1 !py-2">' +
                 '<option value="">Pilih Kategori</option>' + catOptions +
             '</select>' +
@@ -195,15 +183,16 @@
         '</div>';
     }
 
-    function addCondRow(catId, minMatched, severity) {
-        document.getElementById('cond-container').insertAdjacentHTML('beforeend', buildCondRow(catId || '', minMatched || 1, severity || ''));
+    function addCondRow(catId, minMatched, severity, logic) {
+        let isFirst = document.getElementById('cond-container').children.length === 0;
+        document.getElementById('cond-container').insertAdjacentHTML('beforeend', buildCondRow(catId || '', minMatched || 1, severity || '', logic || 'and', isFirst));
     }
 
     document.addEventListener('DOMContentLoaded', function() {
         @php
             if (isset($conclusion) && $conclusion->conditions) {
                 foreach ($conclusion->conditions as $cond) {
-                    echo "addCondRow('{$cond->rule_category_id}', {$cond->min_matched_rules}, '{$cond->target_severity}');";
+                    echo "addCondRow('{$cond->rule_category_id}', {$cond->min_matched_rules}, '{$cond->target_severity}', '{$cond->logic}');";
                 }
             }
         @endphp

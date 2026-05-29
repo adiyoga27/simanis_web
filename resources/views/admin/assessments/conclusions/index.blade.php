@@ -78,14 +78,14 @@
                             </td>
                             <td class="px-5 py-4">
                                 <span class="font-semibold text-gray-800">{{ $conclusion->title }}</span>
-                                <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold {{ $conclusion->match_logic === 'or' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700' }} ml-1.5">
-                                    {{ strtoupper($conclusion->match_logic ?? 'and') }}
-                                </span>
                             </td>
                             <td class="px-5 py-4">
                                 <div class="flex flex-wrap gap-1">
                                     @foreach($conclusion->conditions as $cond)
                                         <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium bg-primary-50 text-primary-600 border border-primary-100">
+                                            @if(!$loop->first)
+                                                <span class="text-[9px] font-bold {{ $cond->logic === 'or' ? 'text-amber-600' : 'text-blue-600' }}">{{ strtoupper($cond->logic) }}</span>
+                                            @endif
                                             {{ $cond->category?->title ?? '-' }}
                                             <span class="text-primary-400">&ge;{{ $cond->min_matched_rules }}</span>
                                             @if($cond->target_severity)

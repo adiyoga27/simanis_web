@@ -455,7 +455,6 @@ class AssessmentAdminController extends Controller
         $validated = $request->validate([
             'title'              => 'required|string|max:255',
             'description'        => 'nullable|string',
-            'match_logic'        => 'required|in:and,or',
             'result_text'        => 'required|string',
             'reference_link'     => 'nullable|url|max:2048',
             'color'              => 'nullable|string|max:30',
@@ -491,7 +490,6 @@ class AssessmentAdminController extends Controller
         $validated = $request->validate([
             'title'              => 'required|string|max:255',
             'description'        => 'nullable|string',
-            'match_logic'        => 'required|in:and,or',
             'result_text'        => 'required|string',
             'reference_link'     => 'nullable|url|max:2048',
             'color'              => 'nullable|string|max:30',
@@ -519,6 +517,7 @@ class AssessmentAdminController extends Controller
         $categoryIds = $request->input('cond_category_id', []);
         $minMatched = $request->input('cond_min_matched', []);
         $severities = $request->input('cond_severity', []);
+        $logics = $request->input('cond_logic', []);
 
         foreach ($categoryIds as $index => $catId) {
             if (empty($catId)) continue;
@@ -527,6 +526,7 @@ class AssessmentAdminController extends Controller
                 'rule_category_id'  => $catId,
                 'min_matched_rules' => max(1, (int) ($minMatched[$index] ?? 1)),
                 'target_severity'   => $severities[$index] ?? null,
+                'logic'             => $logics[$index] ?? 'and',
             ]);
         }
     }

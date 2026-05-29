@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AssessmentConclusionCondition extends Model
 {
-    protected $fillable = ['conclusion_id', 'rule_category_id', 'min_matched_rules', 'target_severity'];
+    protected $fillable = ['conclusion_id', 'rule_category_id', 'min_matched_rules', 'target_severity', 'logic'];
 
     public function conclusion(): BelongsTo
     {
